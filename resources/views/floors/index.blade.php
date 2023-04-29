@@ -9,7 +9,7 @@
             </div>
             
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('types.create') }}">Nuevo tipo</a>
+                <a class="btn btn-success" href="{{ route('floors.create') }}">Nuevo piso</a>
             </div>
         </div>
     </div>
@@ -24,22 +24,21 @@
     <table class="table table-bordered">
         <tr>
             <th>Id</th>
-            <th>Tipos</th>
+            <th>Piso</th>
 
             <th width="280px">Acciones</th>
         </tr>
 
-        @foreach ($types as $type)
+        @foreach ($floors as $floor)
             <tr>
-            {{--<td>{{ ++$i }}</td>--}}
-            <td>{{ $type->id}}</td>
-                <td>{{ $type->room_type}}</td>
+                <td>{{ ++$i }}</td>
+                <td>{{ $floor->number_floor}}</td>
 
                 
                     <td>
-                    <form action="{{ route('types.destroy', $type->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('types.show', $type->id) }}">Ver</a>
-                        <a class="btn btn-primary" href="{{ route('types.edit', $type->id) }}">Editar</a>
+                    <form action="{{ route('floors.destroy', $floor->id) }}" method="POST">
+                        <a class="btn btn-info" href="{{ route('floors.show', $floor->id) }}">Ver</a>
+                        <a class="btn btn-primary" href="{{ route('floors.edit', $floor->id) }}">Editar</a>
 
                         @csrf
                         @method('DELETE')
@@ -53,7 +52,7 @@
     </table>
 </div>
     <div class="container">
-    {!! $types->links() !!}
+    {!! $floors->links() !!}
         
     </div>
 

@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h1>Crear tipos de habitaciones</h1>
+                <h1>Crear un nuevo huesped</h1>
             </div>
             
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('types.create') }}">Nuevo tipo</a>
+                <a class="btn btn-success" href="{{ route('guests.create') }}"> Nuevo huesped</a>
             </div>
         </div>
     </div>
@@ -24,22 +24,25 @@
     <table class="table table-bordered">
         <tr>
             <th>Id</th>
-            <th>Tipos</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Telefono</th>
 
             <th width="280px">Acciones</th>
         </tr>
 
-        @foreach ($types as $type)
+        @foreach ($guests as $guest)
             <tr>
-            {{--<td>{{ ++$i }}</td>--}}
-            <td>{{ $type->id}}</td>
-                <td>{{ $type->room_type}}</td>
+                <td>{{ ++$i }}</td>
+                <td>{{ $guest->name}}</td>
+                <td>{{ $guest->last_name}}</td>
+                <td>{{ $guest->phone}}</td>
 
                 
                     <td>
-                    <form action="{{ route('types.destroy', $type->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('types.show', $type->id) }}">Ver</a>
-                        <a class="btn btn-primary" href="{{ route('types.edit', $type->id) }}">Editar</a>
+                    <form action="{{ route('guests.destroy', $guest->id) }}" method="POST">
+                        <a class="btn btn-info" href="{{ route('guests.show', $guest->id) }}">Ver</a>
+                        <a class="btn btn-primary" href="{{ route('guests.edit', $guest->id) }}">Editar</a>
 
                         @csrf
                         @method('DELETE')
@@ -53,7 +56,7 @@
     </table>
 </div>
     <div class="container">
-    {!! $types->links() !!}
+    {!! $guests->links() !!}
         
     </div>
 
