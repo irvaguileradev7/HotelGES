@@ -27,7 +27,11 @@
                                     class="ms-1 d-none d-sm-inline">Habitaciones</span> </a>
                             
                         </li>
+                        <a href="{{ route('types.index') }}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-speedometer2"></i> <span
+                                class="ms-1 d-none d-sm-inline">Crear tipo</span> </a>
                         
+                    </li>
                         
                     </ul>
                     <hr>

@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h1>Habitaciones</h1>
+                <h1>Crear tipos de habitaciones</h1>
             </div>
             
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('rooms.create') }}"> Crear habitación</a>
+                <a class="btn btn-success" href="{{ route('types.create') }}"> Crear habitación</a>
             </div>
         </div>
     </div>
@@ -24,26 +24,24 @@
     <table class="table table-bordered">
         <tr>
             <th>Id</th>
-            <th>Nombre</th>
-            <th>Detalles</th>
+            <th>Tipos</th>
+
             <th width="280px">Acciones</th>
         </tr>
 
-        @foreach ($rooms as $room)
+        @foreach ($types as $type)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $room->name }}</td>
-                <td>{{ $room->detail }}</td>
+                <td>{{ $type->room_type}}</td>
+
                 
                     <td>
-                    <form action="{{ route('rooms.destroy', $room->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('rooms.show', $room->id) }}">Ver</a>
-                        <a class="btn btn-primary" href="{{ route('rooms.edit', $room->id) }}">Editar</a>
-
+                    <form action="{{ route('types.destroy', $type->id) }}" method="POST">
+                        <a class="btn btn-info" href="{{ route('types.show', $type->id) }}">Ver</a>
+                        <a class="btn btn-primary" href="{{ route('types.edit', $type->id) }}">Editar</a>
 
                         @csrf
                         @method('DELETE')
-
 
                         <button type="submit" class="btn btn-danger">Eliminar</button>
                     </form>
@@ -54,7 +52,7 @@
     </table>
 </div>
     <div class="container">
-    {!! $rooms->links() !!}
+    {!! $types->links() !!}
         
     </div>
 

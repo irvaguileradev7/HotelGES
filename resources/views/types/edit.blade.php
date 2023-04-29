@@ -7,7 +7,7 @@
                 <h2>Editar habitacion</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('rooms.index') }}">Regresar</a>
+                <a class="btn btn-primary" href="{{ route('types.index') }}">Regresar</a>
             </div>
         </div>
     </div>
@@ -25,25 +25,19 @@
     </div>
 @endif
 
-    <form action="{{ route('rooms.update', $room->id) }}" method="POST">
+    <form action="{{ route('types.update', $type->id) }}" method="POST">
         @csrf
         @method('PUT')
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Nombre de la habitacion:</strong>
-                    <input type="text" name="name" value="{{ $room->name }}" class="form-control"
+                    <strong>Tipo de habitacion:</strong>
+                    <input type="text" name="room_type" value="{{ $type->name }}" class="form-control"
                         placeholder="Name">
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Detalles:</strong>
-                    <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail">{{ $room->detail }}</textarea>
-                </div>
-            </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Guardar</button>
