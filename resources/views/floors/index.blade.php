@@ -9,7 +9,7 @@
             </div>
             
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('floors.create') }}"> Crear habitación</a>
+                <a class="btn btn-success" href="{{ route('floors.create') }}">Nuevo piso</a>
             </div>
         </div>
     </div>

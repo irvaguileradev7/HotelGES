@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -37,6 +37,12 @@
                             <a href="{{ route('floors.index') }}" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Crear
                                      piso</span> </a>
+
+                        </li>
+
+                        <li>
+                            <a href="{{ route('guests.index') }}" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Agregar huesped</span> </a>
 
                         </li>
 
