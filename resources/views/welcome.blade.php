@@ -1,4 +1,4 @@
-@extends('rooms.layout')
+@extends('layout')
   
 @section('content')
 <h1>Sistema gestor de hotel - Pagina principal</h1>
