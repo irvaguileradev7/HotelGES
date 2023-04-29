@@ -7,7 +7,7 @@
                 <h2>Ver huesped</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('floors.index') }}">Regresar</a>
+                <a class="btn btn-primary" href="{{ route('guests.index') }}">Regresar</a>
             </div>
         </div>
     </div>

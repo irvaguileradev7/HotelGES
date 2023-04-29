@@ -7,7 +7,7 @@
                 <h2>Ver tipo de habitacion</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('rooms.index') }}">Regresar</a>
+                <a class="btn btn-primary" href="{{ route('types.index') }}">Regresar</a>
             </div>
         </div>
     </div>
