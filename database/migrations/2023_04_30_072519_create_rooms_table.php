@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -17,7 +18,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('detail');
+            $table->unsignedBigInteger('floor_id');
+            $table->unsignedBigInteger('type_id');
             $table->timestamps();
+
+            $table->foreign('floor_id')->references('id')->on('floors');
+            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 
@@ -30,4 +36,16 @@ return new class extends Migration
     {
         Schema::dropIfExists('rooms');
     }
+
+    public function after()
+{
+    Schema::table('rooms', function (Blueprint $table) {
+        $table->foreign('floor_id')->references('id')->on('floors');
+    });
+
+    Schema::table('rooms', function (Blueprint $table) {
+        $table->foreign('type_id')->references('id')->on('types');
+    });
+}
+
 };

@@ -5,6 +5,7 @@ use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\AddroomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,4 @@ Route::resource('rooms', RoomController::class);
 Route::resource('types', TypeController::class);
 Route::resource('floors', FloorController::class);
 Route::resource('guests',GuestController::class);
+Route::resource('addrooms',AddroomController::class);
