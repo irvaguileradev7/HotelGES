@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\Floor;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -41,6 +43,8 @@ class RoomController extends Controller
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
+            'floor_id' => 'required',
+            'type_id' => 'required'
         ]);
 
         Room::create($request->all());
@@ -78,11 +82,13 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(Request $request, Room $room, Floor $floor, Type $type)
     {
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
+            'floor_id' => 'required',
+            'type_id' => 'required'
         ]);
 
         $room->update($request->all());
@@ -90,6 +96,7 @@ class RoomController extends Controller
         return redirect()->route('rooms.index')
             ->with('success', 'Habitacion actualizada con exito');
     }
+
 
     /**
      * Remove the specified resource from storage.
