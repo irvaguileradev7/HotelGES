@@ -39,6 +39,8 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
+        //Requerir datos de formulario
+        //Y valida
         $request->validate([
             'room_type'=>'required'
         ]);

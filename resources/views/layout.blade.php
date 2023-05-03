@@ -52,6 +52,7 @@
 
                 </div>
             </div>
+            <!--Contenido de las vistas dentro del layout-->
             <div class="col py-3">
                 @yield('content')
             </div>

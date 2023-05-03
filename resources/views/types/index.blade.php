@@ -1,6 +1,7 @@
+<!--Llamar al Layout-->
 @extends('layout')
 
-
+<!--Contenido que se invoca en el Layout-->
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
