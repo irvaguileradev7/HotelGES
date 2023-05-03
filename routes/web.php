@@ -18,12 +18,22 @@ use App\Http\Controllers\AddroomController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::resource('rooms', RoomController::class);
-Route::resource('types', TypeController::class);
-Route::resource('floors', FloorController::class);
-Route::resource('guests',GuestController::class);
-Route::resource('addrooms',AddroomController::class);
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::resource('rooms', RoomController::class);
+    Route::resource('types', TypeController::class);
+    Route::resource('floors', FloorController::class);
+    Route::resource('guests', GuestController::class);
+    Route::resource('addrooms', AddroomController::class);
+});
