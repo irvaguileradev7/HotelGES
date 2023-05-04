@@ -76,55 +76,65 @@
         </div>
     </div>
 --}}
-<div
-      class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
-      id="sidebar"
-    >
-      <ul class="nav flex-column text-white w-100">
-        <a href="#" class="nav-link h3 text-white my-2">
-          Responsive </br>SideBar Nav
-        </a>
-        <li href="#" class="nav-link">
-          <i class="bx bxs-dashboard"></i>
-          <span class="mx-2">Home</span>
-        </li>
-        <li href="#" class="nav-link">
-          <i class="bx bx-user-check"></i>
-          <span class="mx-2">Profile</span>
-        </li>
-        <li href="#" class="nav-link">
-          <i class="bx bx-conversation"></i>
-          <span class="mx-2">Contact</span>
-        </li>
-      </ul>
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+        <ul class="nav flex-column text-white w-100">
+          <a href="/"
+                        class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">HotelGes</span>
+                    </a>
+            <li>
+              <hr>
+                <a href="{{ route('rooms.index') }}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Habitaciones</span> </a>
 
-      <span href="#" class="nav-link h4 w-100 mb-5">
-        <a href=""><i class="bx bxl-instagram-alt text-white"></i></a>
-        <a href=""><i class="bx bxl-twitter px-2 text-white"></i></a>
-        <a href=""><i class="bx bxl-facebook text-white"></i></a>
-      </span>
+            </li>
+            <li>
+                <a href="{{ route('types.index') }}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Crear
+                        tipo</span> </a>
+
+            </li>
+            <li>
+                <a href="{{ route('floors.index') }}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Crear
+                        piso</span> </a>
+
+            </li>
+
+            <li>
+                <a href="{{ route('guests.index') }}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Agregar huesped</span>
+                </a>
+
+            </li>
+
+            <span href="#" class="nav-link h4 w-100 mb-5">
+                <a href=""><i class="bx bxl-instagram-alt text-white"></i></a>
+                <a href=""><i class="bx bxl-twitter px-2 text-white"></i></a>
+                <a href=""><i class="bx bxl-facebook text-white"></i></a>
+            </span>
     </div>
 
     <!-- Main Wrapper -->
     <div class="p-1 my-container active-cont">
-      <!-- Top Nav -->
-      <nav class="navbar top-navbar navbar-light bg-light px-5">
-        <a class="btn border-0" id="menu-btn"><i class="bx bx-menu"></i></a>
-      </nav>
-      <!--End Top Nav -->
-      @yield('content')
+        <!-- Top Nav -->
+        <nav class="navbar top-navbar navbar-light bg-light px-5">
+            <a class="btn border-0" id="menu-btn"><i class="bx bx-menu"></i></a>
+        </nav>
+        <!--End Top Nav -->
+        @yield('content')
     </div>
 
 
     <!-- custom js -->
     <script>
-      var menu_btn = document.querySelector("#menu-btn");
-      var sidebar = document.querySelector("#sidebar");
-      var container = document.querySelector(".my-container");
-      menu_btn.addEventListener("click", () => {
-        sidebar.classList.toggle("active-nav");
-        container.classList.toggle("active-cont");
-      });
+        var menu_btn = document.querySelector("#menu-btn");
+        var sidebar = document.querySelector("#sidebar");
+        var container = document.querySelector(".my-container");
+        menu_btn.addEventListener("click", () => {
+            sidebar.classList.toggle("active-nav");
+            container.classList.toggle("active-cont");
+        });
     </script>
     <script src="js/bootstrap.min.js"></script>
 </body>
