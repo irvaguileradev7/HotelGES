@@ -28,11 +28,14 @@
     padding-right: 1vw;
   }
   
+  .navbar{
+    background-color: #fff;
+  }
 
   .nav-link:active,
   .nav-link:focus,
   .nav-link:hover {
-    background-color: #ffffff26;
+    background-color: #6c529662;
   }
   
   .my-container {
