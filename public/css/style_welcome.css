@@ -16,6 +16,12 @@ h1{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+h2{
+    font-family: 'New York';
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 .content{
     position: fixed;
     top: 50%;

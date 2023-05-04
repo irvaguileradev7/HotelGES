@@ -5,7 +5,7 @@
         <div class="col-lg-12 margin-tb">
             <div class="container">
                 <div class="pull-left">
-                    <h1>Crear un nuevo huesped</h1>
+                    <h1>Huespedes</h1>
                 </div>
 
                 <div class="pull-right">
@@ -47,13 +47,13 @@
                             @method('DELETE')
                             <table>
                                 <tr>
-                                    <td>
+                                    <td class="non-cell">
                                         <a class="btn btn-info" href="{{ route('guests.show', $guest->id) }}">Ver</a>
                                     </td>
-                                    <td>
+                                    <td class="non-cell">
                                         <a class="btn btn-primary" href="{{ route('guests.edit', $guest->id) }}">Editar</a>
                                     </td>
-                                    <td>
+                                    <td class="non-cell">
                                         <button type="submit" class="btn btn-danger"
                                             onclick="confirmDelete(event, {{ $guest->id }})">Eliminar</button>
                                     </td>

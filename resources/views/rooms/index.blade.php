@@ -58,13 +58,13 @@
                             @method('DELETE')
                             <table>
                                 <tr >
-                                    <td>
+                                    <td class="non-cell">
                                         <a class="btn btn-info" href="{{ route('rooms.show', $room->id) }}">Ver</a>
                                     </td>
-                                    <td>
+                                    <td class="non-cell">
                                         <a class="btn btn-primary" href="{{ route('rooms.edit', $room->id) }}">Editar</a>
                                     </td>
-                                    <td>
+                                    <td class="non-cell">
                                         <button type="submit" class="btn btn-danger" onclick="confirmDelete(event, {{ $room->id }})">Eliminar</button>
                                     </td>
                                 </tr>

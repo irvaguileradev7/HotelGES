@@ -6,7 +6,7 @@
         <div class="col-lg-12 margin-tb">
             <div class="container">
                 <div class="pull-left">
-                    <h1>Crear piso</h1>
+                    <h1>Pisos existentes</h1>
                 </div>
                 <div class="pull-right">
                     <a class="btn btn-success" href="{{ route('floors.create') }}">Nuevo piso</a>
@@ -42,13 +42,13 @@
                             @method('DELETE')
                             <table>
                                 <tr>
-                                    <td>
+                                    <td class="non-cell">
                                         <a class="btn btn-info" href="{{ route('floors.show', $floor->id) }}">Ver</a>
                                     </td>
-                                    <td>
+                                    <td class="non-cell">
                                         <a class="btn btn-primary" href="{{ route('floors.edit', $floor->id) }}">Editar</a>
                                     </td>
-                                    <td>
+                                    <td class="non-cell">
                                         <button type="submit" class="btn btn-danger"
                                             onclick="confirmDelete(event, {{ $floor->id }})">Eliminar</button>
                                     </td>

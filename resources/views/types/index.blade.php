@@ -11,7 +11,7 @@
             <div class="pull-right">
                 <div class="container">
                     <div class="pull-left">
-                        <h1>Crear tipos de habitaciones</h1>
+                        <h1>Tipos de habitacion</h1>
                     </div>
                     <a class="btn btn-success" href="{{ route('types.create') }}">Nuevo tipo</a>
                 </div>
@@ -48,14 +48,14 @@
                             @csrf
                             @method('DELETE')
                             <table>
-                                <tr>
-                                    <td>
+                                <tr >
+                                    <td class="non-cell">
                                         <a class="btn btn-info" href="{{ route('types.show', $type->id) }}">Ver</a>
                                     </td>
-                                    <td>
+                                    <td class="non-cell">
                                         <a class="btn btn-primary" href="{{ route('types.edit', $type->id) }}">Editar</a>
                                     </td>
-                                    <td>
+                                    <td class="non-cell">
                                         <button type="submit" class="btn btn-danger"
                                             onclick="confirmDelete(event, {{ $type->id }})">Eliminar</button>
                                     </td>

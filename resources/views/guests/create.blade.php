@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="container">
-                <h4>Acompanantes</h3>
+                <h4>Personas</h3>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Adultos:</strong>
