@@ -4,10 +4,11 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h1>Habitaciones</h1>
-            </div>
+
             <div class="container">
+                <div class="pull-left">
+                    <h1>Habitaciones</h1>
+                </div>
                 <div class="pull-right">
                     <a class="btn btn-success" href="{{ route('rooms.create') }}">Nueva habitación</a>
                 </div>
@@ -53,14 +54,13 @@
                 </tr>
             @endforeach
         </table>
-        
+
     </div>
     <div class="container">
         <table class="table table-bordered">
             <!-- Código de la tabla omitido para mayor claridad -->
-    
+
         </table>
 
     </div>
-    
 @endsection
