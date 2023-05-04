@@ -53,9 +53,14 @@
                 </tr>
             @endforeach
         </table>
+        
     </div>
     <div class="container">
-        {!! $rooms->links() !!}
+        <table class="table table-bordered">
+            <!-- Código de la tabla omitido para mayor claridad -->
+    
+        </table>
 
     </div>
+    
 @endsection

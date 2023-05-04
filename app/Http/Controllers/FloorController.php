@@ -17,7 +17,7 @@ class FloorController extends Controller
      */
     public function index()
     {
-        $floors = Floor::latest()->paginate(5);
+        $floors = Floor::latest()->paginate();
 
         return view('floors.index', compact('floors'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
