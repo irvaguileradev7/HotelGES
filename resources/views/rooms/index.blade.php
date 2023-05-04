@@ -33,11 +33,14 @@
 
             @foreach ($rooms as $room)
                 <tr>
-                    <td>{{ ++$i }}</td>
+                    <td>{{ $room->id }}</td>
                     <td>{{ $room->name }}</td>
                     <td>{{ $room->detail }}</td>
 
                     <td>
+                        <div class="container">
+                            
+                        </div>
                         <form action="{{ route('rooms.destroy', $room->id) }}" method="POST">
                             <a class="btn btn-info" href="{{ route('rooms.show', $room->id) }}">Ver</a>
                             <a class="btn btn-primary" href="{{ route('rooms.edit', $room->id) }}">Editar</a>
@@ -46,8 +49,12 @@
                             @csrf
                             @method('DELETE')
 
-
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                        <form id="delete-form-{{ $room->id }}" action="/rooms/{{ $room->id }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger"
+                                onclick="confirmDelete(event, {{ $room->id }})">Eliminar</button>
                         </form>
                     </td>
 
@@ -56,11 +63,14 @@
         </table>
 
     </div>
-    <div class="container">
-        <table class="table table-bordered">
-            <!-- Código de la tabla omitido para mayor claridad -->
 
-        </table>
 
-    </div>
+    <script>
+        function confirmDelete(event, roomId) {
+            event.preventDefault();
+            if (confirm('¿Está seguro que desea eliminar esta habitación?')) {
+                document.getElementById('delete-form-' + roomId).submit();
+            }
+        }
+    </script>
 @endsection

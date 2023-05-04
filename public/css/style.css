@@ -104,5 +104,9 @@
     --bs-btn-hover-color: #fff;
     --bs-btn-hover-bg: #8a4670;
     --bs-btn-hover-border-color: #8a4670;
-;
+  }
+
+  .my-container input {
+    border-radius: .4rem;
+    padding: 2px 20px;
   }
