@@ -37,24 +37,38 @@
                     <td>{{ $room->name }}</td>
                     <td>{{ $room->detail }}</td>
 
-                    <td>
-                        <div class="container">
-                            
-                        </div>
-                        <form action="{{ route('rooms.destroy', $room->id) }}" method="POST">
+                    <td >
+                        {{--
+                        <div class="float-left">
                             <a class="btn btn-info" href="{{ route('rooms.show', $room->id) }}">Ver</a>
                             <a class="btn btn-primary" href="{{ route('rooms.edit', $room->id) }}">Editar</a>
-
-
+                        </div>
+                        <div class="float-end">
+                        <form id="delete-form-{{ $room->id }}" action="{{ route('rooms.destroy', $room->id) }}"
+                            method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
-
-                        </form>
-                        <form id="delete-form-{{ $room->id }}" action="/rooms/{{ $room->id }}" method="POST">
-                            @method('DELETE')
-                            @csrf
                             <button type="submit" class="btn btn-danger"
                                 onclick="confirmDelete(event, {{ $room->id }})">Eliminar</button>
+                        </form>
+                        </div>
+                        --}}
+                        <form id="delete-form-{{ $room->id }}" action="{{ route('rooms.destroy', $room->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <table>
+                                <tr>
+                                    <td>
+                                        <a class="btn btn-info" href="{{ route('rooms.show', $room->id) }}">Ver</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{{ route('rooms.edit', $room->id) }}">Editar</a>
+                                    </td>
+                                    <td>
+                                        <button type="submit" class="btn btn-danger" onclick="confirmDelete(event, {{ $room->id }})">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </table>
                         </form>
                     </td>
 

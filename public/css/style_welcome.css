@@ -8,15 +8,18 @@ body{
     background:url(/img/fondo2.jpg);
     background-size: cover;
 }
-.container{
+
+h1{
+    font-family: 'New York';
+    font-size: 5vw;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.content{
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.card-header{
-    background-color: #302247;
-    color: #fff;
 }
 

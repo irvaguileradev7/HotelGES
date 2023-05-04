@@ -43,14 +43,22 @@
 
 
                     <td>
-                        <form action="{{ route('types.destroy', $type->id) }}" method="POST">
-                            <a class="btn btn-info" href="{{ route('types.show', $type->id) }}">Ver</a>
-                            <a class="btn btn-primary" href="{{ route('types.edit', $type->id) }}">Editar</a>
-
+                        <form id="delete-form-{{ $type->id }}" action="{{ route('types.destroy', $type->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <a class="btn btn-info" href="{{ route('types.show', $type->id) }}">Ver</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{{ route('types.edit', $type->id) }}">Editar</a>
+                                    </td>
+                                    <td>
+                                        <button type="submit" class="btn btn-danger" onclick="confirmDelete(event, {{ $type->id }})">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </table>
                         </form>
                     </td>
 
@@ -58,8 +66,13 @@
             @endforeach
         </table>
     </div>
-    <div class="container">
-        {!! $types->links() !!}
 
-    </div>
+    <script>
+        function confirmDelete(event, typeId) {
+            event.preventDefault();
+            if (confirm('¿Está seguro que desea eliminar esta habitación?')) {
+                document.getElementById('delete-form-' + typeId).submit();
+            }
+        }
+    </script>
 @endsection

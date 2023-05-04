@@ -1,10 +1,12 @@
-@extends('layout')
+@extends('layout3')
   
 @section('content')
 <div class="container">
-  <h1>Sistema gestor de hotel - Pagina principal</h1>
+  <div class="content">
+  <h1>HotelGes</h1>
 
-<h2>Está pendiente el dashboard</h2>  
+  </div>
+
 </div>
 
 @endsection
