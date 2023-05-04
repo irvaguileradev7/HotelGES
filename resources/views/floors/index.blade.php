@@ -31,7 +31,7 @@
             </tr>
 
             @foreach ($floors as $floor)
-                <tr>
+            <tr class="white-cell">
                     <td>{{ $floor->id }}</td>
                     <td>{{ $floor->number_floor }}</td>
 

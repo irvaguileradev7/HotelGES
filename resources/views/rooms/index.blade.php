@@ -32,7 +32,7 @@
             </tr>
 
             @foreach ($rooms as $room)
-                <tr>
+                <tr class="white-cell">
                     <td>{{ $room->id }}</td>
                     <td>{{ $room->name }}</td>
                     <td>{{ $room->detail }}</td>
@@ -57,7 +57,7 @@
                             @csrf
                             @method('DELETE')
                             <table>
-                                <tr>
+                                <tr >
                                     <td>
                                         <a class="btn btn-info" href="{{ route('rooms.show', $room->id) }}">Ver</a>
                                     </td>

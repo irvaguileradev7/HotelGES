@@ -36,14 +36,15 @@
             </tr>
 
             @foreach ($types as $type)
-                <tr>
+                <tr class="white-cell">
                     {{-- <td>{{ ++$i }}</td> --}}
                     <td>{{ $type->id }}</td>
                     <td>{{ $type->room_type }}</td>
 
 
                     <td>
-                        <form id="delete-form-{{ $type->id }}" action="{{ route('types.destroy', $type->id) }}" method="POST">
+                        <form id="delete-form-{{ $type->id }}" action="{{ route('types.destroy', $type->id) }}"
+                            method="POST">
                             @csrf
                             @method('DELETE')
                             <table>
@@ -55,7 +56,8 @@
                                         <a class="btn btn-primary" href="{{ route('types.edit', $type->id) }}">Editar</a>
                                     </td>
                                     <td>
-                                        <button type="submit" class="btn btn-danger" onclick="confirmDelete(event, {{ $type->id }})">Eliminar</button>
+                                        <button type="submit" class="btn btn-danger"
+                                            onclick="confirmDelete(event, {{ $type->id }})">Eliminar</button>
                                     </td>
                                 </tr>
                             </table>

@@ -15,9 +15,12 @@
   }
   body {
     min-height: 100vh;
-    background-color: #fff;
+    background-color: #e2dee7;
   }
   
+  h1{
+  color:#302247
+  }
   .side-navbar {
     width: 180px;
     height: 100%;
@@ -52,7 +55,7 @@
   .active-cont {
     margin-left: 180px;
   }
-  
+   
   #menu-btn {
     background-color: #7859aa;
     color: #fff;
@@ -79,6 +82,13 @@
     background-color: #7859aa;
     color: #fff;
   }
+
+  .white-cell {
+    background-color: #fff;
+    color: rgb(0, 0, 0);
+}
+
+
 
   .btn-success {
     --bs-btn-color: #fff;

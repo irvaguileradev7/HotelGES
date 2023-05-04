@@ -33,15 +33,16 @@
             </tr>
 
             @foreach ($guests as $guest)
-                <tr>
-                    <td>{{ $guest->id}}</td>
+                <tr class="white-cell">
+                    <td>{{ $guest->id }}</td>
                     <td>{{ $guest->name }}</td>
                     <td>{{ $guest->last_name }}</td>
                     <td>{{ $guest->phone }}</td>
 
 
                     <td>
-                        <form id="delete-form-{{ $guest->id }}" action="{{ route('guests.destroy', $guest->id) }}" method="POST">
+                        <form id="delete-form-{{ $guest->id }}" action="{{ route('guests.destroy', $guest->id) }}"
+                            method="POST">
                             @csrf
                             @method('DELETE')
                             <table>
@@ -53,7 +54,8 @@
                                         <a class="btn btn-primary" href="{{ route('guests.edit', $guest->id) }}">Editar</a>
                                     </td>
                                     <td>
-                                        <button type="submit" class="btn btn-danger" onclick="confirmDelete(event, {{ $guest->id }})">Eliminar</button>
+                                        <button type="submit" class="btn btn-danger"
+                                            onclick="confirmDelete(event, {{ $guest->id }})">Eliminar</button>
                                     </td>
                                 </tr>
                             </table>
@@ -64,7 +66,7 @@
             @endforeach
         </table>
     </div>
-    
+
     <script>
         function confirmDelete(event, guestId) {
             event.preventDefault();
