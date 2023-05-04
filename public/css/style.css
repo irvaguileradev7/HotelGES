@@ -10,7 +10,9 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
+  p{
+    margin-bottom: -.2rem
+  }
   body {
     min-height: 100vh;
     background-color: #fff;
@@ -54,7 +56,7 @@
   #menu-btn {
     background-color: #7859aa;
     color: #fff;
-    padding: 1.5vw;
+    padding: 1.5rem;
     margin-left: -62px;
   }
   
