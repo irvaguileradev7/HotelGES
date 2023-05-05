@@ -27,6 +27,19 @@
                     {{ $room->detail }}
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Tipo:</strong>
+                    {{ $room->type->room_type}}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Piso:</strong>
+                    {{ $room->floor->number_floor}}
+                </div>
+            </div>
         </div>
     </div>
 @endsection

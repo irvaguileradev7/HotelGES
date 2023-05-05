@@ -10,7 +10,14 @@ class Room extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'detail','floor_id','type_id'
+        'name', 'detail', 'floor_id', 'type_id'
     ];
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+    public function floor()
+    {
+        return $this->belongsTo(Floor::class);
+    }
 }
-

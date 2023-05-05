@@ -17,7 +17,13 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Tipo de habitacion:</strong>
-                    {{ $type->room_type }}
+                    {{ $user->name }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Correo electronico:</strong>
+                    {{ $user->email }}
                 </div>
             </div>
 
