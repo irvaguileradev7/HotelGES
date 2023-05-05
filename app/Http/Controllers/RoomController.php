@@ -29,7 +29,9 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('rooms.create');
+        $types = Type::all();
+        $floors = Floor::all();
+        return view('rooms.create',compact('types','floors'));
     }
 
     /**
@@ -61,6 +63,8 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
+        $types = Type::all();
+        $floors = Floor::all();
         return view('rooms.show',compact('room'));
     }
 
@@ -72,7 +76,9 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        return view('rooms.edit',compact('room'));
+        $types = Type::all();
+        $floors = Floor::all();
+        return view('rooms.edit',compact('room','types','floors'));
     }
 
     /**

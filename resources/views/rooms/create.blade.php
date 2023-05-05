@@ -45,19 +45,26 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6">
-                    <div class="form-group">
-                        <strong>Piso:</strong>
-                        <input type="text" name="floor_id" placeholder="Piso">
-                    </div>
+                        <strong>Tipo:</strong>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <select id="type_id" name="type_id" class="form-control select2">
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}">{{ $type->room_type }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6">
-                    <div class="form-group">
-                        <strong>Tipo:</strong>
-                        <input type="text" name="type_id" placeholder="Tipo">
-                    </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <select id="floor_id" name="floor_id" class="form-control select2">
+                        @foreach ($floors as $floor)
+                            <option value="{{ $floor->id }}">{{ $floor->number_floor }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
+
+
 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     <button type="submit" class="btn btn-primary">Guardar</button>
