@@ -20,9 +20,17 @@
                 <span class="fs-5 d-none d-sm-inline">HotelGes</span>
             </a>
             <li>
+                <a href="{{ route('guests.index') }}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Huespedes</span>
+                </a>
+
+            </li>
+            <li>
                 <hr>
                 <p>Administracion </p>
             </li>
+
+
             <li>
                 <hr>
                 <a href="{{ route('rooms.index') }}" class="nav-link px-0 align-middle">
@@ -42,12 +50,8 @@
 
             </li>
 
-            <li>
-                <a href="{{ route('guests.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Huespedes</span>
-                </a>
 
-            </li>
+
             <li>
                 <a href="{{ route('users.index') }}" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span>
@@ -56,6 +60,7 @@
             </li>
 
     </div>
+
 
     <div class="p-1 my-container active-cont">
 
@@ -79,7 +84,6 @@
         </nav>
         @yield('content')
     </div>
-
 
     <script>
         var menu_btn = document.querySelector("#menu-btn");

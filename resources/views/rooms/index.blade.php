@@ -26,16 +26,14 @@
         <div class="container">
             <table class="table table-bordered">
                 <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
+                    <th>No. habitacion</th>
                     <th>Detalles</th>
                     <th width="280px">Acciones</th>
                 </tr>
 
                 @foreach ($rooms as $room)
                     <tr class="white-cell">
-                        <td>{{ $room->id }}</td>
-                        <td>{{ $room->name }}</td>
+                        <td>{{ $room->number }}</td>
                         <td>{{ $room->detail }}</td>
 
                         <td>

@@ -16,8 +16,8 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Nombre:</strong>
-                    {{ $room->name }}
+                    <strong>Numero de habitacion:</strong>
+                    {{ $room->number }}
                 </div>
             </div>
 
@@ -38,6 +38,18 @@
                 <div class="form-group">
                     <strong>Piso:</strong>
                     {{ $room->floor->number_floor}}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Capacidad:</strong>
+                    {{ $room->capacity}}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Precio:</strong>
+                    {{ $room->price}}
                 </div>
             </div>
         </div>

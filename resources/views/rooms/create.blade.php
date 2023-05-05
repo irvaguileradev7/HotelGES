@@ -33,8 +33,8 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Nombre de la habitacion:</strong>
-                        <input type="text" name="name" class="form-control" placeholder="Nombre">
+                        <strong>Numero de habitacion:</strong>
+                        <input type="number" name="number" class="form-control" placeholder="Numero...">
                     </div>
                 </div>
 
@@ -45,7 +45,7 @@
                     </div>
                 </div>
 
-                        <strong>Tipo:</strong>
+                <strong>Tipo:</strong>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <select id="type_id" name="type_id" class="form-control select2">
                         @foreach ($types as $type)
@@ -55,6 +55,7 @@
                     </select>
                 </div>
 
+                <strong>Piso:</strong>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <select id="floor_id" name="floor_id" class="form-control select2">
                         @foreach ($floors as $floor)
@@ -64,6 +65,19 @@
                     </select>
                 </div>
 
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Capacidad:</strong>
+                        <input type="number" name="capacity" class="form-control" placeholder="Numero...">
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Precio:</strong>
+                        <input type="number" name="price" class="form-control" placeholder="Numero...">
+                    </div>
+                </div>
 
 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">

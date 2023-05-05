@@ -16,8 +16,10 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('number');
             $table->text('detail');
+            $table->decimal('price');
+            $table->integer('capacity');
             $table->unsignedBigInteger('floor_id');
             $table->unsignedBigInteger('type_id');
             $table->timestamps();

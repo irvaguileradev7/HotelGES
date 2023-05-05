@@ -43,8 +43,10 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'number' => 'required',
             'detail' => 'required',
+            'price' => 'required',
+            'capacity' => 'required',
             'floor_id' => 'required',
             'type_id' => 'required'
         ]);
@@ -91,8 +93,10 @@ class RoomController extends Controller
     public function update(Request $request, Room $room, Floor $floor, Type $type)
     {
         $request->validate([
-            'name' => 'required',
+            'number' => 'required',
             'detail' => 'required',
+            'price' => 'required',
+            'capacity' => 'required',
             'floor_id' => 'required',
             'type_id' => 'required'
         ]);

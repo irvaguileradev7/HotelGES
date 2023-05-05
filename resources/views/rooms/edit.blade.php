@@ -33,9 +33,9 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Nombre de la habitacion:</strong>
-                        <input type="text" name="name" class="form-control" value="{{ $room->name }}"
-                            placeholder="Nombre">
+                        <strong>Numero de habitacion:</strong>
+                        <input type="number" name="number" value="{{ $room->number }}" class="form-control"
+                            placeholder="Numero...">
                     </div>
                 </div>
 
@@ -46,29 +46,39 @@
                     </div>
                 </div>
 
+                <strong>Tipo:</strong>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <select id="type_id" name="type_id" class="form-control select2">
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}" {{ $type->id == $room->type_id ? 'selected' : '' }}>
+                                {{ $type->room_type }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <strong>Piso:</strong>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <select id="floor_id" name="floor_id" class="form-control select2">
+                        @foreach ($floors as $floor)
+                            <option value="{{ $floor->id }}" {{ $floor->id == $room->floor_id ? 'selected' : '' }}>
+                                {{ $floor->number_floor }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Tipo:</strong>
-                        <select id="type_id" name="type_id" class="form-control select2">
-                            @foreach ($types as $type)
-                                <option value="{{ $type->id }}" {{ $room->type_id == $type->id ? 'selected' : '' }}>
-                                    {{ $type->room_type }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <strong>Capacidad:</strong>
+                        <input type="number" name="capacity" value="{{ $room->capacity }}" class="form-control"
+                            placeholder="Numero...">
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Piso:</strong>
-                        <select id="floor_id" name="floor_id" class="form-control select2">
-                            @foreach ($floors as $floor)
-                                <option value="{{ $floor->id }}" {{ $room->floor_id == $floor->id ? 'selected' : '' }}>
-                                    {{ $floor->number_floor }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <strong>Precio:</strong>
+                        <input type="number" name="price" value="{{ $room->price }}" class="form-control"
+                            placeholder="Numero...">
                     </div>
                 </div>
 
