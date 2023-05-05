@@ -8,7 +8,7 @@
                 <h2>Editar habitacion</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('types.index') }}">Regresar</a>
+                <a class="btn btn-primary" href="{{ route('users.index') }}">Regresar</a>
             </div>
         </div>
     </div>
@@ -26,15 +26,15 @@
     </div>
 @endif
 
-    <form action="{{ route('types.update', $type->id) }}" method="POST">
+    <form action="{{ route('types.update', $user->id) }}" method="POST">
         @csrf
         @method('PUT')
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Tipo de habitacion:</strong>
-                    <input type="text" name="room_type" value="{{ $type->name }}" class="form-control"
+                    <strong>Nombre:</strong>
+                    <input type="text" name="name" value="{{ $user->name }}" class="form-control"
                         placeholder="Name">
                 </div>
             </div>

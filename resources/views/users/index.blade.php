@@ -12,9 +12,9 @@
                 <div class="pull-right">
                     <div class="container">
                         <div class="pull-left">
-                            <h1>Tipos de habitacion</h1>
+                            <h1>Usuarios</h1>
                         </div>
-                        <a class="btn btn-success" href="{{ route('types.create') }}">Nuevo tipo</a>
+                        <a class="btn btn-success" href="{{ route('users.create') }}">Nuevo usuario</a>
                     </div>
 
                 </div>
@@ -31,35 +31,38 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Id</th>
-                    <th>Tipos</th>
+                    <th>Nombre</th>
+                    <th>Correo electronico</th>
 
                     <th width="280px">Acciones</th>
                 </tr>
 
-                @foreach ($types as $type)
+                @foreach ($users as $user)
                     <tr class="white-cell">
                         {{-- <td>{{ ++$i }}</td> --}}
-                        <td>{{ $type->id }}</td>
-                        <td>{{ $type->room_type }}</td>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+
 
 
                         <td>
-                            <form id="delete-form-{{ $type->id }}" action="{{ route('types.destroy', $type->id) }}"
+                            <form id="delete-form-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}"
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <table>
                                     <tr>
                                         <td class="non-cell">
-                                            <a class="btn btn-info" href="{{ route('types.show', $type->id) }}">Ver</a>
+                                            <a class="btn btn-info" href="{{ route('users.show', $user->id) }}">Ver</a>
                                         </td>
                                         <td class="non-cell">
                                             <a class="btn btn-primary"
-                                                href="{{ route('types.edit', $type->id) }}">Editar</a>
+                                                href="{{ route('users.edit', $user->id) }}">Editar</a>
                                         </td>
                                         <td class="non-cell">
                                             <button type="submit" class="btn btn-danger"
-                                                onclick="confirmDelete(event, {{ $type->id }})">Eliminar</button>
+                                                onclick="confirmDelete(event, {{ $user->id }})">Eliminar</button>
                                         </td>
                                     </tr>
                                 </table>

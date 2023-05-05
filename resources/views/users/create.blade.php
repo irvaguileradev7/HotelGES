@@ -5,10 +5,10 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Anadir habitacion</h2>
+                    <h2>Crear un usuario</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('rooms.index') }}"> Regresar</a>
+                    <a class="btn btn-primary" href="{{ route('users.index') }}"> Regresar</a>
                 </div>
             </div>
         </div>
@@ -27,35 +27,28 @@
             </div>
         @endif
 
-        <form action="{{ route('rooms.store') }}" method="POST">
+        <form action="{{ route('users.store') }}" method="POST">
             @csrf
 
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Nombre de la habitacion:</strong>
-                        <input type="text" name="name" class="form-control" placeholder="Nombre">
+                        <strong>Nombre:</strong>
+                        <input type="text" name="name" class="form-control" placeholder="Name">
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Detalles:</strong>
-                        <textarea class="form-control" style="height:150px" name="detail" placeholder="Detalles"></textarea>
+                        <strong>Correo:</strong>
+                        <input type="email" name="email" class="form-control" placeholder="Name">
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Piso:</strong>
-                        <input type="text" name="floor_id" placeholder="Piso">
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-6">
-                    <div class="form-group">
-                        <strong>Tipo:</strong>
-                        <input type="text" name="type_id" placeholder="Tipo">
+                        <strong>Contrasena:</strong>
+                        <input type="text" name="password" class="form-control" placeholder="Name">
                     </div>
                 </div>
 

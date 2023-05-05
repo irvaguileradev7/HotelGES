@@ -1,7 +1,8 @@
 @extends('layout')
 
 @section('content')
-    <div class="row">
+<div class="container">
+        <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>Editar habitacion</h2>
@@ -51,4 +52,6 @@
         </div>
 
     </form>
+</div>
+
 @endsection
