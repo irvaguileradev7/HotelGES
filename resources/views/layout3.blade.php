@@ -44,16 +44,21 @@
 
             <li>
                 <a href="{{ route('guests.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Agregar huesped</span>
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Huespedes</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="{{ route('users.index') }}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span>
                 </a>
 
             </li>
 
     </div>
 
-    <!-- Main Wrapper -->
     <div class="p-1 my-container active-cont">
-        <!-- Top Nav -->
+
         <nav class="navbar top-navbar navbar-light bg-light px-5">
             <a class="btn border-0" id="menu-btn"><i class="bi bi-list"></i></a>
             <div class="container">
@@ -62,7 +67,7 @@
                 </div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="btn btn-primary"
+                    <button type="submit" class="btn btn-primary "
                         onclick="event.preventDefault(); this.closest('form').submit();">
                         Cerrar sesión
                     </button>
@@ -72,12 +77,10 @@
 
 
         </nav>
-        <!--End Top Nav -->
         @yield('content')
     </div>
 
 
-    <!-- custom js -->
     <script>
         var menu_btn = document.querySelector("#menu-btn");
         var sidebar = document.querySelector("#sidebar");
