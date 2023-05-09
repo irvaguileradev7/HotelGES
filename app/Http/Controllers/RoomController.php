@@ -121,4 +121,11 @@ class RoomController extends Controller
         return redirect()->route('rooms.index')
             ->with('success', 'Habitacion eliminada con exito');
     }
+
+    public function showRoom(Room $room)
+    {
+        $types = Type::all();
+        $floors = Floor::all();
+        return view('rooms.showRoom',compact('room'));
+    }
 }

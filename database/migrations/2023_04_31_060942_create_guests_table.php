@@ -20,8 +20,13 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->integer('phone')->nullable();
             $table->integer('adults');
-            $table->integer('kids')->nullable();;
+            $table->integer('kids')->nullable();
+            $table->unsignedBigInteger('room_id');
             $table->timestamps();
+
+            
+            $table->foreign('room_id')->references('id')->on('rooms');
+
         });
     }
 
@@ -34,4 +39,13 @@ return new class extends Migration
     {
         Schema::dropIfExists('guests');
     }
+
+    public function after()
+    {
+        Schema::table('guests', function (Blueprint $table) {
+            $table->foreign('room_id')->references('id')->on('rooms');
+        });
+
+    }
+    
 };

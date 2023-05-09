@@ -5,8 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -40,14 +39,14 @@ return new class extends Migration
     }
 
     public function after()
-{
-    Schema::table('rooms', function (Blueprint $table) {
-        $table->foreign('floor_id')->references('id')->on('floors');
-    });
+    {
+        Schema::table('rooms', function (Blueprint $table) {
+            $table->foreign('floor_id')->references('id')->on('floors');
+        });
 
-    Schema::table('rooms', function (Blueprint $table) {
-        $table->foreign('type_id')->references('id')->on('types');
-    });
-}
+        Schema::table('rooms', function (Blueprint $table) {
+            $table->foreign('type_id')->references('id')->on('types');
+        });
+    }
 
 };

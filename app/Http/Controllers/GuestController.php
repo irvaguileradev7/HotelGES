@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guest;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -26,7 +27,8 @@ class GuestController extends Controller
      */
     public function create()
     {
-        return view('guests.create');
+        $rooms = Room::all();
+        return view('guests.create',compact('rooms'));
     }
 
     /**
@@ -43,7 +45,8 @@ class GuestController extends Controller
             'email' => 'nullable|email',
             'phone' => 'nullable',
             'adults' => 'required',
-            'kids' =>  'nullable'
+            'kids' =>  'nullable',
+            'room_id' => 'required'
         ]);
 
         Guest::create($request->all());
