@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,5 @@ Route::middleware([
     Route::resource('floors', FloorController::class);
     Route::resource('guests', GuestController::class);
     Route::resource('users', UserController::class);
+    Route::resource('services', ServiceController::class);
 });

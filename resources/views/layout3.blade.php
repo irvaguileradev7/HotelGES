@@ -49,7 +49,13 @@
                         piso</span> </a>
 
             </li>
+            
+            <li>
+                <hr>
+                <a href="{{ route('services.index') }}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Servicios</span> </a>
 
+            </li>
 
 
             <li>
