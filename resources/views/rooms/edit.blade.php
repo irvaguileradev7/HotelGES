@@ -56,6 +56,28 @@
                     </select>
                 </div>
 
+                <strong>Estatus:</strong>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <select name="status_id" id="status_id" class="form-control select2">
+                        @foreach ($statuses as $status)
+                            @switch($status->id)
+                                @case(1)
+                                    <option value="1">Disponible</option>
+                                @break
+                                @case(2)
+                                    <option value="2">Ocupado</option>
+                                @break
+                                @case(3)
+                                    <option value="3">Reservado</option>
+                                @break
+                                @case(4)
+                                    <option value="4">No Disponible</option>
+                                @break
+                            @endswitch
+                        @endforeach
+                    </select>
+                </div>
+
                 <strong>Piso:</strong>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <select id="floor_id" name="floor_id" class="form-control select2">

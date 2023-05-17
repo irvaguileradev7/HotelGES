@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Room;
 use App\Models\Floor;
 use App\Models\Type;
+use App\Models\Status;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -31,7 +32,8 @@ class RoomController extends Controller
     {
         $types = Type::all();
         $floors = Floor::all();
-        return view('rooms.create',compact('types','floors'));
+        $statuses = Status::all();
+        return view('rooms.create',compact('types','floors','statuses'));
     }
 
     /**
@@ -48,7 +50,8 @@ class RoomController extends Controller
             'price' => 'required',
             'capacity' => 'required',
             'floor_id' => 'required',
-            'type_id' => 'required'
+            'type_id' => 'required',
+            'status_id' => 'required'
         ]);
 
         Room::create($request->all());
@@ -63,11 +66,12 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function show(Room $room)
+    public function show(Room $room, Status $status)
     {
         $types = Type::all();
         $floors = Floor::all();
-        return view('rooms.show',compact('room'));
+        $statuses = Status::all();
+        return view('rooms.show',compact('room','statuses'));
     }
 
     /**
@@ -80,7 +84,8 @@ class RoomController extends Controller
     {
         $types = Type::all();
         $floors = Floor::all();
-        return view('rooms.edit',compact('room','types','floors'));
+        $statuses = Status::all();
+        return view('rooms.edit',compact('room','types','floors','statuses'));
     }
 
     /**
@@ -90,7 +95,7 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room, Floor $floor, Type $type)
+    public function update(Request $request, Room $room, Floor $floor, Type $type, Status $status)
     {
         $request->validate([
             'number' => 'required',
@@ -98,7 +103,8 @@ class RoomController extends Controller
             'price' => 'required',
             'capacity' => 'required',
             'floor_id' => 'required',
-            'type_id' => 'required'
+            'type_id' => 'required',
+            'status_id' => 'required'
         ]);
 
         $room->update($request->all());
