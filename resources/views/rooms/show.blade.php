@@ -42,26 +42,23 @@
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Estatus:</strong>
+                    <strong>Status:</strong>
+                    {{-- {{ $room->status_id }} --}}
                     @switch( $room->status_id )
-                        @case(1)
-                            Disponible
-                        @break
-
-                        @case(2)
-                            Reservado
-                        @break
-
-                        @case(3)
-                            Ocupado
-                        @break
-
-                        @case(4)
-                            No Disponible
-                        @break
+                            @case(1)
+                                Disponible
+                            @break
+                            @case(2)
+                                Ocupado
+                            @break
+                            @case(3)
+                                Reservado
+                            @break
+                            @case(4)
+                                No disponible
+                            @break
                     @endswitch
-                </div>
+
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">

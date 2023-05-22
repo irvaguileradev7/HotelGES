@@ -31,8 +31,9 @@ class RoomController extends Controller
     {
         $types = Type::all();
         $floors = Floor::all();
-        $statuses = Status::All();
-        return view('rooms.create',compact('types','floors', 'statuses'));
+        $statuses = Status::all();
+        return view('rooms.create',compact('types','floors','statuses'));
+
     }
 
     /**
@@ -70,7 +71,8 @@ class RoomController extends Controller
         $types = Type::all();
         $floors = Floor::all();
         $statuses = Status::all();
-        return view('rooms.show',compact('room', 'statuses'));
+        return view('rooms.show',compact('room','statuses'));
+
     }
 
     /**
@@ -84,7 +86,8 @@ class RoomController extends Controller
         $types = Type::all();
         $floors = Floor::all();
         $statuses = Status::all();
-        return view('rooms.edit',compact('room','types','floors', 'statuses'));
+        return view('rooms.edit',compact('room','types','floors','statuses'));
+
     }
 
     /**

@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: #444444;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.section-products {
+    padding: 80px 0 54px;
+}
+
+.section-products .header {
+    margin-bottom: 50px;
+}
+
+.section-products .header h3 {
+    font-size: 1rem;
+    color: #302247;
+    font-weight: 500;
+}
+
+.section-products .header h2 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #444444; 
+}
+
+.section-products .single-product {
+    margin-bottom: 26px;
+}
+
+.section-products .single-product .part-1 {
+    position: relative;
+    height: 290px;
+    max-height: 290px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.section-products .single-product .part-1::before {
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		transition: all 0.3s;
+}
+
+.section-products .single-product:hover .part-1::before {
+		transform: scale(1.2,1.2) rotate(5deg);
+}
+
+.section-products #product-1 .part-1::before {
+    background: url("https://s7d2.scene7.com/is/image/ritzcarlton/50566868-Avenue%20View%20Room?$LargeViewport100pct$") no-repeat center;
+    background-size: cover;
+		transition: all 0.3s;
+}
+
+.section-products #product-2 .part-1::before {
+    background: url("https://www.olympicpalacehotel.com/_storageWeb_/n/17786419220516/ig/5009023112424/b/692033667068/isk/innerWide/Double-room-sea-view.jpeg") no-repeat center;
+    background-size: cover;
+}
+
+.section-products #product-3 .part-1::before {
+    background: url("https://hoteloceanis.eu/wp-content/uploads/2020/03/superior-double-room-sea-view-1200x800.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.section-products #product-4 .part-1::before {
+    background: url("https://cf.bstatic.com/xdata/images/hotel/max1024x768/325887796.jpg?k=cdc06a3fd770f955b85b1b6a99def7e54487c1bbe86e2d3711d532e8ea275a59&o=&hp=1") no-repeat center;
+    background-size: cover;
+}
+
+.section-products #product-5 .part-1::before {
+    background: url("https://cf.bstatic.com/images/hotel/max1024x768/220/220627975.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.section-products #product-6 .part-1::before {
+    background: url("https://media.istockphoto.com/id/492189224/photo/seaview-bedroom.jpg?s=612x612&w=0&k=20&c=tSL5OoSdxW3l7WzdBGU2_NnGNjDH88twjNZTTkll2jY=") no-repeat center;
+    background-size: cover;
+}
+
+.section-products #product-7 .part-1::before {
+    background: url("https://2486634c787a971a3554-d983ce57e4c84901daded0f67d5a004f.ssl.cf1.rackcdn.com/pueblo-bonito-resorts/media/cache/pb-maz-junior-suite-ocean-view-61fadcb36c6ba-620x450.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.section-products #product-8 .part-1::before {
+    background: url("https://images.squarespace-cdn.com/content/v1/52da9677e4b03d314575985a/1571680496089-DF7MXQWME8R91DQWAK81/%40worldtravellingfoodie+-+Rhapsody+Resort.jpg") no-repeat center;
+    background-size: cover;
+}
+
+
+.section-products .single-product .part-1 .discount,
+.section-products .single-product .part-1 .new {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    color: #ffffff;
+    background-color: #302247;
+    padding: 2px 8px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.section-products .single-product .part-1 .new {
+    left: 0;
+    background-color: #444444;
+}
+
+.section-products .single-product .part-1 ul {
+    position: absolute;
+    bottom: -41px;
+    left: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    opacity: 0;
+    transition: bottom 0.5s, opacity 0.5s;
+}
+
+.section-products .single-product:hover .part-1 ul {
+    bottom: 30px;
+    opacity: 1;
+}
+
+
+
+.section-products .single-product .part-1 ul li a:hover {
+    color: #302247;
+}
+
+.section-products .single-product .part-2 .product-title {
+    font-size: 1rem;
+}
+
+.section-products .single-product .part-2 h4 {
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.section-products .single-product .part-2 .product-old-price {
+    position: relative;
+    padding: 0 7px;
+    margin-right: 2px;
+    opacity: 0.6;
+}
+
+.section-products .single-product .part-2 .product-old-price::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #444444;
+    transform: translateY(-50%);
+}

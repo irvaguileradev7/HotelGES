@@ -32,6 +32,10 @@ Route::middleware([
         return view('welcome');
     });
 
+    Route::get('/reservation/catalogue', function () {
+        return view('reservation/catalogue');
+    });
+
     Route::resource('rooms', RoomController::class);
     Route::resource('types', TypeController::class);
     Route::resource('floors', FloorController::class);

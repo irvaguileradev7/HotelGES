@@ -39,17 +39,17 @@
             </li>
             <li>
                 <a href="{{ route('types.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Crear
-                        tipo</span> </a>
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">T.
+                        Habitaciones</span></span> </a>
 
             </li>
             <li>
                 <a href="{{ route('floors.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Crear
-                        piso</span> </a>
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Pisos</span> </a>
 
             </li>
-            
+
+
             <li>
                 <hr>
                 <a href="{{ route('services.index') }}" class="nav-link px-0 align-middle">
