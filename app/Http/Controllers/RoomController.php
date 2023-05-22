@@ -18,8 +18,7 @@ class RoomController extends Controller
     public function index()
     {
         $rooms = Room::latest()->paginate();
-
-        return view('rooms.index', compact('rooms'))
+        return view('rooms.index', compact('rooms',))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -34,6 +33,7 @@ class RoomController extends Controller
         $floors = Floor::all();
         $statuses = Status::all();
         return view('rooms.create',compact('types','floors','statuses'));
+
     }
 
     /**
@@ -72,6 +72,7 @@ class RoomController extends Controller
         $floors = Floor::all();
         $statuses = Status::all();
         return view('rooms.show',compact('room','statuses'));
+
     }
 
     /**
@@ -86,6 +87,7 @@ class RoomController extends Controller
         $floors = Floor::all();
         $statuses = Status::all();
         return view('rooms.edit',compact('room','types','floors','statuses'));
+
     }
 
     /**

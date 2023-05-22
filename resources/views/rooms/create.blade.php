@@ -34,7 +34,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Numero de habitacion:</strong>
-                        <input type="number" name="number" class="form-control" placeholder="Numero...">
+                        <input type="number" name="number" class="form-control" min=1 placeholder="Numero...">
                     </div>
                 </div>
 
@@ -57,6 +57,7 @@
 
                 <strong>Estatus:</strong>
                 <div class="col-xs-12 col-sm-12 col-md-12">
+
                     <select name="status_id" id="status_id" class="form-control select2">
                         @foreach ($statuses as $status)
                             @switch($status->id)
@@ -90,7 +91,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Capacidad:</strong>
-                        <input type="number" name="capacity" class="form-control" placeholder="Numero...">
+                        <input type="number" name="capacity" class="form-control" min=1 max=12 placeholder="Numero...">
                     </div>
                 </div>
 

@@ -26,9 +26,8 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Nombre</th>
-                    <th>Apellido</th>
+                    <th>Apellidos</th>
                     <th>Telefono</th>
-
                     <th width="280px">Acciones</th>
                 </tr>
 
@@ -37,7 +36,6 @@
                         <td>{{ $guest->name }}</td>
                         <td>{{ $guest->last_name }}</td>
                         <td>{{ $guest->phone }}</td>
-
 
                         <td>
                             <form id="delete-form-{{ $guest->id }}" action="{{ route('guests.destroy', $guest->id) }}"
