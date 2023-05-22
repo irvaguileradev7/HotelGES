@@ -40,6 +40,30 @@
                     {{ $room->floor->number_floor}}
                 </div>
             </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Estatus:</strong>
+                    @switch( $room->status_id )
+                        @case(1)
+                            Disponible
+                        @break
+
+                        @case(2)
+                            Reservado
+                        @break
+
+                        @case(3)
+                            Ocupado
+                        @break
+
+                        @case(4)
+                            No Disponible
+                        @break
+                    @endswitch
+                </div>
+            </div>
+
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Capacidad:</strong>

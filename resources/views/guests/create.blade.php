@@ -63,7 +63,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <strong>Telefono:</strong>
-                                        <input type="number" name="phone" class="form-control" placeholder="Telefono...">
+                                        <input type="text" name="phone" max="12" class="form-control" placeholder="Telefono...">
                                     </div>
                                 </div>
                             </div>
@@ -84,14 +84,14 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <strong>Adultos:</strong>
-                                        <input type="number" name="adults" class="form-control" placeholder="Adultos..."
+                                        <input type="number" name="adults" class="form-control" min=1 placeholder="Adultos..."
                                             value="1">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <strong>Ninos:</strong>
-                                        <input type="number" name="kids" class="form-control" placeholder="Niños...">
+                                        <input type="number" name="kids" class="form-control" min=0 placeholder="Niños...">
                                     </div>
                                 </div>
                             </div>
