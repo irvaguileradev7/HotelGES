@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('last_name');
             $table->string('email')->nullable();
-            $table->integer('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->integer('adults');
             $table->integer('kids')->nullable();
             $table->unsignedBigInteger('room_id');

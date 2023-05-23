@@ -58,6 +58,7 @@
 
                 <strong>Estatus:</strong>
                 <div class="col-xs-12 col-sm-12 col-md-12">
+
                     <select name="status_id" id="status_id" class="form-control select2">
                         @foreach ($statuses as $status)
                             @switch($status->id)
@@ -70,6 +71,7 @@
                                 @case(3)
                                     <option value="3">Reservado</option>
                                 @break
+
                                 @case(4)
                                     <option value="4">No Disponible</option>
                                 @break

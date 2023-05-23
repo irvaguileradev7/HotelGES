@@ -25,6 +25,7 @@ return new class extends Migration {
 
             $table->foreign('floor_id')->references('id')->on('floors');
             $table->foreign('type_id')->references('id')->on('types');
+            
         });
     }
 
