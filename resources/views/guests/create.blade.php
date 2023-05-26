@@ -27,7 +27,7 @@
             </div>
         @endif
 
-        <form action="{{ route('guests.store') }}" method="POST">
+        <form action="{{ route('guests.store') }}" method="POST" autocomplete="off">
             @csrf
             <div class="container">
                 <div class="row">
@@ -129,6 +129,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -58,6 +58,7 @@ a:hover {
 		transform: scale(1.2,1.2) rotate(5deg);
 }
 
+
 .section-products #product-1 .part-1::before {
     background: url("https://s7d2.scene7.com/is/image/ritzcarlton/50566868-Avenue%20View%20Room?$LargeViewport100pct$") no-repeat center;
     background-size: cover;
