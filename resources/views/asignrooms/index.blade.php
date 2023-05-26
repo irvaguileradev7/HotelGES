@@ -28,7 +28,7 @@
 
 
 
-
+				{{--Poner el contenido pero que este dentro del nuevo  estandar dinamico--}}
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
