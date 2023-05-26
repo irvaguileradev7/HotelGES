@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Room;
 
 class AsignRoomController extends Controller
 {
@@ -15,7 +16,9 @@ class AsignRoomController extends Controller
     {
         $guestId = session('guest_id');
     
-        return view('asignrooms.index')->with('idGuest', $guestId);
+        $rooms = Room::latest()->paginate();
+
+        return view('asignrooms.index', compact('rooms'))->with('idGuest', $guestId);
     }
 
     /**
@@ -82,5 +85,14 @@ class AsignRoomController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function handleLeaveIndex()
+    {
+        session()->forget('guest_id');
+        
+        // You can perform any additional actions you need here
+
+        return redirect()->route('home'); // Replace 'home' with the desired route
     }
 }
