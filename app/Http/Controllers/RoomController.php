@@ -51,7 +51,7 @@ class RoomController extends Controller
             'capacity' => 'required',
             'floor_id' => 'required',
             'type_id' => 'required',
-            'status_id' => 'required'
+            'status_id' => 'required',
         ]);
 
         Room::create($request->all());
