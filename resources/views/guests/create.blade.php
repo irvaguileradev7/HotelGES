@@ -27,7 +27,6 @@
             </div>
         @endif
 
-        {{--
         <form action="{{ route('guests.store') }}" method="POST" autocomplete="off">
             @csrf
             <div class="container">
@@ -137,8 +136,7 @@
                 
             </div>
         </form>
-        --}}
-        <form action="{{ route('guests.store') }}" method="POST">
+        {{-- <form action="{{ route('guests.store') }}" method="POST">
             @csrf
             <div id="accordion">
                 <div class="card">
@@ -245,7 +243,7 @@
             </div>
 
         </form>
-        
+        --}}
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
