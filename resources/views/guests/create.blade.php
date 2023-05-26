@@ -85,7 +85,7 @@
                                                         <div class="form-group">
                                                             <strong>Ninos:</strong>
                                                             <input type="number" name="kids" class="form-control" min=0
-                                                                placeholder="Niños...">
+                                                                placeholder="Niños..." value="0">
                                                         </div>
                                                     </div>
                                                 </div>

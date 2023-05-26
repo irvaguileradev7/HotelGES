@@ -23,24 +23,15 @@
                         </div>
                     </div>
                 </div>
+				<strong>Variable del usuario(Ignorar, solo es para entender)</strong>
                 <h1>{{ $idGuest }}</h1>
 
+                {{-- Poner el contenido pero que este dentro del nuevo  estandar dinamico --}}
 
-
-
-				{{--Poner el contenido pero que este dentro del nuevo  estandar dinamico--}}
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
 
-                            <div class="container">
-                                <div class="pull-left">
-                                    <h1>Habitaciones</h1>
-                                </div>
-                                <div class="pull-right">
-                                    <a class="btn btn-success" href="{{ route('rooms.create') }}">Nueva habitación</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <br>
@@ -51,6 +42,29 @@
                     @endif
                     <br>
                     <div class="container">
+                        <div class="row">
+                            @foreach ($rooms as $room)
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div id="product-1" class="single-product">
+                                        <div class="part-1">
+                                            <ul>
+                                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="part-2">
+                                            <p>Piso:{{ $room->floor_id }}</p>
+                                            <p>Numero:{{ $room->number }}</p>
+                                            <p>Detalles:{{ $room->detail }}</p>
+                                            <p>Tipo:{{ $room->type_id }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        {{--
                         <table class="table table-bordered">
                             <tr>
                                 <th>Piso</th>
@@ -58,10 +72,29 @@
                                 <th>Detalles</th>
                                 <th>Tipo de habitación</th>
                                 <th>Estatus</th>
-                                <th width="280px">Acciones</th>
                             </tr>
 
                             @foreach ($rooms as $room)
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div id="product-1" class="single-product">
+                                        <div class="part-1">
+                                            <ul>
+                                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="part-2">
+											<p>Piso:{{ $room->floor_id }}</p>
+											<p>Numero:{{ $room->number }}</p>
+											<p>Detalles:{{ $room->detail }}</p>
+											<p>Tipo:{{ $room->type_id }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+								@endforeach
+								--}} {{--
                                 <tr class="white-cell">
                                     <td>{{ $room->floor_id }}</td>
                                     <td>{{ $room->number }}</td>
@@ -93,7 +126,7 @@
                                 <td>Suite de lujo</td>
                             @break
                         @endswitch
-                        --}}
+                        
                                     @switch($room->status_id)
                                         @case(1)
                                             <td class="table-success">
@@ -121,61 +154,33 @@
                                     @endswitch
 
 
-
+                                    {{--
                                     <td>
-                                        {{--
-                        <div class="float-left">
-                            <a class="btn btn-info" href="{{ route('rooms.show', $room->id) }}">Ver</a>
-                            <a class="btn btn-primary" href="{{ route('rooms.edit', $room->id) }}">Editar</a>
-                        </div>
-                        <div class="float-end">
-                        <form id="delete-form-{{ $room->id }}" action="{{ route('rooms.destroy', $room->id) }}"
-                            method="POST" style="display: inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger"
-                                onclick="confirmDelete(event, {{ $room->id }})">Eliminar</button>
-                        </form>
-                        </div>
-                        --}}
-                                        <form id="delete-form-{{ $room->id }}"
-                                            action="{{ route('rooms.destroy', $room->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <table>
-                                                <tr>
-                                                    <td class="non-cell">
-                                                        <a class="btn btn-info"
-                                                            href="{{ route('rooms.show', $room->id) }}">Ver</a>
-                                                    </td>
-                                                    <td class="non-cell">
-                                                        <a class="btn btn-primary"
-                                                            href="{{ route('rooms.edit', $room->id) }}">Editar</a>
-                                                    </td>
-                                                    <td class="non-cell">
-                                                        <button type="submit" class="btn btn-danger"
-                                                            onclick="confirmDelete(event, {{ $room->id }})">Eliminar</button>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </form>
+
+                                        <div class="float-left">
+                                            <a class="btn btn-info" href="{{ route('rooms.show', $room->id) }}">Ver</a>
+                                            <a class="btn btn-primary"
+                                                href="{{ route('rooms.edit', $room->id) }}">Editar</a>
+                                        </div>
+                                        <div class="float-end">
+                                            <form id="delete-form-{{ $room->id }}"
+                                                action="{{ route('rooms.destroy', $room->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"
+                                                    onclick="confirmDelete(event, {{ $room->id }})">Eliminar</button>
+                                            </form>
+                                        </div>
+
                                     </td>
+									
 
                                 </tr>
                             @endforeach
                         </table>
 
                     </div>
-
-
-                    <script>
-                        function confirmDelete(event, roomId) {
-                            event.preventDefault();
-                            if (confirm('¿Está seguro que desea eliminar esta habitación?')) {
-                                document.getElementById('delete-form-' + roomId).submit();
-                            }
-                        }
-                    </script>
                 </div>
 
 
@@ -327,6 +332,7 @@
                 </div>
             </div>
         </section>
+		--}}
     </body>
 
     </html>
