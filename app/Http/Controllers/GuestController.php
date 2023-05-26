@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guest;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class GuestController extends Controller
 {
@@ -48,13 +49,16 @@ class GuestController extends Controller
             'kids' =>  'nullable',
             'room_id' => 'required'
         ]);
-
-        Guest::create($request->all());
-
-        return redirect()->route('guests.index')
-            ->with('success', 'Habitacion creada con exito');
+    
+        $guest = Guest::create($request->all());
+    
+        Session::put('guest_id', $guest->id);
+    
+        return redirect()->route('asignrooms.index');
     }
-
+  /*return redirect()->route('guests.index')
+            ->with('success', 'Habitacion creada con exito');
+            */
     /**
      * Display the specified resource.
      *

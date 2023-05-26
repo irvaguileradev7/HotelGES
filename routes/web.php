@@ -7,6 +7,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\AsignRoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,7 @@ Route::middleware([
         return view('welcome');
     });
 
-    Route::get('/reservation/catalogue', function () {
-        return view('reservation/catalogue');
-    });
+
 
     Route::get('/reservation/payment', function () {
         return view('reservation/payment');
@@ -47,4 +46,5 @@ Route::middleware([
     Route::resource('guests', GuestController::class);
     Route::resource('users', UserController::class);
     Route::resource('services', ServiceController::class);
+    Route::resource('asignrooms', AsignRoomController::class);
 });

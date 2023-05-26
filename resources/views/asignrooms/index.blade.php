@@ -21,6 +21,7 @@
 								</div>
 						</div>
 				</div>
+				<h1>{{ $idGuest }}</h1>
 				<div class="row">
 						<!-- Single Product -->
 						<div class="col-md-6 col-lg-4 col-xl-3">

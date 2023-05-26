@@ -39,6 +39,8 @@
                         <td>{{ $room->floor_id}}</td>
                         <td>{{ $room->number }}</td>
                         <td>{{ $room->detail }}</td>
+                        <td>{{ $room->type_id}}</td>
+                        {{--
                         @switch( $room->type_id)
                             @case(1)
                                 <td>Habitación individual</td>
@@ -64,6 +66,7 @@
                                 <td>Suite de lujo</td>
                             @break
                         @endswitch
+                        --}}
                         @switch( $room->status_id)
                             @case(1)
                                 <td class="table-success">
