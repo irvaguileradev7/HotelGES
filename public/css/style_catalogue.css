@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
 
 body {
     font-family: "Poppins", sans-serif;
@@ -60,11 +60,14 @@ a:hover {
 
 
 .section-products #product-1 .part-1::before {
-    background: url("https://s7d2.scene7.com/is/image/ritzcarlton/50566868-Avenue%20View%20Room?$LargeViewport100pct$") no-repeat center;
+    /*background: url("https://s7d2.scene7.com/is/image/ritzcarlton/50566868-Avenue%20View%20Room?$LargeViewport100pct$") no-repeat center;
+    */
     background-size: cover;
+    background-color: #302247;
 		transition: all 0.3s;
 }
 
+/*
 .section-products #product-2 .part-1::before {
     background: url("https://www.olympicpalacehotel.com/_storageWeb_/n/17786419220516/ig/5009023112424/b/692033667068/isk/innerWide/Double-room-sea-view.jpeg") no-repeat center;
     background-size: cover;
@@ -100,7 +103,7 @@ a:hover {
     background-size: cover;
 }
 
-
+*/
 .section-products .single-product .part-1 .discount,
 .section-products .single-product .part-1 .new {
     position: absolute;
