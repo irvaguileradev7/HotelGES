@@ -40,7 +40,13 @@ class AsignRoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'room_id' => 'required'
+        ]);
+    
+        session()->put('room_id', $request->input('room_id'));
+    
+        return redirect()->route('guests.create')->with('room_id', $request->input('room_id'));
     }
 
     /**

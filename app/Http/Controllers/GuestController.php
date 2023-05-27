@@ -47,14 +47,14 @@ class GuestController extends Controller
             'phone' => 'nullable',
             'adults' => 'required',
             'kids' =>  'nullable',
-            'room_id' => 'required'
+
         ]);
     
         $guest = Guest::create($request->all());
+        $roomId = session('room_id');
+        //Session::put('guest_id', $guest->id);
     
-        Session::put('guest_id', $guest->id);
-    
-        return redirect()->route('asignrooms.index');
+        return redirect()->route('guests.index')->with('roomId', $roomId);
     }
   /*return redirect()->route('guests.index')
             ->with('success', 'Habitacion creada con exito');

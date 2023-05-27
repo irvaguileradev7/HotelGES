@@ -27,6 +27,8 @@
             </div>
         @endif
 
+        <h2>Habitación seleccionada: {{ session('room_id') }}</h2>
+
         <form action="{{ route('guests.store') }}" method="POST" autocomplete="off">
             @csrf
             <div class="container">
@@ -91,28 +93,7 @@
                                                 </div>
 
                                             </div>
-                                            <div class="carousel-item">
-                                                <div class="container">
-                                                    <div class="card-body">
-                                                        <strong>Habitacion:</strong>
-                                                        <div class="col-xs-12 col-sm-12 col-md-12">
-                                                            <select id="floor_id" name="room_id"
-                                                                class="form-control select2">
-                                                                @foreach ($rooms as $room)
-                                                                    <option value="{{ $room->id }}">{{ $room->number }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                                            <button type="submit" class="btn btn-primary">Guardar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                         <div class="container">
                                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
@@ -136,114 +117,7 @@
                 
             </div>
         </form>
-        {{-- <form action="{{ route('guests.store') }}" method="POST">
-            @csrf
-            <div id="accordion">
-                <div class="card">
-                    <div class="card-header">
-                        <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
-                            Datos de la persona
-                        </a>
-                    </div>
-                    <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
-                        <div class="card-body">
-                            <div class="container">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Nombre(s):</strong>
-                                        <input type="text" name="name" class="form-control"
-                                            placeholder="Nombre(s)...">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Apellido(s):</strong>
-                                        <input type="text" name="last_name" class="form-control"
-                                            placeholder="Apellido(s)...">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Correo:</strong>
-                                        <input type="text" name="email" class="form-control"
-                                            placeholder="Correo electronico...">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Telefono:</strong>
-                                        <input type="text" name="phone" max="12" class="form-control"
-                                            placeholder="Telefono...">
-                                    </div>
-                                </div>
-                            </div>
 
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">
-                            Cantidad de personas
-                        </a>
-                    </div>
-                    <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
-                        <div class="card-body">
-                            <div class="container">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Adultos:</strong>
-                                        <input type="number" name="adults" class="form-control" min=1
-                                            placeholder="Adultos..." value="1">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Ninos:</strong>
-                                        <input type="number" name="kids" class="form-control" min=0
-                                            placeholder="Niños...">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
-                            Habitacion
-                        </a>
-                    </div>
-                    <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
-                        <div class="container">
-                            <div class="card-body">
-                                <strong>Habitacion:</strong>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <select id="floor_id" name="room_id" class="form-control select2">
-                                        @foreach ($rooms as $room)
-                                            <option value="{{ $room->id }}">{{ $room->number }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-            <div class="row">
-
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-            </div>
-
-        </form>
-        --}}
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
