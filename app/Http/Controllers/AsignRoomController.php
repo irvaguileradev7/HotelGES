@@ -14,11 +14,12 @@ class AsignRoomController extends Controller
      */
     public function index()
     {
-        $guestId = session('guest_id');
+        //$guestId = session('guest_id');
     
         $rooms = Room::latest()->paginate();
 
-        return view('asignrooms.index', compact('rooms'))->with('idGuest', $guestId);
+        return view('asignrooms.index', compact('rooms'));
+        //->with('idGuest', $guestId);
     }
 
     /**
