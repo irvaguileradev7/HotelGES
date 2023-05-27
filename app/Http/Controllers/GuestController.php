@@ -50,11 +50,17 @@ class GuestController extends Controller
 
         ]);
     
-        $guest = Guest::create($request->all());
-        $roomId = session('room_id');
+        $room_id = session('room_id');
+
+        $guest = new Guest($request->all());
+        $guest->room_id = $room_id;
+        
+        $guest->save();
+
+
         //Session::put('guest_id', $guest->id);
     
-        return redirect()->route('guests.index')->with('roomId', $roomId);
+        return redirect()->route('guests.index')->with('success', 'Huesped creado exitosamente');
     }
   /*return redirect()->route('guests.index')
             ->with('success', 'Habitacion creada con exito');

@@ -18,12 +18,11 @@
                 <div class="row justify-content-center text-center">
                     <div class="col-md-8 col-lg-6">
                         <div class="header">
-                            <h3>Habitaciones</h3>
-                            <h2>Vistas</h2>
+                            <h2>Habitaciones</h2>
+
                         </div>
                     </div>
                 </div>
-                <strong>Variable del usuario(Ignorar, solo es para entender)</strong>
 
                 <div class="container">
                     <div class="row">
@@ -49,6 +48,7 @@
                                             <a href="#" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal-{{ $index + 1 }}">
                                                 Habitacion numero: {{ $room->number }}
+                                                
                                             </a>
                                         </div>
                                     </div>

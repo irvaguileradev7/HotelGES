@@ -94,12 +94,4 @@ class AsignRoomController extends Controller
         //
     }
 
-    public function handleLeaveIndex()
-    {
-        session()->forget('guest_id');
-        
-        // You can perform any additional actions you need here
-
-        return redirect()->route('home'); // Replace 'home' with the desired route
-    }
 }

@@ -31,6 +31,10 @@
 
         <form action="{{ route('guests.store') }}" method="POST" autocomplete="off">
             @csrf
+            <!--Debe ir como hidden-->
+            <!--la variable se pasa pero no la guarda-->
+            <input type="text" name="room_id" value="{{ session('room_id') }}">
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 offset-md-2">

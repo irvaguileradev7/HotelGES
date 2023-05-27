@@ -11,7 +11,7 @@ class Guest extends Model
 
     protected $fillable = [
         'name','last_name',
-        'email','phone','adults','kids','room_id'
+        'email','phone','adults','kids','room_id',
     ];
 
     public function room()
