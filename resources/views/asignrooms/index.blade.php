@@ -47,12 +47,7 @@
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div id="product-1" class="single-product">
                                         <div class="part-1">
-                                            <ul></ul>
-                                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
-                                            </ul>
+                                            <img src="/img/cuarto1.jpg" class="room-image">
                                         </div>
                                         <div class="part-2">
                                             <p>Piso:{{ $room->floor_id }}</p>
@@ -333,6 +328,66 @@
             </div>
         </section>
 		--}}
+
+		<style>
+			.popup-overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				display: none;
+			}
+			
+			.popup-content {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				background-color: #fff;
+				padding: 20px;
+				border-radius: 5px;
+				width: 300px;
+				text-align: center;
+			}
+			
+			.close-btn {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				color: #888;
+				cursor: pointer;
+			}
+		</style>
+		
+		<!-- Agrega el script JavaScript para mostrar/ocultar el popup -->
+		<script>
+			// Obtener todas las habitaciones
+			var rooms = document.querySelectorAll('.single-product');
+			
+			// Iterar sobre cada habitación
+			rooms.forEach(function(room) {
+				// Agregar un evento de clic a la parte del piso de la habitación
+				var floorElement = room.querySelector('.part-2 p:nth-child(1)');
+				floorElement.addEventListener('click', function() {
+					// Mostrar el popup correspondiente a la habitación
+					var roomId = room.getAttribute('id').split('-')[1];
+					var popup = document.getElementById('popup-' + roomId);
+					popup.style.display = 'block';
+				});
+			});
+			
+			// Agregar evento de clic al botón de cerrar del popup
+			var closeButtons = document.querySelectorAll('.close-btn');
+			closeButtons.forEach(function(button) {
+				button.addEventListener('click', function() {
+					// Ocultar el popup
+					var popup = button.parentElement;
+					popup.style.display = 'none';
+				});
+			});
+		</script>
     </body>
 
     </html>
