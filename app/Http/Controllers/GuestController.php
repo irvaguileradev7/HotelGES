@@ -50,7 +50,7 @@ class GuestController extends Controller
 
         ]);
     
-        $room_id = session('room_id');
+        $room_id = $request->input('room_id');
 
         $guest = new Guest($request->all());
         $guest->room_id = $room_id;

@@ -33,7 +33,7 @@
             @csrf
             <!--Debe ir como hidden-->
             <!--la variable se pasa pero no la guarda-->
-            <input type="text" name="room_id" value="{{ session('room_id') }}">
+            <input type="hidden" name="room_id" value="{{ session('room_id') }}">
 
             <div class="container">
                 <div class="row">
