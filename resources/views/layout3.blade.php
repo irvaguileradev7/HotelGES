@@ -20,6 +20,11 @@
                 <span class="fs-5 d-none d-sm-inline">HotelGes</span>
             </a>
             <li>
+                <hr>
+                <p>Operador</p>
+                <hr>
+            </li>
+            <li>
                 <a href="{{ route('guests.index') }}" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Huespedes</span>
                 </a>
@@ -39,8 +44,7 @@
             </li>
             <li>
                 <a href="{{ route('types.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">T.
-                        Habitaciones</span></span> </a>
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">T. Habitaciones</span></span> </a>
 
             </li>
             <li>
@@ -49,14 +53,13 @@
 
             </li>
 
-
             <li>
-                <hr>
+
                 <a href="{{ route('services.index') }}" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Servicios</span> </a>
 
             </li>
-
+                <hr>
 
             <li>
                 <a href="{{ route('users.index') }}" class="nav-link px-0 align-middle">
@@ -64,6 +67,7 @@
                 </a>
 
             </li>
+
 
     </div>
 
