@@ -38,6 +38,15 @@
                 {{ $guest->phone}}
             </div>
         </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Direccion:</strong>
+                {{ $guest->street_address}}. {{ $guest->city }}. {{ $guest->zip_code }}.
+                {{ $guest->country }}
+            </div>
+        </div>
+
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Adultos:</strong>

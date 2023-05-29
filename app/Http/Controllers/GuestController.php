@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Guest;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Monarobase\CountryList\CountryListFacade;
 use Illuminate\Support\Facades\Session;
+use Monarobase\CountryList\CountryList;
 
 class GuestController extends Controller
 {
@@ -17,7 +19,8 @@ class GuestController extends Controller
     public function index()
     {
         $guests = Guest::latest()->paginate();
-        return view('guests.index',compact('guests'))
+        $countries = CountryListFacade::getList('es');
+        return view('guests.index',compact('guests','countries'))
         ->with('i', (request()->input('page', 1) - 1) * 5);;
     }
 
@@ -29,7 +32,8 @@ class GuestController extends Controller
     public function create()
     {
         $rooms = Room::all();
-        return view('guests.create',compact('rooms'));
+        $countries = CountryListFacade::getList('es');
+        return view('guests.create',compact('rooms','countries'));
     }
 
     /**
@@ -47,7 +51,11 @@ class GuestController extends Controller
             'phone' => 'nullable',
             'adults' => 'required',
             'kids' =>  'nullable',
-
+            'country' => 'required',
+            'region' => 'required',
+            'city' => 'required',
+            'street_address' => 'required',
+            'zip_code' => 'required|min:4|max:10'
         ]);
     
         $room_id = $request->input('room_id');
@@ -56,7 +64,6 @@ class GuestController extends Controller
         $guest->room_id = $room_id;
         
         $guest->save();
-
 
         //Session::put('guest_id', $guest->id);
     
@@ -84,7 +91,8 @@ class GuestController extends Controller
      */
     public function edit(Guest $guest)
     {
-        return view('guests.edit',compact('guest'));
+        $countries = CountryListFacade::getList('es');
+        return view('guests.edit',compact('guest','countries'));
     }
 
     /**
@@ -96,17 +104,24 @@ class GuestController extends Controller
      */
     public function update(Request $request, Guest $guest)
     {
+        
+
         $request->validate([
             'name' => 'required',
             'last_name' => 'required',
             'email' => 'nullable|email',
             'phone' => 'nullable',
             'adults' => 'required',
-            'kids' =>  'nullable'
+            'kids' =>  'nullable',
+            'country' => 'required',
+            'region' => 'required',
+            'city' => 'required',
+            'address' => 'nullable',
+            'zip_code' => 'required|min:4|max:10'
         ]);
 
         $guest->update($request->all());
-
+        
         return redirect()->route('guests.index')
         ->with('success','Se agrego al huesped correctamente');
     }
