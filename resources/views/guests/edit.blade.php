@@ -43,20 +43,70 @@
                         placeholder="Name">
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Correo:</strong>
-                    <input type="text" name="email" class="form-control" value="{{ $guest->email }}"
-                        placeholder="Name">
+            
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <strong>Correo:</strong>
+                        <input type="text" name="email" class="form-control" value="{{ $guest->email }}"
+                            placeholder="Name">
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <strong>Telefono:</strong>
+                        <input type="text" name="phone" class="form-control" value="{{ $guest->phone }}"
+                            placeholder="Name">
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
                 <div class="form-group">
-                    <strong>Telefono:</strong>
-                    <input type="number" name="phone" class="form-control" value="{{ $guest->phone }}"
-                        placeholder="Name">
+                    <strong>Pais</strong>
+                    <select name="country" id="country" class="form-control">
+                        <option value="">Seleccionar Pais</option>
+                        @foreach ($countries as $country)
+                            <option value="{{ $country }}">{{ $country }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Estado/Region/Provincia:</strong>
+                    <input type="text" name="region" id="region" class="form-control"
+                        placeholder="Region...">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Ciudad:</strong>
+                    <input type="text" name="city" id="city" class="form-control"
+                        placeholder="Ciudad...">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <strong>Direccion:</strong>
+                        <input type="text" name="street_address" id="street_address" class="form-control"
+                            placeholder="Direccion...">
+                    </div>
+                </div>
+
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <strong>Codigo postal:</strong>
+                        <input type="text" name="zip_code" id="zip_code" class="form-control"
+                            placeholder="">
+                    </div>
+                </div>
+
             <div class="container">
                 <h4>Acompanantes</h3>
                     <div class="col-xs-12 col-sm-12 col-md-12">
