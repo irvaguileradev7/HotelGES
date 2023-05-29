@@ -4,9 +4,6 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 margin-tb">
-                <div class="pull-left">
-                    <h2>Anadir tipos de dato</h2>
-                </div>
                 <div class="pull-right">
                     <a class="btn btn-primary" href="{{ route('guests.index') }}"> Regresar</a>
                 </div>
@@ -27,7 +24,7 @@
             </div>
         @endif
 
-        <h2>Habitación seleccionada: {{ session('room_id') }}</h2>
+        <h3>Habitación seleccionada: {{ session('room_id') }}</h3>
 
         <form action="{{ route('guests.store') }}" method="POST" autocomplete="off">
             @csrf
@@ -161,29 +158,29 @@
                                                 </div>
 
                                             </div>
-                                            <div class="container">
-                                                <a class="carousel-control-prev pb-3 mb-1" data-bs-target="#carouselExampleControls"
-                                                    role="button"  data-bs-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span
-                                                        class="btn btn-danger position-relative bottom-50 top-50 mt-1">Anterior</span>
-                                                </a>
-                                                <a class="carousel-control-next pb-3 mb-1" data-bs-target="#carouselExampleControls"
-                                                    role="button" data-bs-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span
-                                                        class="btn btn-danger position-relative bottom-50 top-50 mt-1">Siguiente</span>
-                                                </a>
-                                            </div>
+
                                         </div>
+
                                     </div>
                                 </div>
 
                             </div>
+
+
+                        </div>
+                        <div class="container">
+                            <a href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span class="btn btn-danger">Anterior</span>
+                            </a>
+                            <a href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="btn btn-danger">Siguiente</span>
+                            </a>
+
                         </div>
                     </div>
 
                 </div>
+
         </form>
 
     </div>
