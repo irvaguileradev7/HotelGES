@@ -12,7 +12,7 @@
                     <p>Fecha de salida</p>
                     <input type="date" id="date">
                     <a href="{{ route('asignrooms.index') }}">
-                        <div class="btn btn-danger">Ver habitaciones</div>
+                        <div class="btn btn-danger">Ver habitaciones disponibles</div>
                     </a>
                 </div>
             </div>
