@@ -40,6 +40,7 @@
                                 <h5 class="mb-0">Datos del huesped</h5>
                             </div>
                             <div class="card-body">
+
                                 <div id="carouselExampleControls" class="carousel slide" data-interval="false">
                                     <div class="carousel-inner pb-5">
                                         <div class="container">

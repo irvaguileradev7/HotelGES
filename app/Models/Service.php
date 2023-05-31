@@ -12,4 +12,9 @@ class Service extends Model
     protected $fillable = [
         'type','price','details'
     ];
+
+    public function asign()
+    {
+        return $this->belongsTo(AsignService::class);
+    }
 }

@@ -65,9 +65,9 @@ class GuestController extends Controller
         
         $guest->save();
 
-        //Session::put('guest_id', $guest->id);
+        Session::put('guest_id', $guest->id);
     
-        return redirect()->route('guests.index')->with('success', 'Huesped creado exitosamente');
+        return redirect()->route('asignservices.index')->with('success', 'Huesped creado exitosamente');
     }
   /*return redirect()->route('guests.index')
             ->with('success', 'Habitacion creada con exito');
