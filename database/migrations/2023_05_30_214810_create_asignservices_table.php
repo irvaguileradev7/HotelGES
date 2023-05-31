@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('asignservices', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
-            $table->unsignedBigInteger('guests_id');
+            $table->unsignedBigInteger('guest_id');
             $table->unsignedBigInteger('services_id');
             $table->timestamps();
 

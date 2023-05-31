@@ -41,7 +41,8 @@ class AsignRoomController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'room_id' => 'required'
+            'room_id' => 'required',
+            'quantity' => 'required'
         ]);
     
         session()->put('room_id', $request->input('room_id'));
