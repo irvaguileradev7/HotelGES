@@ -46,7 +46,7 @@ class AsignRoomController extends Controller
     
         session()->put('room_id', $request->input('room_id'));
     
-        return redirect()->route('reservations.index')->with('room_id', $request->input('room_id'));
+        return redirect()->route('guests.create')->with('room_id', $request->input('room_id'));
     }
 
     /**
