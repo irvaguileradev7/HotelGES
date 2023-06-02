@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\AsignRoomController;
 use App\Http\Controllers\AsignServiceController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,6 @@ Route::middleware([
         return view('welcome');
     });
 
-
     Route::resource('rooms', RoomController::class);
     Route::resource('types', TypeController::class);
     Route::resource('floors', FloorController::class);
@@ -43,4 +43,5 @@ Route::middleware([
     Route::resource('services', ServiceController::class);
     Route::resource('asignrooms', AsignRoomController::class);
     Route::resource('asignservices', AsignServiceController::class);
+    Route::resource('reservations', ReservationController::class);
 });

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Room;
 
-class AsignRoomController extends Controller
+class ReservationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +13,7 @@ class AsignRoomController extends Controller
      */
     public function index()
     {
-        //$guestId = session('guest_id');
-    
-        $rooms = Room::latest()->paginate();
-
-        return view('asignrooms.index', compact('rooms'));
-        //->with('idGuest', $guestId);
+        return view('reservations.index');
     }
 
     /**
@@ -40,13 +34,7 @@ class AsignRoomController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'room_id' => 'required',
-        ]);
-    
-        session()->put('room_id', $request->input('room_id'));
-    
-        return redirect()->route('reservations.index')->with('room_id', $request->input('room_id'));
+        //
     }
 
     /**
@@ -93,5 +81,4 @@ class AsignRoomController extends Controller
     {
         //
     }
-
 }
