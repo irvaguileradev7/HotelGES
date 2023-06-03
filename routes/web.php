@@ -50,6 +50,14 @@ Route::middleware(['checkUserRole'])->group(function() {
     Route::resource('users', UserController::class);
 });
 
-Route::middleware(['checkFloorUser'])->group(function() {
-    Route::resource('floor', FloorController::class);
+
+Route::middleware(['checkHotelAdmin'])->group(function() {
+    Route::resource('floors', FloorController::class);
+    Route::resource('rooms', RoomController::class);
+    Route::resource('types', TypeController::class);
+    Route::resource('services', ServiceController::class);
+});
+
+Route::middleware(['checkOperator'])->group(function() {
+    Route::resource('guests', GuestController::class);
 });
