@@ -61,7 +61,7 @@
                         @switch( $user->$role )
                             @case(1)
                                 <option value="1">Administrador de IT</option>
-                            @break
+                            @break 
                             @case(2)
                                 <option value="2">Gerente Hotel</option>
                             @break

@@ -45,3 +45,11 @@ Route::middleware([
     Route::resource('asignservices', AsignServiceController::class);
     Route::resource('reservations', ReservationController::class);
 });
+
+Route::middleware(['checkUserRole'])->group(function() {
+    Route::resource('users', UserController::class);
+});
+
+Route::middleware(['checkFloorUser'])->group(function() {
+    Route::resource('floor', FloorController::class);
+});
