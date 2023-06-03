@@ -15,16 +15,20 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
+        /*$role = Role::create([
+            'role_type' => 'Admin'
+        ]);*/
+
         $rol1 = new Role;
-        $rol1->RoleTipe = 'Administrador de IT';
+        $rol1->role_type = 'Administrador de IT';
         $rol1->save();
 
         $rol2 = new Role;
-        $rol2->RoleTipe = 'Gerente Hotel';
+        $rol2->role_type = 'Gerente Hotel';
         $rol2->save();
 
         $rol3 = new Role;
-        $rol3->RoleTipe = 'Operador';
+        $rol3->role_type = 'Operador';
         $rol3->save();
     }
 }

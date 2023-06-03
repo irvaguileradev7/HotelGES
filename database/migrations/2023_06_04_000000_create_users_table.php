@@ -20,15 +20,10 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
-            $table->unsignedBigInteger('role_id') ->default(2);
+            $table->unsignedBigInteger('role_id')->default(2);
             $table->timestamps();
 
-
-        });
-
-        Schema::table('users', function (Blueprint $table) {
-
-            $table->foreign('role_id') -> references('id')->on('roles');
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 

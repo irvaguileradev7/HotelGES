@@ -56,9 +56,8 @@
 
             <strong>Roles:</strong>
             <div class="col-xs-12 col-sm-12 col-md-12">
-
-                <select name="Role" id="Role" class="form-control select2">
-                    @foreach( $Roles as $role)
+                <select name="role_id" id="role_id" class="form-control select2">
+                    @foreach( $role_id as $role)
                         @switch( $user->$role )
                             @case(1)
                                 <option value="1">Administrador de IT</option>
