@@ -21,11 +21,11 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->integer('adults');
             $table->integer('kids')->nullable();
-            $table->unsignedBigInteger('room_id');
+            $table->unsignedBigInteger('reservation_id');
             $table->timestamps();
 
             
-            $table->foreign('room_id')->references('id')->on('rooms');
+            $table->foreign('reservation_id')->references('id')->on('reservations');
 
         });
     }

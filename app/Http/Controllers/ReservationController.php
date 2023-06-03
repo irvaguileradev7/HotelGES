@@ -50,7 +50,9 @@ class ReservationController extends Controller
         $reservation->time_to = $request->input('time_to');
         $reservation->save();
 
-        return redirect()->back()->with('success', 'Reserva creada exitosamente.');
+        Session::put('reservation_id', $reservation->id);
+
+        return redirect()->route('guests.create')->with('reservation_id', $reservation->id);
     }
 
     /**
