@@ -16,10 +16,10 @@ class Guest extends Model
         'zip_code'
     ];
 
-    public function room()
-    {
-        return $this->belongsTo(Room::class);
-    }
+    //public function room()
+    //{
+    //    return $this->belongsTo(Room::class);
+    //}
 
 
 }
