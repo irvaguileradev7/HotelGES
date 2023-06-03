@@ -33,7 +33,7 @@
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Correo electronico</th>
-                    <th>Rol</th>
+                    <th>Rol de usuario</th>
 
                     <th width="280px">Acciones</th>
                 </tr>
@@ -44,10 +44,18 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->role_id }}</td>
-
-
-
+                        {{-- <td>{{ $user->role_id }}</td> --}}
+                        @switch( $user->role_id )
+                        @case(1)
+                            <th>Administrador de IT</th>
+                        @break
+                        @case(2)
+                            <th>Gerente de hotel</th>
+                        @break
+                        @case(3)
+                        <th>Operario</th>
+                        @break
+                        @endswitch
                         <td>
                             <form id="delete-form-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}"
                                 method="POST">
