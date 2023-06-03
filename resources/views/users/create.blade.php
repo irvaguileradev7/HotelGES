@@ -47,8 +47,8 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Contrasena:</strong>
-                        <input type="text" name="password" class="form-control" placeholder="Name">
+                        <strong>Contraseña:</strong>
+                        <input type="password" name="password" class="form-control" placeholder="Name">
                     </div>
                 </div>
 
@@ -56,19 +56,10 @@
 
             <strong>Roles:</strong>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <select name="role_id" id="role_id" class="form-control select2">
-                    @foreach( $role_id as $role)
-                        @switch( $user->$role )
-                            @case(1)
-                                <option value="1">Administrador de IT</option>
-                            @break
-                            @case(2)
-                                <option value="2">Gerente Hotel</option>
-                            @break
-                            @case(3)
-                                <option value="3">Operador</option>
-                            @break
-                        @endswitch
+                <select name="role_id" id="role_id" class="form-control">
+                    <option value="">Seleccionar tipo de usuario</option>
+                    @foreach( $roles as $role )
+                        <option value="{{ $role->id }}">{{ $role->user_role_type }}</option>
                     @endforeach
                 </select>
             </div>
