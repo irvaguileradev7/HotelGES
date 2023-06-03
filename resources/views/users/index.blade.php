@@ -33,6 +33,7 @@
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Correo electronico</th>
+                    <th>Rol</th>
 
                     <th width="280px">Acciones</th>
                 </tr>
@@ -43,6 +44,7 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->Role }}</td>
 
 
 

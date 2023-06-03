@@ -52,6 +52,29 @@
                     </div>
                 </div>
 
+            </div>
+
+            <strong>Roles:</strong>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+                <select name="Role" id="Role" class="form-control select2">
+                    @foreach( $Roles as $role)
+                        @switch( $user->$role )
+                            @case(1)
+                                <option value="1">Administrador de IT</option>
+                            @break
+                            @case(2)
+                                <option value="2">Gerente Hotel</option>
+                            @break
+                            @case(3)
+                                <option value="3">Operador</option>
+                            @break
+                        @endswitch
+                    @endforeach
+                </select>
+            </div>
+
+
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
