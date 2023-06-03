@@ -21,7 +21,7 @@ class GuestController extends Controller
         $guests = Guest::latest()->paginate();
         $countries = CountryListFacade::getList('es');
         return view('guests.index',compact('guests','countries'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);;
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**

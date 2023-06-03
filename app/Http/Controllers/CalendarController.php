@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Room;
-use App\Models\Reservation;
-use Illuminate\Support\Facades\Session;
 
-class ReservationController extends Controller
+class CalendarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +13,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-
-        return view('reservations.index');
+        return view('calendar.index');
     }
 
     /**
@@ -38,19 +34,7 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'room_id' => 'required',
-            'time_from' => 'required',
-            'time_to' => 'required'
-        ]);
-
-        $reservation = new Reservation();
-        $reservation->room_id = $request->input('room_id');
-        $reservation->time_from = $request->input('time_from');
-        $reservation->time_to = $request->input('time_to');
-        $reservation->save();
-
-        return redirect()->back()->with('success', 'Reserva creada exitosamente.');
+        //
     }
 
     /**

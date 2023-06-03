@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
+use Illuminate\Support\Facades\Session;
 
 class AsignRoomController extends Controller
 {
@@ -15,7 +16,7 @@ class AsignRoomController extends Controller
     public function index()
     {
         //$guestId = session('guest_id');
-    
+
         $rooms = Room::latest()->paginate();
 
         return view('asignrooms.index', compact('rooms'));
@@ -43,10 +44,12 @@ class AsignRoomController extends Controller
         $request->validate([
             'room_id' => 'required',
         ]);
-    
-        session()->put('room_id', $request->input('room_id'));
-    
-        return redirect()->route('guests.create')->with('room_id', $request->input('room_id'));
+
+
+        $room_id = $request->input('room_id');
+        Session::put('room_id', $room_id);
+
+        return redirect()->route('reservations.index')->with('room_id', $request->input('room_id'));
     }
 
     /**
@@ -93,5 +96,4 @@ class AsignRoomController extends Controller
     {
         //
     }
-
 }
