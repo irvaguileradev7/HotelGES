@@ -25,12 +25,13 @@
         @endif
 
         <h3>Habitación seleccionada: {{ session('room_id') }}</h3>
+        <h3>Numero de reservacion: {{ session('reservation_id') }}</h3>
 
         <form action="{{ route('guests.store') }}" method="POST" autocomplete="off">
             @csrf
             <!--Debe ir como hidden-->
             <!--la variable se pasa pero no la guarda-->
-            <input type="hidden" name="room_id" value="{{ session('room_id') }}">
+            <input type="hidden" name="reservation_id" value="{{ session('reservation_id') }}">
 
             <div class="container">
                 <div class="row">

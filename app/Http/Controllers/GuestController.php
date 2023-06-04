@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guest;
-use App\Models\Room;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Monarobase\CountryList\CountryListFacade;
 use Illuminate\Support\Facades\Session;
@@ -21,7 +21,7 @@ class GuestController extends Controller
         $guests = Guest::latest()->paginate();
         $countries = CountryListFacade::getList('es');
         return view('guests.index',compact('guests','countries'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);;
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -31,9 +31,9 @@ class GuestController extends Controller
      */
     public function create()
     {
-        $rooms = Room::all();
+        $reservation = Reservation::all();
         $countries = CountryListFacade::getList('es');
-        return view('guests.create',compact('rooms','countries'));
+        return view('guests.create',compact('reservation','countries'));
     }
 
     /**
@@ -55,13 +55,14 @@ class GuestController extends Controller
             'region' => 'required',
             'city' => 'required',
             'street_address' => 'required',
-            'zip_code' => 'required|min:4|max:10'
+            'zip_code' => 'required|min:4|max:10',
+            'reservation_id' => 'required'
         ]);
     
-        $room_id = $request->input('room_id');
+        $reservation_id = $request->input('reservation_id');
 
         $guest = new Guest($request->all());
-        $guest->room_id = $room_id;
+        $guest->reservation_id = $reservation_id;
         
         $guest->save();
 

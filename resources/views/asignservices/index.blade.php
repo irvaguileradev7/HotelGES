@@ -6,10 +6,20 @@
         <div class="container">
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <p>Sesion{{ session('guest_id') }}</p>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                
             </div>
 
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <form action="{{ route('asignservices.store') }}" method="POST" autocomplete="off">
+                @csrf
                 <input type="hidden" name="guest_id" value="{{ session('guest_id') }}">
                 <div class="list-group">
                     @foreach ($services as $service)
@@ -31,6 +41,7 @@
                     @endforeach
 
                 </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
         </div>
     @endsection

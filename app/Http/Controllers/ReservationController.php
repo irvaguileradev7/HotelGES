@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Room;
+use App\Models\Reservation;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class ReservationController extends Controller
 {
@@ -13,6 +19,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
+
         return view('reservations.index');
     }
 
@@ -34,9 +41,52 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'room_id' => 'required',
+            'time_from' => 'required',
+            'time_to' => [
+                'required',
+                Rule::unique('reservations')->where(function ($query) use ($request) {
+                    return $query->where('room_id', $request->room_id)
+                        ->where(function ($query) use ($request) {
+                            $query->where(function ($query) use ($request) {
+                                $query->where('time_from', '<=', $request->time_from)
+                                    ->where('time_to', '>=', $request->time_from);
+                            })
+                            ->orWhere(function ($query) use ($request) {
+                                $query->where('time_from', '<=', $request->time_to)
+                                    ->where('time_to', '>=', $request->time_to);
+                            })
+                            ->orWhere(function ($query) use ($request) {
+                                $query->where('time_from', '>=', $request->time_from)
+                                    ->where('time_to', '<=', $request->time_to);
+                            });
+                        });
+                }),
+                function ($attribute, $value, $fail) use ($request) {
+                    $existingReservation = DB::table('reservations')
+                        ->where('room_id', $request->room_id)
+                        ->where('time_from', '<=', $request->time_to)
+                        ->where('time_to', '>=', $request->time_from)
+                        ->first();
 
+                    if ($existingReservation) {
+                        $fail('El rango de fechas seleccionado está ocupado.');
+                    }
+                }
+            ]
+        ]);
+
+        $reservation = new Reservation();
+        $reservation->room_id = $request->input('room_id');
+        $reservation->time_from = $request->input('time_from');
+        $reservation->time_to = $request->input('time_to');
+        $reservation->save();
+
+        Session::put('reservation_id', $reservation->id);
+
+        return redirect()->route('guests.create')->with('reservation_id', $reservation->id);
+    }
     /**
      * Display the specified resource.
      *

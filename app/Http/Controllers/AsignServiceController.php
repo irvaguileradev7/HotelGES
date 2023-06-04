@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AsignService;
 use App\Models\Service;
+use App\Models\Guest;
 use Illuminate\Http\Request;
 
 class AsignServiceController extends Controller
@@ -18,9 +19,7 @@ class AsignServiceController extends Controller
 
         $services = Service::latest()->paginate();
 
-        return view('asignservices.index', compact('services'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-
+        return view('asignservices.index', compact('services'));
     }
 
     /**
@@ -42,18 +41,21 @@ class AsignServiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'quantity'=>'required'
+            'quantity' => 'required',
+            'guests_id' => 'required',
+            'services_id' => 'required'
         ]);
-    
+
         $guests_id = $request->input('guests_id');
+        $services_id = $request->input('services_id');
 
-        $service = new Service($request->all());
-        $service->guests_id = $guests_id;
-        $guests_id = session('guest_id');
-        $service->save();
+        $asignService = new AsignService($request->all());
+        $guest = Guest::find($guests_id);
+        $service = Service::find($services_id);
+        $asignService->guests()->associate($guest);
+        $asignService->services()->associate($service);
+        $asignService->save();
 
-        
-        
         return redirect()->route('guests.index')->with('success', 'Huesped creado exitosamente');
     }
 
