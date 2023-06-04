@@ -32,8 +32,7 @@ class RoomController extends Controller
         $types = Type::all();
         $floors = Floor::all();
         $statuses = Status::all();
-        return view('rooms.create',compact('types','floors','statuses'));
-
+        return view('rooms.create', compact('types', 'floors', 'statuses'));
     }
 
     /**
@@ -52,7 +51,17 @@ class RoomController extends Controller
             'floor_id' => 'required',
             'type_id' => 'required',
             'status_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
 
         Room::create($request->all());
 
@@ -71,8 +80,7 @@ class RoomController extends Controller
         $types = Type::all();
         $floors = Floor::all();
         $statuses = Status::all();
-        return view('rooms.show',compact('room','statuses'));
-
+        return view('rooms.show', compact('room', 'statuses'));
     }
 
     /**
@@ -86,8 +94,7 @@ class RoomController extends Controller
         $types = Type::all();
         $floors = Floor::all();
         $statuses = Status::all();
-        return view('rooms.edit',compact('room','types','floors','statuses'));
-
+        return view('rooms.edit', compact('room', 'types', 'floors', 'statuses'));
     }
 
     /**
@@ -134,6 +141,6 @@ class RoomController extends Controller
     {
         $types = Type::all();
         $floors = Floor::all();
-        return view('rooms.showRoom',compact('room'));
+        return view('rooms.showRoom', compact('room'));
     }
 }

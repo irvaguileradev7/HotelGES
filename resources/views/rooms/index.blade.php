@@ -27,6 +27,7 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Piso</th>
+                    <th>Imagen</th>
                     <th>No. habitacion</th>
                     <th>Detalles</th>
                     <th>Tipo de habitación</th>
@@ -36,6 +37,8 @@
 
                 @foreach ($rooms as $room)
                     <tr class="white-cell">
+                        <td><img src="{{ asset('image/'.$room->image) }}" width="100px"></td>
+
                         <td>{{ $room->floor_id}}</td>
                         <td>{{ $room->number }}</td>
                         <td>{{ $room->detail }}</td>

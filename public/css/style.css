@@ -5,7 +5,6 @@
     src: url(/fonts/NewYork.otf);
 }
 
-
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +16,43 @@ p {
 body {
     min-height: 100vh;
     background-color: #e2dee7;
+}
 
+.calendar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.year {
+    margin-bottom: 20px;
+}
+
+.month {
+    margin: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.reservation {
+    background-color: #ff0000;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.reserved-text {
+    color: #ffffff;
+    font-weight: bold;
 }
 
 h1 {
@@ -65,7 +100,6 @@ h1 {
     margin-left: -62px;
 }
 
-
 a:hover {
     color: gray;
 }
@@ -87,7 +121,7 @@ tr:first-child {
 }
 .non-cell {
     background-color: #fff;
-    padding-right: .5rem ;
+    padding-right: 0.5rem;
 }
 
 .btn-success {
@@ -133,6 +167,5 @@ tr:first-child {
 }
 
 .form-control {
-	margin: 1rem;
+    margin: 1rem;
 }
-
