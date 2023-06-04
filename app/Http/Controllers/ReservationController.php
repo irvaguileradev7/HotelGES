@@ -20,7 +20,12 @@ class ReservationController extends Controller
     public function index()
     {
 
-        return view('reservations.index');
+        $room_id = Session::get('room_id');
+        $reservations = Reservation::where('room_id', $room_id)
+            ->orderBy('time_from', 'asc') // Ordenar por fecha de inicio ascendente
+            ->get();
+    
+        return view('reservations.index', compact('reservations'));
     }
 
     /**

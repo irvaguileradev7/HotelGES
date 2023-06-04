@@ -20,6 +20,21 @@ body {
 
 }
 
+.calendar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.month {
+    margin: 10px;
+}
+
+h3 {
+    text-align: center;
+}
+
 h1 {
     color: #302247;
 }
