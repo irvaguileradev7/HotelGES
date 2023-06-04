@@ -10,7 +10,7 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'RoleTipe'
+        'time_from','time_to','room_id'
     ];
 
     public function room()

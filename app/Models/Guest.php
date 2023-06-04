@@ -11,15 +11,15 @@ class Guest extends Model
 
     protected $fillable = [
         'name','last_name',
-        'email','phone','adults','kids','room_id',
+        'email','phone','adults','kids','reservation_id',
         'country','region','street_address','city',
         'zip_code'
     ];
 
-    //public function room()
-    //{
-    //    return $this->belongsTo(Room::class);
-    //}
+    public function reservation()
+    {
+        return $this->belongsTo(Reservation::class);
+    }
 
 
 }
