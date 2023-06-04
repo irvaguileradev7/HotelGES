@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->text('detail');
             $table->decimal('price');
             $table->integer('capacity');
+            $table->string('image');
             $table->unsignedBigInteger('floor_id');
             $table->unsignedBigInteger('type_id');
             $table->timestamps();
