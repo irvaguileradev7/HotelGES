@@ -11,6 +11,7 @@ use App\Http\Controllers\AsignRoomController;
 use App\Http\Controllers\AsignServiceController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\ReservationviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +47,5 @@ Route::middleware([
     Route::resource('asignservices', AsignServiceController::class);
     Route::resource('reservations', ReservationController::class);
     Route::resource('calendar', CalendarController::class);
+    Route::resource('reservationview', ReservationviewController::class);
 });

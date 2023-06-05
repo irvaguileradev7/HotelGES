@@ -17,6 +17,15 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Numero de habitacion:</strong>
+                    {{ $room->image }}
+                </div>
+            </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Numero de habitacion:</strong>
                     {{ $room->number }}
                 </div>
             </div>
