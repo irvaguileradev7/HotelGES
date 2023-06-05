@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\Reservation;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
-class CalendarController extends Controller
+class ReservationviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class CalendarController extends Controller
      */
     public function index()
     {
-
-        $rooms = Room::latest()->paginate();
-        return view('calendar.index', compact('rooms'));
+        $reservations= Reservation::latest()->paginate();
+        return view('reservationview.index', compact('reservations'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -39,14 +38,7 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'room_id' => 'required',
-        ]);
-
-        $room_id = $request->input('room_id');
-
-        Session::put('room_id', $room_id);
-        return redirect()->route('calendar.show')->with('room_id', $request->input('room_id'));
+        //
     }
 
     /**
@@ -57,12 +49,7 @@ class CalendarController extends Controller
      */
     public function show($id)
     {
-        $room_id = Session::get('room_id');
-        $reservations = Reservation::where('room_id', $room_id)
-            ->orderBy('time_from', 'asc') // Ordenar por fecha de inicio ascendente
-            ->get();
-
-        return view('calendar.show', compact('reservations'));
+        //
     }
 
     /**

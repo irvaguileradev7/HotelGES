@@ -13,7 +13,7 @@
 
 <body>
 
-    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+    <div class="side-navbar active-nav d-flex flex-column" id="sidebar">
         <ul class="nav flex-column text-white w-100">
             <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <span class="fs-5 d-none d-sm-inline">HotelGes</span>
@@ -26,6 +26,12 @@
             <li>
                 <a href="{{ route('guests.index') }}" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Huespedes</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="{{ route('calendar.index') }}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Calendario</span>
                 </a>
 
             </li>

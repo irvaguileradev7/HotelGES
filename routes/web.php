@@ -12,6 +12,8 @@ use App\Http\Controllers\AsignServiceController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReservationviewController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +50,7 @@ Route::middleware([
     Route::resource('reservations', ReservationController::class);
     Route::resource('calendar', CalendarController::class);
     Route::resource('payments', PaymentController::class);
+    Route::resource('reservationview', ReservationviewController::class);
 });
 
 // RUTA QUE SOLO ADMITE A LOS ADMINISTRADORES DE IT
