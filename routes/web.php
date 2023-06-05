@@ -51,15 +51,16 @@ Route::middleware([
     Route::resource('calendar', CalendarController::class);
     Route::resource('payments', PaymentController::class);
     Route::resource('reservationview', ReservationviewController::class);
-});
-
-// RUTA QUE SOLO ADMITE A LOS ADMINISTRADORES DE IT
-Route::middleware(['checkUserRole'])->group(function() {
     Route::resource('users', UserController::class);
 });
 
+// RUTA QUE SOLO ADMITE A LOS ADMINISTRADORES DE IT
+//arreglar
+Route::middleware(['checkUserRole'])->group(function () {
+});
 
-Route::middleware(['checkHotelAdmin'])->group(function() {
+/*
+Route::middleware(['checkHotelAdmin'])->group(function () {
     Route::resource('floors', FloorController::class);
     Route::resource('rooms', RoomController::class);
     Route::resource('types', TypeController::class);
@@ -69,7 +70,7 @@ Route::middleware(['checkHotelAdmin'])->group(function() {
     Route::resource('reservations', ReservationController::class);
     Route::resource('guests', GuestController::class);
 });
-
+*/
 // RUTA COMENTADA POR EL MOMENTO
 /* Route::middleware(['checkOperator'])->group(function() {
     Route::resource('guests', GuestController::class);

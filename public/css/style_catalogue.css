@@ -171,3 +171,15 @@ a:hover {
     color: #888;
     cursor: pointer;
 }
+
+.section-products .single-product .part-1 {
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%; /* Proporción 16:9 */
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.image-container img {
+    cursor: pointer;
+}

@@ -37,7 +37,7 @@
 
                 @foreach ($rooms as $room)
                     <tr class="white-cell">
-                        <td><img src="{{ asset('image/'.$room->image) }}" width="100px"></td>
+                        <td><img src="{{ asset('/'.$room->image) }}" width="100px"></td>
 
                         <td>{{ $room->floor_id}}</td>
                         <td>{{ $room->number }}</td>

@@ -54,16 +54,21 @@ class RoomController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-
-
         if ($image = $request->file('image')) {
             $destinationPath = 'image/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
+            $image->move(public_path($destinationPath), $profileImage);
+            $input['image'] = $destinationPath . $profileImage;
         }
 
-        Room::create($request->all());
+        $input['number'] = $request->input('number');
+        $input['detail'] = $request->input('detail');
+        $input['price'] = $request->input('price');
+        $input['capacity'] = $request->input('capacity');
+        $input['floor_id'] = $request->input('floor_id');
+        $input['type_id'] = $request->input('type_id');
+        $input['status_id'] = $request->input('status_id');
+        Room::create($input);
 
         return redirect()->route('rooms.index')
             ->with('success', 'Habitacion creada con exito');
@@ -113,10 +118,28 @@ class RoomController extends Controller
             'capacity' => 'required',
             'floor_id' => 'required',
             'type_id' => 'required',
-            'status_id' => 'required'
+            'status_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
 
-        $room->update($request->all());
+            $image = $request->file('image');
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move(public_path($destinationPath), $profileImage);
+            $input['image'] = $destinationPath . $profileImage;
+        }
+        $input['number'] = $request->input('number');
+        $input['detail'] = $request->input('detail');
+        $input['price'] = $request->input('price');
+        $input['capacity'] = $request->input('capacity');
+        $input['floor_id'] = $request->input('floor_id');
+        $input['type_id'] = $request->input('type_id');
+        $input['status_id'] = $request->input('status_id');
+        $room->update($input);
 
         return redirect()->route('rooms.index')
             ->with('success', 'Habitacion actualizada con exito');
