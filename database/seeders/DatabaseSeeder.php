@@ -24,7 +24,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             FloorsTableSeeder::class,
             TypesTableSeeder::class,
-            StatusTableSeeder::class
+            StatusTableSeeder::class,
+            RolesSeedder::class,
+            RoomsTableSeeder::class,
+            ServicesTableSeeder::class
         ]);
 
     }

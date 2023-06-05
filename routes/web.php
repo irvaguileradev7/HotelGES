@@ -11,7 +11,9 @@ use App\Http\Controllers\AsignRoomController;
 use App\Http\Controllers\AsignServiceController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReservationviewController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +49,28 @@ Route::middleware([
     Route::resource('asignservices', AsignServiceController::class);
     Route::resource('reservations', ReservationController::class);
     Route::resource('calendar', CalendarController::class);
+    Route::resource('payments', PaymentController::class);
     Route::resource('reservationview', ReservationviewController::class);
 });
+
+// RUTA QUE SOLO ADMITE A LOS ADMINISTRADORES DE IT
+Route::middleware(['checkUserRole'])->group(function() {
+    Route::resource('users', UserController::class);
+});
+
+
+Route::middleware(['checkHotelAdmin'])->group(function() {
+    Route::resource('floors', FloorController::class);
+    Route::resource('rooms', RoomController::class);
+    Route::resource('types', TypeController::class);
+    Route::resource('services', ServiceController::class);
+    Route::resource('asignrooms', AsignRoomController::class);
+    Route::resource('asignservices', AsignServiceController::class);
+    Route::resource('reservations', ReservationController::class);
+    Route::resource('guests', GuestController::class);
+});
+
+// RUTA COMENTADA POR EL MOMENTO
+/* Route::middleware(['checkOperator'])->group(function() {
+    Route::resource('guests', GuestController::class);
+}); */

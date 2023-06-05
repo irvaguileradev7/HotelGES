@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,6 +17,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::latest()->paginate();
+        
 
         return view('users.index', compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -28,7 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $roles = Role::all();
+        return view('users.create',compact('roles'));
     }
 
     /**
@@ -42,7 +45,8 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'role_id' => 'required'
         ]);
 
         $input = $request->all();
@@ -50,7 +54,7 @@ class UserController extends Controller
         User::create($input);
 
         return redirect()->route('users.index')
-            ->with('success', 'Se ingreso un nuevo tipo de habitacion');
+            ->with('success', 'El usuario se creo satisfactoriamente');
     }
 
     /**
@@ -61,7 +65,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        $roles = Role::all();
+        return view('users.show', compact('user','roles'));
     }
 
     /**
@@ -72,7 +77,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit',compact('user'));
+        $roles = Role::all();
+        return view('users.edit',compact('user','roles'));
     }
 
     /**
@@ -85,13 +91,16 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'room_type' => 'required'
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role_id' => 'required'
         ]);
 
         $user->update($request->all());
 
-        return redirect()->route('types.index')
-            ->with('success', 'El tipo de habitacion se actualizo correctamente');
+        return redirect()->route('users.index')
+            ->with('success', 'El usuario se modifico satisfactoriamente');
     }
 
     /**
@@ -105,6 +114,6 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('users.index')
-            ->with('success', 'El tipo de habitacion se elimino con exito');
+            ->with('success', 'El usuario se elimino con exito');
     }
 }

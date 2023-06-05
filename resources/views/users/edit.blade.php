@@ -26,7 +26,7 @@
     </div>
 @endif
 
-    <form action="{{ route('types.update', $user->id) }}" method="POST">
+    <form action="{{ route('users.update', $user->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -37,6 +37,32 @@
                     <input type="text" name="name" value="{{ $user->name }}" class="form-control"
                         placeholder="Name">
                 </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Correo:</strong>
+                        <input type="email" name="email" class="form-control" placeholder="Name">
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Contraseña:</strong>
+                        <input type="password" name="password" class="form-control" placeholder="Name">
+                    </div>
+                </div>
+
+            </div>
+
+            <strong>Roles:</strong>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <select name="role_id" id="role_id" class="form-control">
+                    <option value="">Seleccionar tipo de usuario</option>
+                    @foreach( $roles as $role )
+                        <option value="{{ $role->id }}">{{ $role->user_role_type }}</option>
+                    @endforeach
+                </select>
             </div>
 
 

@@ -10,8 +10,10 @@ class AsignService extends Model
     use HasFactory;
 
     protected $fillable = [
-        'quantity','guests_id','services_id'
+        'quantity','guests_id','services_id','total_services'
     ];
+
+    protected $table = 'asignservices';
 
     public function services()
     {
@@ -21,6 +23,15 @@ class AsignService extends Model
     public function guests()
     {
         return $this->belongsTo(Guest::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->total_services = $model->quantity * $model->service_id;
+        });
     }
 
 }

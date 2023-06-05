@@ -47,10 +47,24 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Contrasena:</strong>
-                        <input type="text" name="password" class="form-control" placeholder="Name">
+                        <strong>Contraseña:</strong>
+                        <input type="password" name="password" class="form-control" placeholder="Name">
                     </div>
                 </div>
+
+            </div>
+
+            <strong>Roles:</strong>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+                <select name="role_id" id="role_id" class="form-control">
+                    <option value="">Seleccionar tipo de usuario</option>
+                    @foreach( $roles as $role )
+                        <option value="{{ $role->id }}">{{ $role->user_role_type }}</option>
+                    @endforeach
+                </select>
+            </div>
+
 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     <button type="submit" class="btn btn-primary">Guardar</button>

@@ -41,22 +41,49 @@ class AsignServiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'quantity' => 'required',
-            'guests_id' => 'required',
-            'services_id' => 'required'
+            'guest_id' => 'required',
+            'service_id' => 'required|array',
+            'quantity' => 'required|array',
+            'quantity.*' => 'numeric|min:0',
         ]);
 
-        $guests_id = $request->input('guests_id');
-        $services_id = $request->input('services_id');
+        // CODIGO ORIGINAL
+        /* $guest_id = $request->input('guest<li>{{ $service->id}}</li>_id');
+        $service_id = $request->input('service_id');
 
         $asignService = new AsignService($request->all());
-        $guest = Guest::find($guests_id);
-        $service = Service::find($services_id);
+        $guest = Guest::find($guest_id);
+        $service = Service::find($service_id);
         $asignService->guests()->associate($guest);
         $asignService->services()->associate($service);
-        $asignService->save();
+        $asignService->save(); */
+       
+        // PRIMERA SOLUCION PROPUESTA POR CHATGPT
+        /* $guest_id = $request->input('guest_id');
+        $service_id = $request->input('service_id');
+        $asignService = new AsignService($request->all());
+        $asignService->guest_id = $guest_id;
+        $asignService->services_id = $service_id;
+        $asignService->save(); */
 
-        return redirect()->route('guests.index')->with('success', 'Huesped creado exitosamente');
+        // SEGUNDA SOLUCION PROPUESTA 
+        // AHORA SE ALMACENAN MULTIPLES SERVICOS A UN SOLO HUESPED
+        $guest_id = $request->input('guest_id');
+        $service_ids = $request->input('service_id');
+        $quantities = $request->input('quantity');
+
+    for ($i = 0; $i < count($service_ids); $i++) {
+        $asignService = new AsignService();
+        $asignService->guest_id = $guest_id;
+        $asignService->service_id = $service_ids[$i];
+        $asignService->quantity = $quantities[$i];
+        $asignService->save();
+    }
+
+        $guest = AsignService::findOrFail($guest_id);
+        $totalServices = $guest->total_services;
+        return redirect()->route('payments.index')->with('success', 'Asignación de servicio creada exitosamente',
+                        compact('totalServices'));
     }
 
     /**
