@@ -25,7 +25,9 @@ class DatabaseSeeder extends Seeder
             FloorsTableSeeder::class,
             TypesTableSeeder::class,
             StatusTableSeeder::class,
-            RolesSeedder::class
+            RolesSeedder::class,
+            RoomsTableSeeder::class,
+            ServicesTableSeeder::class
         ]);
 
     }

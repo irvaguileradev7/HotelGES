@@ -32,7 +32,6 @@
             <!--Debe ir como hidden-->
             <!--la variable se pasa pero no la guarda-->
             <input type="hidden" name="reservation_id" value="{{ session('reservation_id') }}">
-
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
