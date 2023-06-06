@@ -60,7 +60,7 @@ Route::middleware([
 Route::middleware(['checkUserRole'])->group(function () {
 });
 
-/*
+
 Route::middleware(['checkHotelAdmin'])->group(function () {
     Route::resource('floors', FloorController::class);
     Route::resource('rooms', RoomController::class);
@@ -71,7 +71,7 @@ Route::middleware(['checkHotelAdmin'])->group(function () {
     Route::resource('reservations', ReservationController::class);
     Route::resource('guests', GuestController::class);
 });
-*/
+
 // RUTA COMENTADA POR EL MOMENTO
 /* Route::middleware(['checkOperator'])->group(function() {
     Route::resource('guests', GuestController::class);

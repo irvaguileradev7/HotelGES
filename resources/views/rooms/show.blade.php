@@ -59,12 +59,6 @@
                                 Disponible
                             @break
                             @case(2)
-                                Ocupado
-                            @break
-                            @case(3)
-                                Reservado
-                            @break
-                            @case(4)
                                 No disponible
                             @break
                     @endswitch

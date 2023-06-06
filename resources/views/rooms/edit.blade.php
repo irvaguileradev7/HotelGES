@@ -66,14 +66,7 @@
                                     <option value="1">Disponible</option>
                                 @break
                                 @case(2)
-                                    <option value="2">Ocupado</option>
-                                @break
-                                @case(3)
-                                    <option value="3">Reservado</option>
-                                @break
-
-                                @case(4)
-                                    <option value="4">No Disponible</option>
+                                    <option value="2">No disponible</option>
                                 @break
                             @endswitch
                         @endforeach

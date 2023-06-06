@@ -44,33 +44,7 @@
                         <td>{{ $room->number }}</td>
                         <td>{{ $room->detail }}</td>
                         <td>{{ $room->type->room_type }}</td>
-                        {{--
-                        @switch( $room->type_id)
-                            @case(1)
-                                <td>Habitación individual</td>
-                            @break
-
-                            @case(2)
-                                <td>Habitación doble</td>
-                            @break
-
-                            @case(3)
-                                <td>Habitación triple</td>
-                            @break
-
-                            @case(4)
-                                <td>Habitación Queen size</td>
-                            @break
-
-                            @case(5)
-                                <td>Habitación King size</td>
-                            @break
-
-                            @case(6)
-                                <td>Suite de lujo</td>
-                            @break
-                        @endswitch
-                        --}}
+                        
                         @switch( $room->status_id)
                             @case(1)
                                 <td class="table-success">
@@ -78,18 +52,8 @@
                                 </td>
                             @break
                             @case(2)
-                                <td class="table-secondary">
-                                    <p><strong>Reservado</strong></p>
-                                </td>
-                            @break
-                            @case(3)
                                 <td class="table-danger">
-                                    <p><strong class="text-danger">Ocupado</strong></p>
-                                </td>
-                            @break
-                            @case(4)
-                                <td class="table-dark">
-                                    <strong>No Disponible</strong>
+                                    <p><strong>No Disponible</strong></p>
                                 </td>
                             @break
                         @endswitch

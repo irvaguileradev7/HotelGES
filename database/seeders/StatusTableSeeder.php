@@ -20,7 +20,7 @@ class StatusTableSeeder extends Seeder
         $status1->descrpition='Disponible';
         $status1->save();
 
-        $status2 = new Status;
+        /* $status2 = new Status;
         $status2->status = 2;
         $status2->descrpition='Reservado';
         $status2->save();
@@ -28,10 +28,10 @@ class StatusTableSeeder extends Seeder
         $status3 = new Status;
         $status3->status = 3;
         $status3->descrpition='Ocupado';
-        $status3->save();
+        $status3->save(); */
 
         $status4 = new Status;
-        $status4->status = 4;
+        $status4->status = 2;
         $status4->descrpition='No disponible';
         $status4->save();
     }
