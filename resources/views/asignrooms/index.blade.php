@@ -78,7 +78,7 @@
                                                 <p>Piso:{{ $room->floor_id }}</p>
                                                 <p>Numero:{{ $room->number }}</p>
                                                 <p>Detalles:{{ $room->detail }}</p>
-                                                <p>Tipo:{{ $room->type_id }}</p>
+                                                <p>Tipo:{{ $room->type->room_type }}</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <form method="POST" action="{{ route('asignrooms.store') }}">

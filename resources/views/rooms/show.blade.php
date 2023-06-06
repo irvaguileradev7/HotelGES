@@ -16,8 +16,8 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Numero de habitacion:</strong>
-                    {{ $room->image }}
+
+                    <img src="{{ asset('/' . $room->image) }}" width="50%" class="img-fluid">
                 </div>
             </div>
 
@@ -36,6 +36,7 @@
                     {{ $room->detail }}
                 </div>
             </div>
+            
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Tipo:</strong>

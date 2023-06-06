@@ -43,7 +43,7 @@
                         <td>{{ $room->floor_id}}</td>
                         <td>{{ $room->number }}</td>
                         <td>{{ $room->detail }}</td>
-                        <td>{{ $room->type_id}}</td>
+                        <td>{{ $room->type->room_type }}</td>
                         {{--
                         @switch( $room->type_id)
                             @case(1)
