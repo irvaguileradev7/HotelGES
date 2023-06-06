@@ -20,6 +20,11 @@ class AsignService extends Model
         return $this->hasMany(Service::class);
     }
 
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
+    
     public function guests()
     {
         return $this->belongsTo(Guest::class);

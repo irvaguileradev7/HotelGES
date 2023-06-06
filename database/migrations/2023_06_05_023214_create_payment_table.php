@@ -15,16 +15,12 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('room_id');
-            $table->unsignedBigInteger('service_id');
             $table->unsignedBigInteger('guest_id');
             $table->decimal('total_payment');
             $table->decimal('guest_payment');
             $table->decimal('difference');
             $table->timestamps();
 
-            $table->foreign('room_id')->references('id')->on('rooms');
-            $table->foreign('service_id')->references('id')->on('services');
             $table->foreign('guest_id')->references('id')->on('guests');
             
         });
