@@ -10,7 +10,7 @@
                     </div>
 
                     <div class="pull-right">
-                        <a class="btn btn-success" href="{{ route('guests.create') }}"> Nuevo huesped</a>
+                        <a class="btn btn-success" href="{{ route('asignrooms.index') }}"> Nuevo huesped</a>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,9 @@
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Telefono</th>
+                    <th>Correo</th>
                     <th width="280px">Acciones</th>
+
                 </tr>
 
                 @foreach ($guests as $guest)
@@ -36,7 +38,7 @@
                         <td>{{ $guest->name }}</td>
                         <td>{{ $guest->last_name }}</td>
                         <td>{{ $guest->phone }}</td>
-
+                        <td>{{ $guest->email }}</td>
                         <td>
                             <form id="delete-form-{{ $guest->id }}" action="{{ route('guests.destroy', $guest->id) }}"
                                 method="POST">
