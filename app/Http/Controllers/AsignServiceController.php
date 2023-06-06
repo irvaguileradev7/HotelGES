@@ -17,6 +17,7 @@ class AsignServiceController extends Controller
     public function index()
     {
 
+ 
         $services = Service::latest()->paginate();
 
         return view('asignservices.index', compact('services'));
@@ -58,14 +59,6 @@ class AsignServiceController extends Controller
         $asignService->services()->associate($service);
         $asignService->save(); */
        
-        // PRIMERA SOLUCION PROPUESTA POR CHATGPT
-        /* $guest_id = $request->input('guest_id');
-        $service_id = $request->input('service_id');
-        $asignService = new AsignService($request->all());
-        $asignService->guest_id = $guest_id;
-        $asignService->services_id = $service_id;
-        $asignService->save(); */
-
         // SEGUNDA SOLUCION PROPUESTA 
         // AHORA SE ALMACENAN MULTIPLES SERVICOS A UN SOLO HUESPED
         $guest_id = $request->input('guest_id');
@@ -78,15 +71,18 @@ class AsignServiceController extends Controller
         $asignService->service_id = $service_ids[$i];
         $asignService->quantity = $quantities[$i];
         $asignService->save();
+    
     }
 
-        $guest = AsignService::findOrFail($guest_id);
-        $totalServices = $guest->total_services;
-        return redirect()->route('payments.index')->with('success', 'Asignación de servicio creada exitosamente',
-                        compact('totalServices'));
+        $servicios = AsignService::where('guest_id', session('guest_id'))->sum('total_services');
+        
+        return redirect()->route('payments.index')->with(
+            ['success' => 'Asignación de servicio creada exitosamente', 'servicios' => $servicios]);
     }
 
     /**
+     * $guest = AsignService::findOrFail($guest_id)
+     * $totalServices = $guest->total_services
      * Display the specified resource.
      *
      * @param  \App\Models\AsignService  $asignService
