@@ -1,6 +1,10 @@
 @extends('layout')
 
 @section('content')
+<head>
+    <link rel="stylesheet" href="/css/style_calendar.css">
+</head>
+
     <div class="container">
         <h1>Reservacion</h1>
         <h1>{{ Session::get('room_id') }}</h1>
@@ -49,6 +53,7 @@
                 <h3>{{ $year }}</h3>
                 <div class="calendar">
                     @foreach ($months as $month => $reservations)
+                    
                         <div class="month">
                             <h4>{{ $month }}</h4>
                             <table>

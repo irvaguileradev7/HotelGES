@@ -1,0 +1,181 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+@font-face {
+    font-family: "New York";
+    src: url(/fonts/NewYork.otf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+p {
+    margin-bottom: -0.2rem;
+}
+body {
+    min-height: 100vh;
+    background-color: #e2dee7;
+}
+
+.calendar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.year {
+    margin-bottom: 20px;
+}
+
+.month {
+    margin: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; 
+}
+
+th, td {
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    width: calc(100% / 7); 
+}
+
+.reservation {
+    background-color: #ff0000;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.reserved-text {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+h1 {
+    color: #302247;
+}
+.side-navbar {
+    width: 180px;
+    height: 100%;
+    position: fixed;
+    margin-left: -300px;
+    background-color: #302247;
+    transition: margin-left 0.5s; 
+    padding-left: 1vw;
+    padding-top: 1vw;
+    padding-right: 1vw;
+  }
+  
+ 
+  @media (max-width: 767px) {
+    .side-navbar {
+      margin-left: 0; 
+    }
+  }
+
+.navbar {
+    background-color: #fff;
+}
+
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+    background-color: #6c529662;
+}
+
+.my-container {
+    transition: 0.4s;
+}
+
+.active-nav {
+    margin-left: 0;
+}
+
+/* for main section */
+.active-cont {
+    margin-left: 180px;
+}
+
+#menu-btn {
+    background-color: #7859aa;
+    color: #fff;
+    padding: 1.5rem;
+    margin-left: -62px;
+}
+
+a:hover {
+    color: gray;
+}
+
+:root,
+[data-bs-theme="light"] {
+    --bs-link-color: #ffffff;
+    --bs-link-hover-color: #979797;
+}
+
+tr:first-child {
+    background-color: #7859aa;
+    color: #fff;
+}
+
+.white-cell {
+    background-color: #fff;
+    color: rgb(0, 0, 0);
+}
+.non-cell {
+    background-color: #fff;
+    padding-right: 0.5rem;
+}
+
+.btn-success {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #468a82;
+    --bs-btn-border-color: #468a82;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #2c5752;
+    --bs-btn-hover-border-color: #2c5752;
+}
+
+.btn-info {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #a18cc4;
+    --bs-btn-border-color: #a18cc4;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #856ab3;
+    --bs-btn-hover-border-color: #856ab3;
+}
+
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #5e68a9;
+    --bs-btn-border-color: #5e68a9;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #4a528a;
+    --bs-btn-hover-border-color: #4a528a;
+}
+
+.btn-danger {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #aa598b;
+    --bs-btn-border-color: ##aa598b;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #8a4670;
+    --bs-btn-hover-border-color: #8a4670;
+}
+
+.my-container input {
+    border-radius: 0.2rem;
+    padding: 2px 20px;
+    margin: 1rem;
+}
+
+.form-control {
+    margin: 1rem;
+}
+
