@@ -75,7 +75,7 @@
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#exampleModal-{{ $index + 1 }}">
                                                 </div>
-                                                <p>Piso:{{ $room->floor_id }}</p>
+                                                <p>Piso:{{ $room->floor->number_floor }}</p>
                                                 <p>Numero:{{ $room->number }}</p>
                                                 <p>Detalles:{{ $room->detail }}</p>
                                                 <p>Tipo:{{ $room->type->room_type }}</p>
