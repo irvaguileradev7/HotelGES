@@ -154,6 +154,7 @@ class GuestController extends Controller
         $reservationId = $request->input('reservation_id');
     
         // Lógica para eliminar la tabla en la base de datos
+        Reservation::where('id', $reservationId)->delete();
     
         return response()->json(['message' => 'Tabla eliminada correctamente']);
     }
