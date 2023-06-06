@@ -31,6 +31,13 @@ class PaymentController extends Controller
         // dd($precioCuarto);
 
         $totalPagar = $servicios + $precioCuarto->price;
+
+        $payment = new Payment;
+        $payment->guest_id = session('guest_id');
+        $payment->guest_payment = 0;
+        $payment->total_payment = $totalPagar;
+        $payment->difference = $totalPagar - $payment->guest_payment;
+        $payment->save();
         
         
 
