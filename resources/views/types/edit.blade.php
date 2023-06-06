@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <strong>Tipo de habitacion:</strong>
                     <input type="text" name="room_type" value="{{ $type->name }}" class="form-control"
-                        placeholder="Name">
+                        placeholder="Tipo de habitacion...">
                 </div>
             </div>
 
