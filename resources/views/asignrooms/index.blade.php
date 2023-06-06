@@ -70,6 +70,11 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
+                                                <div class="image-container">
+                                                    <img src="{{ asset('/' . $room->image) }}" width="100%" class="img-fluid"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal-{{ $index + 1 }}">
+                                                </div>
                                                 <p>Piso:{{ $room->floor_id }}</p>
                                                 <p>Numero:{{ $room->number }}</p>
                                                 <p>Detalles:{{ $room->detail }}</p>

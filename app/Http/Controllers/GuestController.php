@@ -16,12 +16,20 @@ class GuestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $guests = Guest::latest()->paginate();
+        $search = $request->input('search');
+
+        $guests = Guest::query()
+            ->where('name', 'LIKE', "%$search%")
+            ->orWhere('last_name', 'LIKE', "%$search%")
+            ->orWhere('phone', 'LIKE', "%$search%")
+            ->orWhere('email', 'LIKE', "%$search%")
+            ->paginate();
+
         $countries = CountryListFacade::getList('es');
-        return view('guests.index',compact('guests','countries'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('guests.index', compact('guests', 'countries'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -33,7 +41,7 @@ class GuestController extends Controller
     {
         $reservation = Reservation::all();
         $countries = CountryListFacade::getList('es');
-        return view('guests.create',compact('reservation','countries'));
+        return view('guests.create', compact('reservation', 'countries'));
     }
 
     /**
@@ -58,19 +66,19 @@ class GuestController extends Controller
             'zip_code' => 'required|min:4|max:10',
             'reservation_id' => 'required'
         ]);
-    
+
         $reservation_id = $request->input('reservation_id');
 
         $guest = new Guest($request->all());
         $guest->reservation_id = $reservation_id;
-        
+
         $guest->save();
 
         Session::put('guest_id', $guest->id);
-    
+
         return redirect()->route('asignservices.index')->with('success', 'Huesped creado exitosamente');
     }
-  /*return redirect()->route('guests.index')
+    /*return redirect()->route('guests.index')
             ->with('success', 'Habitacion creada con exito');
             */
     /**
@@ -81,7 +89,7 @@ class GuestController extends Controller
      */
     public function show(Guest $guest)
     {
-        return view('guests.show',compact('guest'));
+        return view('guests.show', compact('guest'));
     }
 
     /**
@@ -93,7 +101,7 @@ class GuestController extends Controller
     public function edit(Guest $guest)
     {
         $countries = CountryListFacade::getList('es');
-        return view('guests.edit',compact('guest','countries'));
+        return view('guests.edit', compact('guest', 'countries'));
     }
 
     /**
@@ -105,7 +113,7 @@ class GuestController extends Controller
      */
     public function update(Request $request, Guest $guest)
     {
-        
+
 
         $request->validate([
             'name' => 'required',
@@ -122,9 +130,9 @@ class GuestController extends Controller
         ]);
 
         $guest->update($request->all());
-        
+
         return redirect()->route('guests.index')
-        ->with('success','Se agrego al huesped correctamente');
+            ->with('success', 'Se agrego al huesped correctamente');
     }
 
     /**
@@ -138,6 +146,6 @@ class GuestController extends Controller
         $guest->delete();
 
         return redirect()->route('guests.index')
-        ->with('success','El huesped se elimino correctamente');
+            ->with('success', 'El huesped se elimino correctamente');
     }
 }

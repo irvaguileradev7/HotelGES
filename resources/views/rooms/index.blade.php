@@ -14,6 +14,7 @@
                         <a class="btn btn-success" href="{{ route('rooms.create') }}">Nueva habitación</a>
                     </div>
                 </div>
+                
             </div>
         </div>
         <br>

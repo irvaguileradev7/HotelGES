@@ -15,13 +15,29 @@
                 </div>
             </div>
         </div>
-        <br>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form action="{{ route('guests.index') }}" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="search" placeholder="Buscar...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
             </div>
         @endif
-        <br>
+
         <div class="container">
             <table class="table table-bordered">
                 <tr>
