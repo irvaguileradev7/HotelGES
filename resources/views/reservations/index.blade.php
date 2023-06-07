@@ -175,6 +175,7 @@
 
                 return true; // El rango de fechas está disponible
             }
+            
         });
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -204,7 +205,11 @@
                 // Verificar si el rango de fechas es válido
                 return to >= from;
             }
+
+            
         });
+        
+        
     </script>
 
 @endsection

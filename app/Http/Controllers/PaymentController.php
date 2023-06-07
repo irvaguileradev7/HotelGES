@@ -19,6 +19,7 @@ class PaymentController extends Controller
      */
     public function index(Request $request)
     {
+        
         // OBTENER LA SUMA DE TODOS LOS SERVICIOS DE UN HUESPED
         $servicios = AsignService::where('guest_id',session('guest_id'))->sum('total_services');
         // dd($Servicios);
