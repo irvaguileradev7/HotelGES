@@ -57,8 +57,7 @@ class GuestController extends Controller
             'last_name' => 'required',
             'email' => 'nullable|email',
             'phone' => 'nullable',
-            //'adults' => 'required',
-            //'kids' =>  'nullable',
+
             'country' => 'required',
             'region' => 'required',
             'city' => 'required',
@@ -120,8 +119,6 @@ class GuestController extends Controller
             'last_name' => 'required',
             'email' => 'nullable|email',
             'phone' => 'nullable',
-            'adults' => 'required',
-            'kids' =>  'nullable',
             'country' => 'required',
             'region' => 'required',
             'city' => 'required',
