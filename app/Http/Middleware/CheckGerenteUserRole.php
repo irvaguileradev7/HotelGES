@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CheckOperator
+class CheckGerenteUserRole
 {
     /**
      * Handle an incoming request.
@@ -14,15 +14,12 @@ class CheckOperator
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-
-    //  SI SE DESCOMENTA ESTA FUNCION
-    //  EL PROCESO DE RESSERVACION NO FUNCIONARA
-    /* public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role_id !=3)
-        {
-            abort(403, 'No tiene permiso para acceder a esta pagina');
+        if ($request->user()->role_id == '2') {
+            return $next($request);
+        } else {
+            return redirect('/');
         }
-        return $next($request);
-    } */
+    }
 }

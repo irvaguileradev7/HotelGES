@@ -6,7 +6,7 @@ use App\Models\Room;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 
-class ReservationviewController extends Controller
+class Reservation_viewController extends Controller
 {
     /**
      * Display a listing of the resource.
