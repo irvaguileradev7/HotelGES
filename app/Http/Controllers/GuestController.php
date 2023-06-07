@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Guest;
 use App\Models\Reservation;
+use App\Models\Payment;
+use App\Models\AsignService;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Monarobase\CountryList\CountryListFacade;
 use Illuminate\Support\Facades\Session;
@@ -88,9 +91,18 @@ class GuestController extends Controller
      */
     public function show(Guest $guest)
     {
-        return view('guests.show', compact('guest'));
+        $reservation = Reservation::where('id', $guest->reservation_id)
+            ->with('room')
+            ->first();
+    
+        $asignServices = AsignService::where('guest_id', $guest->id)
+            ->with('service')
+            ->get();
+    
+        $payment = Payment::where('guest_id', $guest->id)->first();
+    
+        return view('guests.show', compact('guest', 'reservation', 'asignServices', 'payment'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
