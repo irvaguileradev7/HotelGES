@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('guest_id');
             $table->decimal('total_payment');
-            $table->decimal('guest_payment');
+            $table->decimal('guest_payment')->nullable();
             $table->decimal('difference');
             $table->timestamps();
 

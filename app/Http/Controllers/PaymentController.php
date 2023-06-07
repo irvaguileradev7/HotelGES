@@ -17,7 +17,7 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // OBTENER LA SUMA DE TODOS LOS SERVICIOS DE UN HUESPED
         $servicios = AsignService::where('guest_id',session('guest_id'))->sum('total_services');
@@ -32,18 +32,26 @@ class PaymentController extends Controller
 
         $totalPagar = $servicios + $precioCuarto->price;
 
+        $pagoHuesped = $request->input('pagoHuesped');
+
         $payment = new Payment;
         $payment->guest_id = session('guest_id');
-        $payment->guest_payment = 0;
+        $payment->guest_payment = $pagoHuesped;
         $payment->total_payment = $totalPagar;
         $payment->difference = $totalPagar - $payment->guest_payment;
         $payment->save();
-        
-        
+
+        $guestId = session('guest_id');
+        $payment = Payment::where('guest_id', $guestId)->first();
+
+        if ($payment) {
+            $payment->guest_payment = $request->input('pagoHuesped');
+            $payment->save();
+        }
 
         $asignservices = AsignService::latest()->paginate();
 
-        return view('payments.index', compact('asignservices','servicios','precioCuarto','totalPagar'));
+        return view('payments.index', compact('asignservices','servicios','precioCuarto','pagoHuesped','totalPagar'));
     }
 
     /**
@@ -64,11 +72,13 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'guest_id' => 'required',
             'total_services' => 'required'
         ]);
 
+       
         
 
         return redirect()->route('payments.index')->with('success', 'Asignación de servicio creada exitosamente');
