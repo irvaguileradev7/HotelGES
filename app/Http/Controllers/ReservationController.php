@@ -7,6 +7,7 @@ use App\Models\Room;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
@@ -19,13 +20,19 @@ class ReservationController extends Controller
      */
     public function index()
     {
-
         $room_id = Session::get('room_id');
         $reservations = Reservation::where('room_id', $room_id)
             ->orderBy('time_from', 'asc') // Ordenar por fecha de inicio ascendente
             ->get();
     
-        return view('reservations.index', compact('reservations'));
+            $reservedDates = $reservations->map(function ($reservation) {
+                return [
+                    'time_from' => Carbon::parse($reservation->time_from)->toDateString(),
+                    'time_to' => Carbon::parse($reservation->time_to)->toDateString(),
+                ];
+            });
+    
+        return view('reservations.index', compact('reservations', 'reservedDates'));
     }
 
     /**

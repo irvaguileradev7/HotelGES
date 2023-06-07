@@ -8,7 +8,7 @@
 
     <div class="container">
 
-        <form action="{{ route('reservations.store') }}" method="POST">
+        <form id="reservation-form" action="{{ route('reservations.store') }}" method="POST">
             @csrf
             <input type="hidden" name="room_id" value="{{ Session::get('room_id') }}">
             
@@ -34,7 +34,8 @@
                 </div>
             </div>
             
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" id="submit-btn" class="btn btn-primary">Guardar</button>
+
         </form>
         
 
@@ -135,4 +136,45 @@
 @else
     <p>No hay reservaciones existentes para este cuarto.</p>
     @endif
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Obtener elementos del formulario
+        var form = document.getElementById('reservation-form');
+        var timeFromInput = document.getElementById('time_from');
+        var timeToInput = document.getElementById('time_to');
+        var submitBtn = document.getElementById('submit-btn');
+
+        // Agregar evento de escucha al enviar el formulario
+        form.addEventListener('submit', function(event) {
+            // Validar el rango de fechas seleccionado
+            if (!isDateRangeAvailable(timeFromInput.value, timeToInput.value)) {
+                // Cancelar el envío del formulario
+                event.preventDefault();
+                // Mostrar mensaje de error
+                alert('El rango de fechas seleccionado está ocupado.');
+            }
+        });
+
+        // Función para verificar la disponibilidad del rango de fechas
+        function isDateRangeAvailable(timeFrom, timeTo) {
+            // Convertir las fechas a objetos Date
+            var from = new Date(timeFrom);
+            var to = new Date(timeTo);
+
+            // Verificar si el rango de fechas está disponible
+            var reservedDates = {!! json_encode($reservedDates) !!}; // Obtener las fechas reservadas desde el controlador
+            for (var i = 0; i < reservedDates.length; i++) {
+                var reservedFrom = new Date(reservedDates[i].time_from);
+                var reservedTo = new Date(reservedDates[i].time_to);
+
+                if ((from >= reservedFrom && from <= reservedTo) || (to >= reservedFrom && to <= reservedTo)) {
+                    return false; // El rango de fechas está ocupado
+                }
+            }
+
+            return true; // El rango de fechas está disponible
+        }
+    });
+</script>
+
 @endsection

@@ -58,7 +58,8 @@
             <h6>Ingresar al pago</h6>
         </div>
         <div class="col">
-            <form action="{{ route('payments.store')}}" method="get">
+            <form action="{{ route('payments.store')}}" method="POST">
+                @csrf
                 <div class="col-xs-12 col-sm-12 col-md-12 align-text-start">
                     <input type="number" name="pagoHuesped" id="pagoHuesped"
                         min="0" value={{ $pagoHuesped }} placeholder="Cantidad del pago del huésped"
