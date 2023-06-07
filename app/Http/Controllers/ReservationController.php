@@ -24,14 +24,14 @@ class ReservationController extends Controller
         $reservations = Reservation::where('room_id', $room_id)
             ->orderBy('time_from', 'asc') // Ordenar por fecha de inicio ascendente
             ->get();
-    
-            $reservedDates = $reservations->map(function ($reservation) {
-                return [
-                    'time_from' => Carbon::parse($reservation->time_from)->toDateString(),
-                    'time_to' => Carbon::parse($reservation->time_to)->toDateString(),
-                ];
-            });
-    
+
+        $reservedDates = $reservations->map(function ($reservation) {
+            return [
+                'time_from' => Carbon::parse($reservation->time_from)->toDateString(),
+                'time_to' => Carbon::parse($reservation->time_to)->toDateString(),
+            ];
+        });
+
         return view('reservations.index', compact('reservations', 'reservedDates'));
     }
 
@@ -55,9 +55,18 @@ class ReservationController extends Controller
     {
         $request->validate([
             'room_id' => 'required',
-            'time_from' => 'required',
+            'time_from' => 'required|date',
             'time_to' => [
                 'required',
+                'date',
+                function ($attribute, $value, $fail) use ($request) {
+                    $timeFrom = Carbon::parse($request->input('time_from'));
+                    $timeTo = Carbon::parse($value);
+
+                    if ($timeTo->lessThan($timeFrom)) {
+                        $fail('La fecha de salida no puede ser anterior a la fecha de entrada.');
+                    }
+                },
                 Rule::unique('reservations')->where(function ($query) use ($request) {
                     return $query->where('room_id', $request->room_id)
                         ->where(function ($query) use ($request) {
@@ -65,14 +74,14 @@ class ReservationController extends Controller
                                 $query->where('time_from', '<=', $request->time_from)
                                     ->where('time_to', '>=', $request->time_from);
                             })
-                            ->orWhere(function ($query) use ($request) {
-                                $query->where('time_from', '<=', $request->time_to)
-                                    ->where('time_to', '>=', $request->time_to);
-                            })
-                            ->orWhere(function ($query) use ($request) {
-                                $query->where('time_from', '>=', $request->time_from)
-                                    ->where('time_to', '<=', $request->time_to);
-                            });
+                                ->orWhere(function ($query) use ($request) {
+                                    $query->where('time_from', '<=', $request->time_to)
+                                        ->where('time_to', '>=', $request->time_to);
+                                })
+                                ->orWhere(function ($query) use ($request) {
+                                    $query->where('time_from', '>=', $request->time_from)
+                                        ->where('time_to', '<=', $request->time_to);
+                                });
                         });
                 }),
                 function ($attribute, $value, $fail) use ($request) {
@@ -88,6 +97,7 @@ class ReservationController extends Controller
                 }
             ]
         ]);
+
 
         $reservation = new Reservation();
         $reservation->room_id = $request->input('room_id');
