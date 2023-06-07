@@ -41,31 +41,25 @@
                     <div class="container">
                         <div class="row">
                             @foreach ($rooms as $index => $room)
+                                 {{-- CONDICIONAL--}}
+                                @if ($room ->status_id = 2)
                                 <div class="col-md-6 col-lg-4 col-xl-3">
-                                    {{-- Empezamos condicional--}}
-                                    @if ($room ->status_id = 2)
 
-                                    @else($room->status_id=0)
-                                        {{-- Ocultar el cuarto--}}
-                                        <div id="liveAlertPlaceholder"></div>
-                                        <button type="button" class="btn btn-primary" id="liveAlertBtn">Cuarto ocupado</button>
-
-                                    @endif
-                                        <div id="product-{{ $index + 1 }}" class="single-product">
-                                            <div class="part-1">
-                                                <div class="image-container">
-                                                    <img src="{{ asset('/' . $room->image) }}" width="100%" class="img-fluid"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal-{{ $index + 1 }}">
-                                                </div>
-                                            </div>
-                                            <div class="part-2">
-                                                <a href="#" data-bs-toggle="modal"
+                                    <div id="product-{{ $index + 1 }}" class="single-product">
+                                        <div class="part-1">
+                                            <div class="image-container">
+                                                <img src="{{ asset('/' . $room->image) }}" width="100%" class="img-fluid"
+                                                    data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal-{{ $index + 1 }}">
-                                                    Habitacion numero: {{ $room->number }}
-                                                </a>
                                             </div>
                                         </div>
+                                        <div class="part-2">
+                                            <a href="#" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal-{{ $index + 1 }}">
+                                                Habitacion numero: {{ $room->number }}
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- Modal para el contenido del popup -->
@@ -102,7 +96,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                            @endif
                             @endforeach
 
                         </div>
