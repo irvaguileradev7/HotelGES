@@ -12,57 +12,78 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Nombre(s):</strong>
-                    {{ $guest->name }}
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Apellido(s):</strong>
-                    {{ $guest->last_name }}
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Correo:</strong>
-                    {{ $guest->email }}
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Teléfono:</strong>
-                    {{ $guest->phone }}
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Dirección:</strong>
-                    {{ $guest->street_address }}. {{ $guest->city }}. {{ $guest->zip_code }}.
-                    {{ $guest->country }}
-                </div>
+                <table class="table table-bordered custom-table">
+                    <tr>
+                        <th></th>
+                        <td>Dato del huesped</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre(s)</th>
+                        <td>{{ $guest->name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Apellido(s)</th>
+                        <td>{{ $guest->last_name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Correo</th>
+                        <td>{{ $guest->email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Teléfono</th>
+                        <td>{{ $guest->phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Dirección</th>
+                        <td>{{ $guest->street_address }}. {{ $guest->city }}. {{ $guest->zip_code }}. {{ $guest->country }}
+                        </td>
+                    </tr>
+                </table>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <h4>Información de la reservación:</h4>
-                    <p>Habitación: {{ $reservation->room->number }}</p>
-                    <p>Fecha de entrada: {{ $reservation->time_from }}</p>
-                    <p>Fecha de salida: {{ $reservation->time_to }}</p>
+                    <table class="table table-bordered custom-table">
+                        <tr>
+                            <th></th>
+                            <td>Datos de la reservación</td>
+                        </tr>
+                        <tr>
+                            <th>Habitación</th>
+                            <td>{{ $reservation->room->number }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de entrada</th>
+                            <td>{{ $reservation->time_from }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de salida</th>
+                            <td>{{ $reservation->time_to }}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <h4>Servicios asignados:</h4>
-                    @foreach ($asignServices as $asignService)
-                        <p>{{ $asignService->service->type }}</p>
-                        <p>{{ $asignService->quantity }}</p>
-                    @endforeach
+                    <table class="table table-bordered custom-table">
+                        <tr>
+                            <td>Servicio</td>
+                            <td>Cantidad</td>
+                            <td>Total</td>
+                        </tr>
+                        @foreach ($asignServices as $asignService)
+                            <tr>
+                                <td>{{ $asignService->service->type }}</td>
+                                <td>{{ $asignService->quantity }}</td>
+                                <td>{{ $asignService->total_services}}</td>
+                            </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
 
@@ -70,15 +91,29 @@
                 <div class="form-group">
                     <h4>Información de pago:</h4>
                     @if ($payment)
-                        <p>Total a pagar: {{ $payment->total_payment }}</p>
-                        <p>Monto pagado: {{ $payment->guest_payment}}</p>
-                        <p>Pago pendiente: {{ $payment->difference}}</p>
+                        <table class="table table-bordered custom-table">
+                            <tr>
+                                <th></th>
+                                <td>Pago</td>
+                            </tr>
+                            <tr>
+                                <th>Total a pagar</th>
+                                <td>{{ $payment->total_payment }}</td>
+                            </tr>
+                            <tr>
+                                <th>Monto pagado</th>
+                                <td>{{ $payment->guest_payment }}</td>
+                            </tr>
+                            <tr>
+                                <th>Pago pendiente</th>
+                                <td>{{ $payment->difference }}</td>
+                            </tr>
+                        </table>
                     @else
                         <p>No se ha realizado ningún pago.</p>
                     @endif
                 </div>
             </div>
         </div>
-
     </div>
 @endsection
