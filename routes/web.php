@@ -57,6 +57,7 @@ Route::middleware([
 
 // RUTA QUE SOLO ADMITE A LOS ADMINISTRADORES DE IT
 //arreglar
+/*
 Route::middleware(['checkUserRole'])->group(function () {
 });
 
@@ -71,7 +72,7 @@ Route::middleware(['checkHotelAdmin'])->group(function () {
     Route::resource('reservations', ReservationController::class);
     Route::resource('guests', GuestController::class);
 });
-
+*/
 // RUTA COMENTADA POR EL MOMENTO
 /* Route::middleware(['checkOperator'])->group(function() {
     Route::resource('guests', GuestController::class);
