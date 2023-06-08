@@ -53,6 +53,7 @@ Route::middleware([
     Route::resource('reservationview', ReservationviewController::class);
     Route::resource('users', UserController::class);
     Route::post('/delete-reservation-table', 'ReservationController@deleteTable');
+
 });
 
 // RUTA QUE SOLO ADMITE A LOS ADMINISTRADORES DE IT

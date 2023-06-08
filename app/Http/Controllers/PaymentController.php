@@ -20,6 +20,18 @@ class PaymentController extends Controller
      */
     public function index(Request $request)
     {
+        $payments = Payment::latest()->paginate();
+
+        return view('payments.index', compact('payments'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
         // OBTENER LA SUMA DE TODOS LOS SERVICIOS DE UN HUESPED
         $servicios = AsignService::where('guest_id', session('guest_id'))->sum('total_services');
         // dd($Servicios);
@@ -54,17 +66,7 @@ class PaymentController extends Controller
 
         $asignservices = AsignService::latest()->paginate();
 
-        return view('payments.index', compact('asignservices', 'servicios', 'precioCuarto', 'pagoHuesped', 'totalPagar'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('payments.create', compact('asignservices', 'servicios', 'precioCuarto', 'pagoHuesped', 'totalPagar'));
     }
 
     /**
@@ -153,8 +155,42 @@ class PaymentController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $payment = Payment::findOrFail($id);
+
+        // Obtener el ID del huésped asociado al pago
+        $guestId = $payment->guest_id;
+
+        // Obtener la suma de todos los servicios de un huésped
+        $servicios = AsignService::where('guest_id', $guestId)->sum('total_services');
+
+        // Obtener el precio del cuarto
+        $precioCuarto = DB::table('rooms')
+            ->join('reservations', 'reservations.id', '=', 'rooms.id')
+            ->select('price')
+            ->pluck('price')
+            ->first();
+
+        // Obtener la cantidad de noches de la reservación
+        $noches = DB::table('reservations')
+            ->join('rooms', 'rooms.id', '=', 'reservations.room_id')
+            ->where('reservations.id', $guestId)
+            ->select('nights')
+            ->pluck('nights')
+            ->first();
+
+        // Calcular el costo total de la reservación
+        $precioCuarto = $precioCuarto * $noches;
+
+        // Calcular el total a pagar
+        $totalPagar = $servicios + $precioCuarto;
+
+        // Obtener el pago del huésped
+        $pagoHuesped = $payment->guest_payment;
+
+        return view('payments.edit', compact('payment', 'servicios', 'precioCuarto', 'totalPagar', 'pagoHuesped'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -163,9 +199,23 @@ class PaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
-        //
+
+        $payment = Payment::findOrFail($id);
+        $pagoHuesped = $payment->guest_payment;
+        $sumaPago = $request->input('sumaPago');
+
+        // Realizar la suma del pago del huésped y la cantidad a sumar
+        $nuevoPagoHuesped = $pagoHuesped + $sumaPago;
+        $totalPagar = $payment->total_payment;
+
+        $payment->guest_payment = $nuevoPagoHuesped;
+        $payment->difference = $totalPagar - $nuevoPagoHuesped;
+        $payment->save();
+
+        return redirect()->route('payments.index')->with('success', 'Pago actualizado exitosamente');
     }
 
     /**

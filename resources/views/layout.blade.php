@@ -30,8 +30,8 @@
 
             </li>
             <li>
-                <a href="{{ route('calendar.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Calendario</span>
+                <a href="{{ route('payments.index') }}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Pagos</span>
                 </a>
 
             </li>

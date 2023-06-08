@@ -17,10 +17,10 @@ class AsignServiceController extends Controller
     public function index()
     {
 
- 
-        $services = Service::latest()->paginate();
-
-        return view('asignservices.index', compact('services'));
+        $rooms = Room::latest()->paginate();
+        $reservations = Reservation::with('guest')->get();
+    
+        return view('asignrooms.index', compact('rooms', 'reservations'));
     }
 
     /**
@@ -76,7 +76,7 @@ class AsignServiceController extends Controller
 
         $servicios = AsignService::where('guest_id', session('guest_id'))->sum('total_services');
         
-        return redirect()->route('payments.index')->with(
+        return redirect()->route('payments.create')->with(
             ['success' => 'Asignación de servicio creada exitosamente', 'servicios' => $servicios]);
     }
 

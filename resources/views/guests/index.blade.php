@@ -62,6 +62,7 @@
                                 @method('DELETE')
                                 <table>
                                     <tr>
+
                                         <td class="non-cell">
                                             <a class="btn btn-info" href="{{ route('guests.show', $guest->id) }}">Ver</a>
                                         </td>

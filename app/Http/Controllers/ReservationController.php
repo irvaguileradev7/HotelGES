@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
+use App\Models\Guest;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
@@ -22,7 +23,8 @@ class ReservationController extends Controller
     {
         $room_id = Session::get('room_id');
         $reservations = Reservation::where('room_id', $room_id)
-            ->orderBy('time_from', 'asc') // Ordenar por fecha de inicio ascendente
+            ->orderBy('time_from', 'asc')
+            ->with('guest') // Cargar la relación "guest"
             ->get();
 
         $reservedDates = $reservations->map(function ($reservation) {

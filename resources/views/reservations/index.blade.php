@@ -103,6 +103,8 @@
                                                         @if ($currentDay >= $startDay && $currentDay <= $endDay)
                                                             <div class="reservation">
                                                                 <span class="reserved-text">Ocupado</span>
+                                                                <p>ID de Huesped: {{ $reservation->guest->id }}</p>
+                                                                <!-- Agregar esta línea para mostrar el ID del huésped -->
                                                             </div>
                                                         @endif
                                                     @endforeach
@@ -129,8 +131,8 @@
             </tbody>
             </table>
     </div>
-    @endforeach
     </div>
+    @endforeach
     </div>
     @endforeach
 @else
@@ -175,7 +177,7 @@
 
                 return true; // El rango de fechas está disponible
             }
-            
+
         });
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -206,10 +208,8 @@
                 return to >= from;
             }
 
-            
+
         });
-        
-        
     </script>
 
 @endsection
