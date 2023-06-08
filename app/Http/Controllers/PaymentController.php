@@ -34,20 +34,20 @@ class PaymentController extends Controller
 
         // OBTENER LA CANTIDAD DE NOCHES DE LA RESERVACION
         $noches = DB::table('reservations')
-                ->join('rooms', 'rooms.id', '=', 'reservations.room_id')
-                ->where('reservations.id',session('guest_id'))
-                ->select('nights')
-                ->pluck('nights')
-                ->first();
+            ->join('rooms', 'rooms.id', '=', 'reservations.room_id')
+            ->where('reservations.id', session('guest_id'))
+            ->select('nights')
+            ->pluck('nights')
+            ->first();
         // dd($noches);        
 
         // OBTENER EL COSTO TOTAL DE LA RESERVACION
-        $precioCuarto = $precioCuarto*$noches;
+        $precioCuarto = $precioCuarto * $noches;
         // dd($precioCuarto);
 
         $totalPagar = $servicios + $precioCuarto;
         // dd($totalPagar);
-        
+
 
         $pagoHuesped = $request->input('pagoHuesped');
 
@@ -74,7 +74,7 @@ class PaymentController extends Controller
             $payment->difference = $totalPagar - $payment->guest_payment;
             $payment->save();
         }
-       
+
 
         $asignservices = AsignService::latest()->paginate();
 

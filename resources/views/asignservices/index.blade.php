@@ -1,11 +1,11 @@
 @extends('layout')
 
 @section('content')
-    <h1>Elegir servicios</h1>
+
     <form action="{{ route('asignservices.store') }}" method="POST">
         <div class="container">
+                <h1>Elegir servicios</h1>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <p>Sesion{{ session('guest_id') }}</p>
                 
             </div>
 
