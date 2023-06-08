@@ -65,7 +65,7 @@
                         min="0" value={{ $pagoHuesped }} placeholder="Cantidad del pago del huésped"
                         onkeyup="calcular()">
 
-                        <button type="submit" class="btn btn-primary" onclick="showPopup()">Guardar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
         </div>
@@ -76,24 +76,7 @@
     </div>
     
 </div>
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Usuario registrado</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>¡Usuario registrado con éxito!</p>
-        </div>
-        <div class="modal-footer">
-          <a href="{{ route('guests.index') }}" class="btn btn-primary">Ir a la vista de huéspedes</a>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
 <script>
 console.log('ok')
@@ -107,17 +90,8 @@ function calcular(){
 
 
 }
-
-
-
 </script>
-<script>
-    function showPopup() {
-      // Mostrar el popup
-      $('#myModal').modal('show');
-    }
-    </script>
-    
+
 
 
 @endsection
