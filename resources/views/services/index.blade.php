@@ -23,7 +23,7 @@
         @endif
         <br>
         <div class="container">
-            <table class="table table-bordered">
+            <table class="table table-bordered align-middle">
                 <tr>
                     <th>Num.</th>
                     <th>Tipo</th>

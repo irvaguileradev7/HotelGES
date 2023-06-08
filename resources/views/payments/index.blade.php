@@ -22,8 +22,8 @@
                     <form action="{{ route('payments.index') }}" method="GET">
                         <div class="input-group">
                             <input type="text" class="form-control" name="search" placeholder="Buscar...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            <span class="input-group-btn mt-2">
+                                <button class="btn btn-primary mt-1" type="submit">Buscar</button>
                             </span>
                         </div>
                     </form>

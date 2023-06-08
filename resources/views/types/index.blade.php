@@ -28,7 +28,7 @@
         @endif
         <br>
         <div class="container">
-            <table class="table table-bordered">
+            <table class="table table-bordered align-middle">
                 <tr>
                     <th>Id</th>
                     <th>Tipos</th>

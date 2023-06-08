@@ -22,8 +22,8 @@
                     <form action="{{ route('guests.index') }}" method="GET">
                         <div class="input-group">
                             <input type="text" class="form-control" name="search" placeholder="Buscar por nombre, apellidos, teléfono o correo...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            <span class="input-group-btn mt-2">
+                                <button class="btn btn-primary mt-1" type="submit">Buscar</button>
                             </span>
                         </div>
                     </form>
@@ -32,8 +32,8 @@
                     <form action="{{ route('guests.index') }}" method="GET">
                         <div class="input-group">
                             <input type="text" class="form-control" name="id" placeholder="Buscar por ID...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            <span class="input-group-btn mt-2">
+                                <button class="btn btn-primary mt-1" type="submit">Buscar</button>
                             </span>
                         </div>
                     </form>
@@ -49,7 +49,7 @@
         @endif
 
         <div class="container">
-            <table class="table table-bordered">
+            <table class="table table-bordered align-middle">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
