@@ -9,6 +9,7 @@ use App\Models\Payment;
 use App\Models\AsignService;
 use Symfony\Contracts\Service\Attribute\Required;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class PaymentController extends Controller
 {
@@ -19,16 +20,15 @@ class PaymentController extends Controller
      */
     public function index(Request $request)
     {
-        
         // OBTENER LA SUMA DE TODOS LOS SERVICIOS DE UN HUESPED
-        $servicios = AsignService::where('guest_id',session('guest_id'))->sum('total_services');
+        $servicios = AsignService::where('guest_id', session('guest_id'))->sum('total_services');
         // dd($Servicios);
 
         // OBTENER EL PRECIO DEL CUARTO
         $precioCuarto = DB::table('rooms')
-                        ->join('reservations', 'reservations.id', '=', 'rooms.id')
-                        ->select('price')
-                        ->first();
+            ->join('reservations', 'reservations.id', '=', 'rooms.id')
+            ->select('price')
+            ->first();
         // dd($precioCuarto);
 
         $totalPagar = $servicios + $precioCuarto->price;
@@ -47,12 +47,23 @@ class PaymentController extends Controller
 
         if ($payment) {
             $payment->guest_payment = $request->input('pagoHuesped');
+            $payment->total_payment = $totalPagar;
+            $payment->difference = $totalPagar - $payment->guest_payment;
+            $payment->save();
+        } else {
+            $payment = new Payment;
+            $payment->guest_id = $guestId;
+            $payment->guest_payment = $request->input('pagoHuesped');
+            $payment->total_payment = $totalPagar;
+            $payment->difference = $totalPagar - $payment->guest_payment;
             $payment->save();
         }
+       
 
         $asignservices = AsignService::latest()->paginate();
 
-        return view('payments.index', compact('asignservices','servicios','precioCuarto','pagoHuesped','totalPagar'));
+        return view('payments.index', compact('asignservices', 'servicios', 'precioCuarto', 'pagoHuesped', 'totalPagar'));
+        return Redirect::route('guests.index');
     }
 
     /**
@@ -73,16 +84,15 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $request->validate([
-            'guest_id' => 'required',
-            'total_services' => 'required'
-        ]);
 
-       
-        
+        $payment = new Payment;
+        $payment->guest_id = $request->input('guest_id');
+        $payment->total_services = $request->input('total_services');
+        // Otros campos del pago
 
-        return redirect()->route('payments.index')->with('success', 'Asignación de servicio creada exitosamente');
+        $payment->save();
+
+        return redirect()->route('payments.index')->with('success', 'Pago creado exitosamente');
     }
 
     /**
