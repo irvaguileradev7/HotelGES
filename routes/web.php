@@ -1,8 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FloorController;
 use App\Http\Controllers\GuestController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
@@ -12,7 +12,7 @@ use App\Http\Controllers\AsignServiceController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\ReservationviewController;
+use App\Http\Controllers\Reservation_viewController;
 
 
 /*
@@ -26,7 +26,6 @@ use App\Http\Controllers\ReservationviewController;
 |
 */
 
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -38,6 +37,7 @@ Route::middleware([
     Route::get('/', function () {
         return view('welcome');
     });
+    
 
     Route::resource('rooms', RoomController::class);
     Route::resource('types', TypeController::class);
@@ -50,31 +50,32 @@ Route::middleware([
     Route::resource('reservations', ReservationController::class);
     Route::resource('calendar', CalendarController::class);
     Route::resource('payments', PaymentController::class);
-    Route::resource('reservationview', ReservationviewController::class);
+
+
+});
+
+// VISTA QUE SOLO LOS ADMIN. PUEDEN VER
+Route::middleware(['checkAdminUserRole'])->group(function(){
     Route::resource('users', UserController::class);
-
-
-});
-
-// RUTA QUE SOLO ADMITE A LOS ADMINISTRADORES DE IT
-//arreglar
-/*
-Route::middleware(['checkUserRole'])->group(function () {
 });
 
 
-Route::middleware(['checkHotelAdmin'])->group(function () {
-    Route::resource('floors', FloorController::class);
+// VISTAS QUE PUEDEN ACCEDER LOS GERENTES
+Route::middleware(['checkGerenteUserRole'])->group(function(){
     Route::resource('rooms', RoomController::class);
     Route::resource('types', TypeController::class);
+    Route::resource('floors', FloorController::class);
     Route::resource('services', ServiceController::class);
+});
+
+
+// DESCOMENTAR ESTAS LINEAS UNA VEZ ACABADAS LAS ULTIMAS VISTAS
+// SOLO LOS OPERARIOS PUEDEN ACCEDER A ESTAS VISTAS
+Route::middleware(['checkOperarioUserRole'])->group(function() {
     Route::resource('asignrooms', AsignRoomController::class);
     Route::resource('asignservices', AsignServiceController::class);
-    Route::resource('reservations', ReservationController::class);
-    Route::resource('guests', GuestController::class);
+    Route::resource('payments', PaymentController::class);
 });
-*/
-// RUTA COMENTADA POR EL MOMENTO
-/* Route::middleware(['checkOperator'])->group(function() {
-    Route::resource('guests', GuestController::class);
-}); */
+
+
+

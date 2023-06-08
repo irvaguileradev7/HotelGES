@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CheckHotelAdmin
+class CheckAdminUserRole
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,11 @@ class CheckHotelAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role_id !=2)
-        {
-            abort(403, 'No tiene permiso para acceder a esta pagina');
+        if ($request->user()->role_id == '1') {
+            return $next($request);
+        } else {
+            return redirect('/');
         }
-        return $next($request);
+        
     }
 }
