@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Monarobase\CountryList\CountryListFacade;
 use Illuminate\Support\Facades\Session;
 use Monarobase\CountryList\CountryList;
+use Illuminate\Support\Facades\DB;
 
 class GuestController extends Controller
 {
@@ -24,15 +25,15 @@ class GuestController extends Controller
         $search = $request->input('search');
 
         $guests = Guest::query()
-            ->where('name', 'LIKE', "%$search%")
-            ->orWhere('last_name', 'LIKE', "%$search%")
-            ->orWhere('phone', 'LIKE', "%$search%")
-            ->orWhere('email', 'LIKE', "%$search%")
-            ->paginate();
+        ->whereRaw("CONCAT(name, ' ', last_name) LIKE '%$search%'")
+        ->orWhere('phone', 'LIKE', "%$search%")
+        ->orWhere('email', 'LIKE', "%$search%")
+        ->paginate();
 
         $countries = CountryListFacade::getList('es');
         return view('guests.index', compact('guests', 'countries'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
+            
     }
 
     /**
@@ -152,10 +153,19 @@ class GuestController extends Controller
      */
     public function destroy(Guest $guest)
     {
+        $guestId = $guest->id;
+    
+        Payment::where('guest_id', $guestId)->delete();
+        AsignService::where('guest_id', $guestId)->delete();
+    
+        $reservationId = $guest->reservation_id;
+        Guest::where('reservation_id', $reservationId)->delete();
+        Reservation::where('id', $reservationId)->delete();
+    
         $guest->delete();
-
+    
         return redirect()->route('guests.index')
-            ->with('success', 'El huesped se elimino correctamente');
+            ->with('success', 'El huesped se eliminó correctamente');
     }
 
     public function deleteTable(Request $request)
