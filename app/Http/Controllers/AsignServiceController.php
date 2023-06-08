@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AsignService;
 use App\Models\Service;
 use App\Models\Guest;
+
 use Illuminate\Http\Request;
 
 class AsignServiceController extends Controller
@@ -17,7 +18,7 @@ class AsignServiceController extends Controller
     public function index()
     {
 
- 
+        
         $services = Service::latest()->paginate();
 
         return view('asignservices.index', compact('services'));
@@ -76,7 +77,7 @@ class AsignServiceController extends Controller
 
         $servicios = AsignService::where('guest_id', session('guest_id'))->sum('total_services');
         
-        return redirect()->route('payments.index')->with(
+        return redirect()->route('payments.create')->with(
             ['success' => 'Asignación de servicio creada exitosamente', 'servicios' => $servicios]);
     }
 

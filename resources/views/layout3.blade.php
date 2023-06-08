@@ -31,6 +31,12 @@
 
             </li>
             <li>
+                <a href="{{ route('payments.index') }}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Pagos</span>
+                </a>
+
+            </li>
+            <li>
                 <hr>
                 <p>Administracion </p>
             </li>

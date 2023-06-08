@@ -50,10 +50,8 @@ Route::middleware([
     Route::resource('reservations', ReservationController::class);
     Route::resource('calendar', CalendarController::class);
     Route::resource('payments', PaymentController::class);
-    Route::resource('reservation-views', Reservation_viewController::class);
-    
-    
-    Route::post('/delete-reservation-table', 'ReservationController@deleteTable');
+
+
 });
 
 // VISTA QUE SOLO LOS ADMIN. PUEDEN VER

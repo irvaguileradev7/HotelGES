@@ -29,3 +29,6 @@ h2{
     transform: translate(-50%, -50%);
 }
 
+.mod-size{
+    width: "200px";
+}

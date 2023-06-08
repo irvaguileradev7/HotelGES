@@ -107,23 +107,6 @@
                     </div>
                 </div>
 
-            <div class="container">
-                <h4>Acompanantes</h3>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Adultos:</strong>
-                            <input type="number" name="adults" class="form-control" value="{{ $guest->adults }}"
-                                placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Ninos:</strong>
-                            <input type="number" name="kids" class="form-control" value="{{ $guest->kids }}"
-                                placeholder="Name">
-                        </div>
-                    </div>
-            </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Guardar</button>

@@ -1,96 +1,87 @@
 @extends('layout')
 
-
 @section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 margin-tb">
+                <div class="container">
+                    <div class="pull-left">
+                        <h1>Pagos</h1>
+                    </div>
 
-{{-- <p>Total de costos de servicio: {{ $servicios }}</p>
-<p>Precio de la habitación: {{ $precioCuarto->price }}</p>
-<p>Total a pagar: {{$totalPagar}}</p> --}}
-
-{{-- <form action="{{ route('payments.store') }}" method="POST">
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <p>Sesion{{ session('guest_id') }}</p>
-
-</form> --}}
-
-{{-- <div class="container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th class="table-default">Costo de los servicios</th>
-                <th class="table-default">Costo de la habitación</th>
-                <th class="table-defaul">Pago del huésped</th>
-                <th class="table-default">Total a pagar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="table-light">
-                <td>{{$servicios}}</td>
-                <td>{{$precioCuarto->price}}</td>
-                <td>{{$pagoHuesped}}</td>
-                <td>{{$totalPagar}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
- --}}
-
- <div class="container">
-    <div class="row">
-      <div class="col">
-        <h3>Costos de servicio</h3>
-        <p>{{ $servicios}}</p>
-      </div>
-      <div class="col">
-        <h3>Precio de la habitación</h3>
-        <p>{{ $precioCuarto->price }}</p>
-      </div>
-      <div class="col pb-5">
-        <h3>Total a pagar</h3>
-        <p id="totalPagar">{{ $totalPagar }}</p>
-      </div>
-    </div>
-  </div>
-
-<div class="container">
-    <div class="row">
-        <div class="col pt-4 ps-5 text-end">
-            <h6>Ingresar al pago</h6>
-        </div>
-        <div class="col">
-            <form action="{{ route('payments.store')}}" method="get">
-                <div class="col-xs-12 col-sm-12 col-md-12 align-text-start">
-                    <input type="number" name="pagoHuesped" id="pagoHuesped"
-                        min="0" value={{ $pagoHuesped }} placeholder="Cantidad del pago del huésped"
-                        onkeyup="calcular()">
-
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    <div class="pull-right">
+                        <a class="btn btn-success" href="{{ route('asignrooms.index') }}"> Nuevo pago</a>
+                    </div>
                 </div>
-            </form>
+            </div>
         </div>
-        <div class="col">
-            <h3>Saldo a cobrar:</h3>
-            <p id="resultado">{{ $pagoHuesped }}</p>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form action="{{ route('payments.index') }}" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="search" placeholder="Buscar...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
+
+        <div class="container">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Huésped</th>
+                    <th>Pago total</th>
+                    <th>Pago del huésped</th>
+                    <th>Pendiente</th>
+                    <th width="280px">Acciones</th>
+                </tr>
+
+                @foreach ($payments as $payment)
+                    <tr class="white-cell">
+                        <td>{{ $payment->guest->name }} {{ $payment->guest->last_name }}</td>
+                        <td>{{ $payment->total_payment }}</td>
+                        <td>{{ $payment->guest_payment }}</td>
+                        <td>{{ $payment->difference }}</td>
+                        <td>
+                            <form id="delete-form-{{ $payment->id }}" action="{{ route('payments.destroy', $payment->id) }}"
+                                method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <table>
+                                    <tr>
+                                        
+                                        <td class="non-cell">
+                                            <a class="btn btn-primary"
+                                                href="{{ route('payments.edit', $payment->id) }}">Modificar</a>
+                                        </td>
+                  
+                                    </tr>
+                                </table>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
         </div>
     </div>
-    
-</div>
-
-
-<script>
-console.log('ok')
-
-
-function calcular(){
-    var pagoHuesped= document.getElementById('pagoHuesped').value
-    var totalPagar = document.getElementById('totalPagar').innerText
-
-    document.getElementById('resultado').innerText=totalPagar-pagoHuesped
-
-
-}
-</script>
-
-
-
+    <script>
+        function confirmDelete(event, paymentId) {
+            event.preventDefault();
+            if (confirm('¿Está seguro que desea eliminar este pago?')) {
+                document.getElementById('delete-form-' + paymentId).submit();
+            }
+        }
+    </script>
 @endsection
