@@ -178,18 +178,7 @@
 
                 return true; // El rango de fechas está disponible
             }
-            window.addEventListener('beforeunload', function(event) {
-                if (!form.submitted) {
-                    event.preventDefault();
-                    event.returnValue = ''; // Chrome requiere que se establezca la propiedad returnValue
-                }
-            });
 
-            // Agregar evento de escucha al hacer clic en el botón "Guardar"
-            submitBtn.addEventListener('click', function() {
-                form.submitted = true;
-            });
-        });
 
         document.addEventListener('DOMContentLoaded', function() {
             // Obtener elementos del formulario
