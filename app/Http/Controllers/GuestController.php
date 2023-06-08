@@ -24,13 +24,23 @@ class GuestController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $id = $request->input('id');
 
-        $guests = Guest::query()
-            ->whereRaw("CONCAT(name, ' ', last_name) LIKE '%$search%'")
-            ->orWhere('phone', 'LIKE', "%$search%")
-            ->orWhere('email', 'LIKE', "%$search%")
-            ->paginate();
+        $guests = Guest::query();
 
+        if ($search) {
+            $guests->where(function ($query) use ($search) {
+                $query->whereRaw("CONCAT(name, ' ', last_name) LIKE '%$search%'")
+                    ->orWhere('phone', 'LIKE', "%$search%")
+                    ->orWhere('email', 'LIKE', "%$search%");
+            });
+        }
+
+        if ($id) {
+            $guests->where('id', $id);
+        }
+
+        $guests = $guests->paginate();
         $countries = CountryListFacade::getList('es');
         return view('guests.index', compact('guests', 'countries'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -194,13 +204,5 @@ class GuestController extends Controller
             ->with('success', 'El huesped se eliminó correctamente');
     }
 
-    public function deleteTable(Request $request)
-    {
-        $reservationId = $request->input('reservation_id');
 
-        // Lógica para eliminar la tabla en la base de datos
-        Reservation::where('id', $reservationId)->delete();
-
-        return response()->json(['message' => 'Tabla eliminada correctamente']);
-    }
 }

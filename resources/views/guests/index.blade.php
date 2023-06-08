@@ -21,7 +21,17 @@
                 <div class="col-lg-6">
                     <form action="{{ route('guests.index') }}" method="GET">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Buscar...">
+                            <input type="text" class="form-control" name="search" placeholder="Buscar por nombre, apellidos, teléfono o correo...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6">
+                    <form action="{{ route('guests.index') }}" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="id" placeholder="Buscar por ID...">
                             <span class="input-group-btn">
                                 <button class="btn btn-primary" type="submit">Buscar</button>
                             </span>
@@ -41,6 +51,7 @@
         <div class="container">
             <table class="table table-bordered">
                 <tr>
+                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Telefono</th>
@@ -51,6 +62,7 @@
 
                 @foreach ($guests as $guest)
                     <tr class="white-cell">
+                        <td>{{ $guest->id }}</td>
                         <td>{{ $guest->name }}</td>
                         <td>{{ $guest->last_name }}</td>
                         <td>{{ $guest->phone }}</td>

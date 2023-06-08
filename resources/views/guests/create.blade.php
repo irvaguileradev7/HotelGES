@@ -181,38 +181,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <script>
-        window.addEventListener('beforeunload', function(e) {
-            var confirmationMessage =
-                '¿Estás seguro de que quieres salir de esta página? Se borrará la tabla correspondiente a la variable de sesión.';
 
-            e.preventDefault(); // Cancelar el evento antes de mostrar el cuadro de diálogo
-
-            // Mostrar cuadro de diálogo de confirmación al usuario
-            e.returnValue = confirmationMessage;
-
-            deleteReservationTable(); // Llama a la función para eliminar la tabla
-        });
-
-        function deleteReservationTable() {
-            // Obtener el valor de reservation_id de la variable de sesión
-            var reservationId = '{{ session('reservation_id') }}';
-
-            // Enviar una petición AJAX para eliminar la tabla
-            axios.post('/delete-reservation-table', {
-                    reservation_id: reservationId
-                })
-                .then(function(response) {
-                    // Acciones a realizar en caso de éxito
-                    console.log(response.data);
-                })
-                .catch(function(error) {
-                    // Acciones a realizar en caso de error
-                    console.error(error);
-                });
-        }
-    </script>
 
 @endsection

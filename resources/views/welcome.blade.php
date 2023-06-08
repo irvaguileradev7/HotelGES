@@ -4,15 +4,14 @@
     <div class="row">
         <div class="container">
             <div class="content">
-                <h1>HotelGes</h1>
-                <h2>Gestion de hotel</h2>
+                <img class="mod-size" src="{{ asset('/img/LogoHG.png') }}" width="400rem">
                 <div class="container">
                     <a href="{{ route('asignrooms.index') }}">
-                        <div class="btn btn-danger">Ver habitaciones disponibles</div>
+                        <div class="btn btn-light">Habitaciones disponibles</div>
+
                     </a>
                 </div>
             </div>
         </div>
     </div>
-    
 @endsection
