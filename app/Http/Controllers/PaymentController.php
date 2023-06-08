@@ -51,30 +51,6 @@ class PaymentController extends Controller
 
         $pagoHuesped = $request->input('pagoHuesped');
 
-        $payment = new Payment;
-        $payment->guest_id = session('guest_id');
-        $payment->guest_payment = $pagoHuesped;
-        $payment->total_payment = $totalPagar;
-        $payment->difference = $totalPagar - $payment->guest_payment;
-        $payment->save();
-
-        $guestId = session('guest_id');
-        $payment = Payment::where('guest_id', $guestId)->first();
-
-        if ($payment) {
-            $payment->guest_payment = $request->input('pagoHuesped');
-            $payment->total_payment = $totalPagar;
-            $payment->difference = $totalPagar - $payment->guest_payment;
-            $payment->save();
-        } else {
-            $payment = new Payment;
-            $payment->guest_id = $guestId;
-            $payment->guest_payment = $request->input('pagoHuesped');
-            $payment->total_payment = $totalPagar;
-            $payment->difference = $totalPagar - $payment->guest_payment;
-            $payment->save();
-        }
-
 
         $asignservices = AsignService::latest()->paginate();
 
@@ -101,12 +77,60 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
 
-        $payment = new Payment;
-        $payment->guest_id = $request->input('guest_id');
-        $payment->total_services = $request->input('total_services');
-        // Otros campos del pago
+        $servicios = AsignService::where('guest_id', session('guest_id'))->sum('total_services');
+        // dd($Servicios);
 
+        // OBTENER EL PRECIO DEL CUARTO
+        $precioCuarto = DB::table('rooms')
+            ->join('reservations', 'reservations.id', '=', 'rooms.id')
+            ->select('price')
+            ->pluck('price')
+            ->first();
+        // dd($precioCuarto);
+
+        // OBTENER LA CANTIDAD DE NOCHES DE LA RESERVACION
+        $noches = DB::table('reservations')
+            ->join('rooms', 'rooms.id', '=', 'reservations.room_id')
+            ->where('reservations.id', session('guest_id'))
+            ->select('nights')
+            ->pluck('nights')
+            ->first();
+        // dd($noches);        
+
+        // OBTENER EL COSTO TOTAL DE LA RESERVACION
+        $precioCuarto = $precioCuarto * $noches;
+        // dd($precioCuarto);
+
+        $totalPagar = $servicios + $precioCuarto;
+        // dd($totalPagar);
+
+
+        $pagoHuesped = $request->input('pagoHuesped');
+
+        $payment = new Payment;
+        $payment->guest_id = session('guest_id');
+        $payment->guest_payment = $pagoHuesped;
+        $payment->total_payment = $totalPagar;
+        $payment->difference = $totalPagar - $payment->guest_payment;
         $payment->save();
+
+        $guestId = session('guest_id');
+        $payment = Payment::where('guest_id', $guestId)->first();
+
+        if ($payment) {
+            $payment->guest_payment = $request->input('pagoHuesped');
+            $payment->total_payment = $totalPagar;
+            $payment->difference = $totalPagar - $payment->guest_payment;
+            $payment->save();
+        } else {
+            $payment = new Payment;
+            $payment->guest_id = $guestId;
+            $payment->guest_payment = $request->input('pagoHuesped');
+            $payment->total_payment = $totalPagar;
+            $payment->difference = $totalPagar - $payment->guest_payment;
+            $payment->save();
+        }
+
 
         return redirect()->route('payments.index')->with('success', 'Pago creado exitosamente');
     }
