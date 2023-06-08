@@ -42,8 +42,8 @@
         <p>{{ $servicios}}</p>
       </div>
       <div class="col">
-        <h3>Precio de la habitación</h3>
-        <p>{{ $precioCuarto->price }}</p>
+        <h3>Costo de la reservación</h3>
+        <p>{{ $precioCuarto }}</p>
       </div>
       <div class="col pb-5">
         <h3>Total a pagar</h3>

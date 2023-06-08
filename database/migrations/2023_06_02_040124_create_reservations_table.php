@@ -17,10 +17,13 @@ return new class extends Migration
             $table->id();
             $table->date('time_from')->nullable();
             $table->date('time_to')->nullable();
+            $table->unsignedInteger('nights')->nullable();
             $table->unsignedBigInteger('room_id')->nullable();
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms');
+            
+
             
         });
     }

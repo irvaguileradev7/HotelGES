@@ -28,10 +28,26 @@ class PaymentController extends Controller
         $precioCuarto = DB::table('rooms')
             ->join('reservations', 'reservations.id', '=', 'rooms.id')
             ->select('price')
+            ->pluck('price')
             ->first();
         // dd($precioCuarto);
 
-        $totalPagar = $servicios + $precioCuarto->price;
+        // OBTENER LA CANTIDAD DE NOCHES DE LA RESERVACION
+        $noches = DB::table('reservations')
+                ->join('rooms', 'rooms.id', '=', 'reservations.room_id')
+                ->where('reservations.id',session('guest_id'))
+                ->select('nights')
+                ->pluck('nights')
+                ->first();
+        // dd($noches);        
+
+        // OBTENER EL COSTO TOTAL DE LA RESERVACION
+        $precioCuarto = $precioCuarto*$noches;
+        // dd($precioCuarto);
+
+        $totalPagar = $servicios + $precioCuarto;
+        // dd($totalPagar);
+        
 
         $pagoHuesped = $request->input('pagoHuesped');
 
