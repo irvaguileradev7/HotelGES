@@ -55,7 +55,6 @@ class PaymentController extends Controller
         $asignservices = AsignService::latest()->paginate();
 
         return view('payments.index', compact('asignservices', 'servicios', 'precioCuarto', 'pagoHuesped', 'totalPagar'));
-        return Redirect::route('guests.index');
     }
 
     /**
@@ -132,7 +131,7 @@ class PaymentController extends Controller
         }
 
 
-        return redirect()->route('payments.index')->with('success', 'Pago creado exitosamente');
+        return redirect()->route('guests.index')->with('success', 'Pago creado exitosamente');
     }
 
     /**
