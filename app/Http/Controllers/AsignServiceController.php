@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AsignService;
 use App\Models\Service;
 use App\Models\Guest;
+
 use Illuminate\Http\Request;
 
 class AsignServiceController extends Controller
@@ -17,10 +18,10 @@ class AsignServiceController extends Controller
     public function index()
     {
 
-        $rooms = Room::latest()->paginate();
-        $reservations = Reservation::with('guest')->get();
-    
-        return view('asignrooms.index', compact('rooms', 'reservations'));
+        
+        $services = Service::latest()->paginate();
+
+        return view('asignservices.index', compact('services'));
     }
 
     /**
