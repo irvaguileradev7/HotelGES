@@ -35,21 +35,20 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Tipo:</strong>
-                        <textarea class="form-control" style="height:150px" name="type" placeholder="Tipo de servicio"></textarea>
-                    </div>
+                        <textarea class="form-control" style="height:150px" name="type" placeholder="Tipo de servicio">{{ $service->type }}</textarea>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Precio:</strong>
-                        <input name="price" class="form-control" placeholder="Precio">
+                        <input name="price" class="form-control" placeholder="Precio" value="{{ $service->price }}">
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Detalles:</strong>
-                        <textarea class="form-control" style="height:150px" name="details" placeholder="Detalles"></textarea>
+                        <textarea class="form-control" style="height:150px" name="details" placeholder="Detalles">{{ $service->details }}</textarea>
                     </div>
                 </div>
 

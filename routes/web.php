@@ -55,9 +55,11 @@ Route::middleware([
 
 });
 
+/*
 // VISTA QUE SOLO LOS ADMIN. PUEDEN VER
 Route::middleware(['checkAdminUserRole'])->group(function(){
     Route::resource('users', UserController::class);
+    
 });
 
 
@@ -77,6 +79,6 @@ Route::middleware(['checkOperarioUserRole'])->group(function() {
     Route::resource('asignservices', AsignServiceController::class);
     Route::resource('payments', PaymentController::class);
 });
-
+*/
 
 

@@ -67,7 +67,7 @@
                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Servicios</span> </a>
 
             </li>
-                <hr>
+
 
             <li>
                 <a href="{{ route('users.index') }}" class="nav-link px-0 align-middle">

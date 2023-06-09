@@ -1,7 +1,9 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 @font-face {
-    font-family: 'New York';
+    font-family: "New York";
     src: url(/fonts/NewYork.otf);
-  }
+}
 
 
 body{

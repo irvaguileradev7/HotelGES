@@ -28,6 +28,7 @@
                 <tr>
                     <th>Piso</th>
                     <th>No. habitacion</th>
+                    <th>ID de huesped</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Cantidad de noches</th>
@@ -36,19 +37,20 @@
                 </tr>
 
                 @foreach ($reservations as $reservation)
-                <tr class="white-cell">
-                    <td>{{ $reservation->room->floor_id}}</td>
-                    <td>{{ $reservation->room->number }}</td>
-                    <td>{{ $reservation->guest->name}}</td>
-                    <td>{{ $reservation->guest->last_name}}</td>
-                    <td>{{ $reservation->nights}}</td>
-                    <td>{{ $reservation->time_from }}</td>
-                    <td>{{ $reservation->time_to }}</td>
-                    <!-- Resto del código -->
-                </tr>
-                        
-                        {{--<td>--}}
-                            {{--
+                    <tr class="white-cell">
+                        <td>{{ $reservation->room->floor_id }}</td>
+                        <td>{{ $reservation->room->number }}</td>
+                        <td>{{ $reservation->guest->id}}</td>
+                        <td>{{ $reservation->guest->name }}</td>
+                        <td>{{ $reservation->guest->last_name }}</td>
+                        <td>{{ $reservation->nights }}</td>
+                        <td>{{ $reservation->time_from }}</td>
+                        <td>{{ $reservation->time_to }}</td>
+                        <!-- Resto del código -->
+                    </tr>
+
+                    {{-- <td> --}}
+                    {{--
                         <div class="float-left">
                             <a class="btn btn-info" href="{{ route('rooms.show', $room->id) }}">Ver</a>
                             <a class="btn btn-primary" href="{{ route('rooms.edit', $room->id) }}">Editar</a>
@@ -63,7 +65,7 @@
                         </form>
                         </div>
                         --}}
-                            {{--    ESTE
+                    {{--    ESTE
                         <form id="delete-form-{{ $reservation->id }}" action="{{ route('rooms.destroy', $room->id) }}"
                                 method="POST">
                                 @csrf
@@ -87,7 +89,7 @@
                         </td>
 
                     </tr>
-                                  --}}  
+                                  --}}
                 @endforeach
 
             </table>
