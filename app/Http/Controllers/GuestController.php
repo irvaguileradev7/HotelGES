@@ -57,7 +57,7 @@ class GuestController extends Controller
         $countries = CountryListFacade::getList('es');
         return view('guests.create', compact('reservation', 'countries'));
     }
-
+/*
     public function addGuestPayment(Request $request)
     {
         $guestId = $request->input('guest_id');
@@ -84,6 +84,7 @@ class GuestController extends Controller
 
         return redirect()->back()->with('success', 'El pago del huésped se ha actualizado correctamente.');
     }
+    */
     /**
      * Store a newly created resource in storage.
      *

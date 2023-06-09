@@ -54,7 +54,7 @@
                 @php
                     $month = date('F', strtotime($reservation->time_from));
                     $year = date('Y', strtotime($reservation->time_from));
-                    
+
                     $calendar[$year][$month][] = $reservation;
                 @endphp
             @endforeach
@@ -103,8 +103,11 @@
                                                         @if ($currentDay >= $startDay && $currentDay <= $endDay)
                                                             <div class="reservation">
                                                                 <span class="reserved-text">Ocupado</span>
+                                                                @if ($reservation->guest)
                                                                 <p>ID de Huesped: {{ $reservation->guest->id }}</p>
-                                                                <!-- Agregar esta línea para mostrar el ID del huésped -->
+                                                            @else
+                                                                <p>Error</p>
+                                                            @endif
                                                             </div>
                                                         @endif
                                                     @endforeach
@@ -138,11 +141,10 @@
 @else
     <p>No hay reservaciones existentes para este cuarto.</p>
     @endif
-    
+
     <script>
-        
- //YA FUNCIONAL
- document.addEventListener('DOMContentLoaded', function() {
+        //YA FUNCIONAL
+        document.addEventListener('DOMContentLoaded', function() {
             // Obtener elementos del formulario
             var form = document.getElementById('reservation-form');
             var timeFromInput = document.getElementById('time_from');
