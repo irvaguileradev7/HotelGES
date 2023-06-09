@@ -106,7 +106,20 @@
                                                         data-bs-dismiss="modal">Cerrar</button>
                                                 </form>
                                             </div>
-                                            
+                                            <p>Piso:{{ $room->floor->number_floor }}</p>
+                                            <p>Numero:{{ $room->number }}</p>
+                                            <p>Detalles:{{ $room->detail }}</p>
+                                            <p>Tipo:{{ $room->type->room_type }}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form method="POST" action="{{ route('asignrooms.store') }}">
+                                                @csrf
+                                                <input type="hidden" name="room_id" value="{{ $room->id }}">
+                                                <button type="submit" class="btn btn-primary">Seleccionar
+                                                    Habitación</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cerrar</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
