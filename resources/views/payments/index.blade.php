@@ -15,22 +15,18 @@
                 </div>
             </div>
         </div>
-        
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <form action="{{ route('payments.index') }}" method="GET">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Buscar...">
-                            <span class="input-group-btn mt-2">
-                                <button class="btn btn-primary mt-1" type="submit">Buscar</button>
-                            </span>
-                        </div>
-                    </form>
+        <div class="col-lg-6">
+            <form action="{{ route('payments.index') }}" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="guest_id" placeholder="Buscar por ID...">
+                    
+                    <span class="input-group-btn mt-2">
+                        <button class="btn btn-primary mt-1" type="submit">Buscar</button>
+                    </span>
                 </div>
-            </div>
+            </form>
         </div>
-
+        
         
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -41,6 +37,7 @@
         <div class="container">
             <table class="table table-bordered">
                 <tr>
+                    <th>ID</th>
                     <th>Huésped</th>
                     <th>Pago total</th>
                     <th>Pago del huésped</th>
@@ -50,6 +47,7 @@
 
                 @foreach ($payments as $payment)
                     <tr class="white-cell">
+                        <td>{{ $payment->guest->id }} </td>
                         <td>{{ $payment->guest->name }} {{ $payment->guest->last_name }}</td>
                         <td>{{ $payment->total_payment }}</td>
                         <td>{{ $payment->guest_payment }}</td>

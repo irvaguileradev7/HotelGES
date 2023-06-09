@@ -20,11 +20,22 @@ class PaymentController extends Controller
      */
     public function index(Request $request)
     {
-        $payments = Payment::latest()->paginate();
-
+        $query = Payment::query();
+    
+        // Filtrar por ID si se proporciona en la solicitud
+        if ($request->has('guest_id')) {
+            $query->whereHas('guest', function ($query) use ($request) {
+                $query->where('id', $request->input('guest_id'));
+            });
+        }
+    
+       
+        $payments = $query->latest()->paginate();
+    
         return view('payments.index', compact('payments'));
     }
-
+    
+    
     /**
      * Show the form for creating a new resource.
      *

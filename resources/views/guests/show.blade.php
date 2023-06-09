@@ -63,6 +63,10 @@
                             <th>Fecha de salida</th>
                             <td>{{ $reservation->time_to }}</td>
                         </tr>
+                        <tr>
+                            <th>Noches</th>
+                            <td>{{ $reservation->nights}}</td>
+                        </tr>
                     </table>
                 </div>
             </div>
