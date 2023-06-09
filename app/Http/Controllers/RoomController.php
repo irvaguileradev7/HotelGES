@@ -18,8 +18,7 @@ class RoomController extends Controller
     public function index()
     {
         $rooms = Room::latest()->paginate();
-        return view('rooms.index', compact('rooms',))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('rooms.index', compact('rooms',));
     }
 
     /**

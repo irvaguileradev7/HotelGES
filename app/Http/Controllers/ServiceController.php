@@ -16,8 +16,7 @@ class ServiceController extends Controller
     {
         $services = Service::latest()->paginate();
 
-        return view('services.index', compact('services'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('services.index', compact('services'));
     }
 
     /**
@@ -27,7 +26,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        
+
         $services = Service::all();
         return view('services.create',compact('services'));
     }
