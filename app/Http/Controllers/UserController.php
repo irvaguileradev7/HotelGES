@@ -50,11 +50,11 @@ class UserController extends Controller
         ]);
 
         $input = $request->all();
-        $input['password'] = Hash::make($input['password']); // Encriptar contraseña
+        $input['password'] = Hash::make($input['password']); 
         User::create($input);
 
         return redirect()->route('users.index')
-            ->with('success', 'El usuario se creo satisfactoriamente');
+            ->with('success', 'El usuario se creó satisfactoriamente');
     }
 
     /**
@@ -97,10 +97,12 @@ class UserController extends Controller
             'role_id' => 'required'
         ]);
 
-        $user->update($request->all());
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+        $user->update($input);
 
         return redirect()->route('users.index')
-            ->with('success', 'El usuario se modifico satisfactoriamente');
+            ->with('success', 'El usuario se modificó satisfactoriamente');
     }
 
     /**

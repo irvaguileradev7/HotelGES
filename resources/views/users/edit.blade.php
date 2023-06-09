@@ -42,14 +42,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Correo:</strong>
-                        <input type="email" name="email" class="form-control" placeholder="Name">
+                        <input type="email" name="email" value="{{ $user->email }}" class="form-control" placeholder="Name">
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Contraseña:</strong>
-                        <input type="password" name="password" class="form-control" placeholder="Name">
+                        <input type="password" name="password" value="{{ $user->password }}"  class="form-control" placeholder="Name">
                     </div>
                 </div>
 

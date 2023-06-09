@@ -55,12 +55,8 @@ Route::middleware([
 
 });
 
-/*
+
 // VISTA QUE SOLO LOS ADMIN. PUEDEN VER
-Route::middleware(['checkAdminUserRole'])->group(function(){
-    Route::resource('users', UserController::class);
-    
-});
 
 
 // VISTAS QUE PUEDEN ACCEDER LOS GERENTES
@@ -79,6 +75,16 @@ Route::middleware(['checkOperarioUserRole'])->group(function() {
     Route::resource('asignservices', AsignServiceController::class);
     Route::resource('payments', PaymentController::class);
 });
-*/
 
+
+Route::middleware(['checkAdminUserRole'])->group(function(){
+    Route::resource('users', UserController::class);
+    Route::resource('asignrooms', AsignRoomController::class);
+    Route::resource('asignservices', AsignServiceController::class);
+    Route::resource('payments', PaymentController::class);
+    Route::resource('rooms', RoomController::class);
+    Route::resource('types', TypeController::class);
+    Route::resource('floors', FloorController::class);
+    Route::resource('services', ServiceController::class);
+});
 
