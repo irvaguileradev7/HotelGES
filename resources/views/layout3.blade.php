@@ -37,6 +37,11 @@
 
             </li>
             <li>
+                <a href="{{ route('reservationview.index') }}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Reservaciones</span>
+                </a>
+            </li>
+            <li>
                 <hr>
                 <p>Administracion </p>
             </li>
@@ -58,7 +63,6 @@
                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Pisos</span> </a>
 
             </li>
-
             <li>
 
                 <a href="{{ route('services.index') }}" class="nav-link px-0 align-middle">

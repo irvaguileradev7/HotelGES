@@ -35,6 +35,9 @@
                 </a>
 
             </li>
+                <a href="{{ route('reservationview.index') }}" class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Reservaciones</span>
+                </a>
             <li>
                 <hr>
                 <p>Administracion </p>

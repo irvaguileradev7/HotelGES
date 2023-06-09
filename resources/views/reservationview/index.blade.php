@@ -8,10 +8,10 @@
 
                 <div class="container">
                     <div class="pull-left">
-                        <h1>Reservaciones</h1>
+                        <h1>Registro de reservaciones</h1>
                     </div>
                     <div class="pull-right">
-                        <a class="btn btn-success" href="{{ route('rooms.create') }}">Nueva habitación</a>
+                        <a class="btn btn-success" href="{{ '/' }}">Regresar</a>
                     </div>
                 </div>
             </div>
@@ -26,49 +26,27 @@
         <div class="container">
             <table class="table table-bordered">
                 <tr>
-                    <th>Fehca de ingreso</th>
-                    <th>Fecha de salida</th>
+                    <th>Piso</th>
                     <th>No. habitacion</th>
-                    <th>a</th>
-
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Cantidad de noches</th>
+                    <th>Inicio de la reservación</th>
+                    <th>Termino de la reservación</th>
                 </tr>
 
                 @foreach ($reservations as $reservation)
                 <tr class="white-cell">
+                    <td>{{ $reservation->room->floor_id}}</td>
+                    <td>{{ $reservation->room->number }}</td>
+                    <td>{{ $reservation->guest->name}}</td>
+                    <td>{{ $reservation->guest->last_name}}</td>
+                    <td>{{ $reservation->nights}}</td>
                     <td>{{ $reservation->time_from }}</td>
                     <td>{{ $reservation->time_to }}</td>
-                    <td>{{ $reservation->room_id }}</td>
                     <!-- Resto del código -->
                 </tr>
-                        {{--
-                        @switch( $room->type_id)
-                            @case(1)
-                                <td>Habitación individual</td>
-                            @break
-
-                            @case(2)
-                                <td>Habitación doble</td>
-                            @break
-
-                            @case(3)
-                                <td>Habitación triple</td>
-                            @break
-
-                            @case(4)
-                                <td>Habitación Queen size</td>
-                            @break
-
-                            @case(5)
-                                <td>Habitación King size</td>
-                            @break
-
-                            @case(6)
-                                <td>Suite de lujo</td>
-                            @break
-                        @endswitch
-                        --}}
-
-
+                        
                         {{--<td>--}}
                             {{--
                         <div class="float-left">

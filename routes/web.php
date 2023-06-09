@@ -50,6 +50,7 @@ Route::middleware([
     Route::resource('reservations', ReservationController::class);
     Route::resource('calendar', CalendarController::class);
     Route::resource('payments', PaymentController::class);
+    Route::resource('reservationview', Reservation_viewController::class);
 
 
 });

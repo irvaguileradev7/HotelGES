@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use App\Models\Reservation;
+use App\Models\Floor;
 use Illuminate\Http\Request;
 
 class Reservation_viewController extends Controller
@@ -16,6 +17,7 @@ class Reservation_viewController extends Controller
     public function index()
     {
         $reservations= Reservation::latest()->paginate();
+        $reservation = Reservation::with('guest','room')->find('reservation_id');
         return view('reservationview.index', compact('reservations'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
