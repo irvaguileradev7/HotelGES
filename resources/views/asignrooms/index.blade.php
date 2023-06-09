@@ -41,24 +41,23 @@
                     <div class="container">
                         <div class="row">
                             @foreach ($rooms as $index => $room)
-                            @if($room->status_id != 2)
-                            <div class="col-md-6 col-lg-4 col-xl-3">
-                                <div id="product-{{ $index + 1 }}" class="single-product">
-                                    <div class="part-1">
-                                        <div class="image-container">
-                                            <img src="{{ asset('/' . $room->image) }}" width="100%" class="img-fluid"
-                                                data-bs-toggle="modal"
+                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                    <div id="product-{{ $index + 1 }}" class="single-product">
+                                        <div class="part-1">
+                                            <div class="image-container">
+                                                <img src="{{ asset('/' . $room->image) }}" width="100%" class="img-fluid"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal-{{ $index + 1 }}">
+                                            </div>
+                                        </div>
+                                        <div class="part-2">
+                                            <a href="#" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal-{{ $index + 1 }}">
+                                                Habitacion numero: {{ $room->number }}
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="part-2">
-                                        <a href="#" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal-{{ $index + 1 }}">
-                                            Habitacion numero: {{ $room->number }}
-                                        </a>
-                                    </div>
                                 </div>
-                            </div>
 
                                 <!-- Modal para el contenido del popup -->
                                 <div class="modal fade" id="exampleModal-{{ $index + 1 }}" tabindex="-1"
@@ -106,25 +105,9 @@
                                                         data-bs-dismiss="modal">Cerrar</button>
                                                 </form>
                                             </div>
-                                            <p>Piso:{{ $room->floor->number_floor }}</p>
-                                            <p>Numero:{{ $room->number }}</p>
-                                            <p>Detalles:{{ $room->detail }}</p>
-                                            <p>Tipo:{{ $room->type->room_type }}</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form method="POST" action="{{ route('asignrooms.store') }}">
-                                                @csrf
-                                                <input type="hidden" name="room_id" value="{{ $room->id }}">
-                                                <button type="submit" class="btn btn-primary">Seleccionar
-                                                    Habitación</button>
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Cerrar</button>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            @endif
                             @endforeach
                         </div>
                     </div>
