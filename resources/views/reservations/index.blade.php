@@ -138,10 +138,11 @@
 @else
     <p>No hay reservaciones existentes para este cuarto.</p>
     @endif
+    
     <script>
         
-        //YA FUNCIONAL
-        document.addEventListener('DOMContentLoaded', function() {
+ //YA FUNCIONAL
+ document.addEventListener('DOMContentLoaded', function() {
             // Obtener elementos del formulario
             var form = document.getElementById('reservation-form');
             var timeFromInput = document.getElementById('time_from');
@@ -177,8 +178,9 @@
                 }
 
                 return true; // El rango de fechas está disponible
-            }
 
+            }
+        });
 
         document.addEventListener('DOMContentLoaded', function() {
             // Obtener elementos del formulario
