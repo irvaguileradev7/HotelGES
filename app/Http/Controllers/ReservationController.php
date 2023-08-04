@@ -11,6 +11,7 @@ use Illuminate\Validation\Rule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Schema;
 
 class ReservationController extends Controller
 {
@@ -155,4 +156,18 @@ class ReservationController extends Controller
     {
         //
     }
+
+    public function deleteReservationTable(Request $request)
+{
+    $reservationId = $request->input('reservationId');
+    if ($reservationId) {
+        // Verifica si la tabla existe antes de eliminarla
+        if (Schema::hasTable('reservation_' . $reservationId)) {
+            Schema::dropIfExists('reservation_' . $reservationId);
+            return response()->json(['message' => 'Tabla eliminada correctamente'], 200);
+        }
+    }
+    
+    return response()->json(['message' => 'No se encontró la tabla asociada a la reserva'], 404);
+}
 }

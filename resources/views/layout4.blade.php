@@ -9,12 +9,11 @@
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/style_welcome.css">
 </head>
 
 <body>
 
-    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+    <div class="side-navbar active-nav d-flex flex-column" id="sidebar">
         <ul class="nav flex-column text-white w-100">
             <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <span class="fs-5 d-none d-sm-inline">HotelGes</span>
@@ -36,11 +35,9 @@
                 </a>
 
             </li>
-            <li>
                 <a href="{{ route('reservationview.index') }}" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Reservaciones</span>
                 </a>
-            </li>
             <li>
                 <hr>
                 <p>Administracion </p>
@@ -63,6 +60,7 @@
                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Pisos</span> </a>
 
             </li>
+
             <li>
 
                 <a href="{{ route('services.index') }}" class="nav-link px-0 align-middle">
@@ -114,7 +112,8 @@
             container.classList.toggle("active-cont");
         });
     </script>
-    <script src="js/bootstrap.min.js"></script>
+
+    <script src="/js/bootstrap.min.js"></script>
 </body>
 
 </html>

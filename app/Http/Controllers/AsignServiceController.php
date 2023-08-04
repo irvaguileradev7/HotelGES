@@ -10,11 +10,7 @@ use Illuminate\Http\Request;
 
 class AsignServiceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function index()
     {
 
@@ -24,22 +20,6 @@ class AsignServiceController extends Controller
         return view('asignservices.index', compact('services'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -49,19 +29,6 @@ class AsignServiceController extends Controller
             'quantity.*' => 'numeric|min:0',
         ]);
 
-        // CODIGO ORIGINAL
-        /* $guest_id = $request->input('guest<li>{{ $service->id}}</li>_id');
-        $service_id = $request->input('service_id');
-
-        $asignService = new AsignService($request->all());
-        $guest = Guest::find($guest_id);
-        $service = Service::find($service_id);
-        $asignService->guests()->associate($guest);
-        $asignService->services()->associate($service);
-        $asignService->save(); */
-       
-        // SEGUNDA SOLUCION PROPUESTA 
-        // AHORA SE ALMACENAN MULTIPLES SERVICOS A UN SOLO HUESPED
         $guest_id = $request->input('guest_id');
         $service_ids = $request->input('service_id');
         $quantities = $request->input('quantity');

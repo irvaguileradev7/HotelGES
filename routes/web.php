@@ -74,6 +74,9 @@ Route::middleware(['checkOperarioUserRole'])->group(function() {
     Route::resource('asignrooms', AsignRoomController::class);
     Route::resource('asignservices', AsignServiceController::class);
     Route::resource('payments', PaymentController::class);
+    Route::resource('reservations', ReservationController::class);
+    Route::resource('reservationview', Reservation_viewController::class);
+    Route::post('/delete-reservation-table', [GuestController::class, 'deleteReservationTable'])->name('deleteReservationTable');
 });
 
 
@@ -86,5 +89,8 @@ Route::middleware(['checkAdminUserRole'])->group(function(){
     Route::resource('types', TypeController::class);
     Route::resource('floors', FloorController::class);
     Route::resource('services', ServiceController::class);
+    Route::resource('reservations', ReservationController::class);
+    Route::resource('reservationview', Reservation_viewController::class);
+    Route::post('/delete-reservation-table', [GuestController::class, 'deleteReservationTable'])->name('deleteReservationTable');
 });
 

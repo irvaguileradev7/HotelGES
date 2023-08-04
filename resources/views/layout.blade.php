@@ -6,113 +6,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HotelGes</title>
-
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/style_welcome.css">
 </head>
 
 <body>
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <i class='bx bx-buildings'></i>
+                <span class="bold">HotelGes</span>
+            </div>
+            <i class='bx bx-menu' id='btn'></i>
 
-    <div class="side-navbar active-nav d-flex flex-column" id="sidebar">
-        <ul class="nav flex-column text-white w-100">
-            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <span class="fs-5 d-none d-sm-inline">HotelGes</span>
-            </a>
+        </div>
+        <div class="user bold">
+            <p>{{ Auth::user()->name }}</p>
+        </div>
+        <ul>
             <li>
-                <hr>
-                <p>Operador</p>
-                <hr>
-            </li>
-            <li>
-                <a href="{{ route('guests.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Huespedes</span>
+                <a href="/"><i class='bx bxs-dashboard'></i>
+                    <span class="nav-item" id="nav">Inicio</span>
                 </a>
-
+                <span class="tooltip">Inicio</span>
             </li>
             <li>
-                <a href="{{ route('payments.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Pagos</span>
+                <a href="{{ route('payments.index') }}"><i class='bx bx-wallet'></i></i>
+                    <span class="nav-item">Pagos</span>
                 </a>
-
+                <span class="tooltip">Pagos</span>
             </li>
-                <a href="{{ route('reservationview.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Reservaciones</span>
+            <li>
+                <a href="{{ route('guests.index') }}"><i class='bx bxs-group'></i>
+                    <span class="nav-item">Huespedes</span>
                 </a>
-            <li>
-                <hr>
-                <p>Administracion </p>
-            </li>
-
-
-            <li>
-                <hr>
-                <a href="{{ route('rooms.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Habitaciones</span> </a>
-
+                <span class="tooltip">Huespedes</span>
             </li>
             <li>
-                <a href="{{ route('types.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">T. Habitaciones</span></span> </a>
-
-            </li>
-            <li>
-                <a href="{{ route('floors.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Pisos</span> </a>
-
-            </li>
-
-            <li>
-
-                <a href="{{ route('services.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Servicios</span> </a>
-
-            </li>
-
-
-            <li>
-                <a href="{{ route('users.index') }}" class="nav-link px-0 align-middle">
-                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span>
+                <a href="{{ route('reservationview.index') }}"><i class='bx bxs-contact'></i>
+                    <span class="nav-item">Reservaciones</span>
                 </a>
-
+                <span class="tooltip">Reservaciones</span>
+            </li>
+            <li>
+                <a href="{{ route('rooms.index') }}"><i class='bx bxs-hotel'></i>
+                    <span class="nav-item">Habitaciones</span>
+                </a>
+                <span class="tooltip">Habitaciones</span>
+            </li>
+            <li>
+                <a href="{{ route('services.index') }}"><i class='bx bxs-bowl-hot'></i>
+                    <span class="nav-item">Servicios</span>
+                </a>
+                <span class="tooltip">Servicios</span>
             </li>
 
+            <li>
+                <a href="{{ route('users.index') }}"><i class='bx bxs-user'></i>
+                    <span class="nav-item">Usuarios</span>
+                </a>
+                <span class="tooltip">Usuarios</span>
+            </li>
 
-    </div>
-
-
-    <div class="p-1 my-container active-cont">
-
-        <nav class="navbar top-navbar navbar-light bg-light px-5">
-            <a class="btn border-0" id="menu-btn"><i class="bi bi-list"></i></a>
-            <div class="container">
-                <div class="navbar-nav">
-                    <span class="nav-item nav-link disabled">{{ Auth::user()->name }}</span>
-                </div>
+            <li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="btn btn-primary "
-                        onclick="event.preventDefault(); this.closest('form').submit();">
-                        Cerrar sesión
+                    <button type="submit" class="btn-exit nav-item"
+                        onclick="event.preventDefault(); this.closest('form').submit();"><i class='bx bxs-exit' ></i>
+                        Salir
                     </button>
                 </form>
-            </div>
+            </li>
 
-
-
-        </nav>
+        </ul>
+    </div>
+    <div class="main-content">
         @yield('content')
     </div>
 
-    <script>
-        var menu_btn = document.querySelector("#menu-btn");
-        var sidebar = document.querySelector("#sidebar");
-        var container = document.querySelector(".my-container");
-        menu_btn.addEventListener("click", () => {
-            sidebar.classList.toggle("active-nav");
-            container.classList.toggle("active-cont");
-        });
-    </script>
-
+    <script src="/js/scripts.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 </body>
 
