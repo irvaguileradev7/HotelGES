@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Lato:wght@300;400&display=swap');
 
 body {
     /* background:url(/img/fondo2.jpg); */
     /* background-size: cover; */
-    /* background: url(/img/fondo2.jpg) rgba(27, 19, 19, 0.13); */
-    /* background-size: cover; */
+    background: url(/img/fondo2.jpg);
+    background-size: cover;
     margin: 0;
     padding: 0;
     background-color: #e6ded1;
@@ -31,7 +31,7 @@ body {
     overflow-y: auto;
     /* Ocultar scrollbar Firefox */
     scrollbar-width: none;
-        /* Ocultar scrollbar Edge */
+    /* Ocultar scrollbar Edge */
     -ms-overflow-style: none;
 }
 
@@ -204,7 +204,7 @@ h1 {
 .container {
     justify-content: space-between;
     transition: all 0.5 ease;
-    padding: 32px;
+    padding: px;
 }
 
 .grid-container {
@@ -239,17 +239,22 @@ h1 {
 .btn.btn-green {
     background-color: #093633;
     color: #fff;
-    font-weight: 1000;
     font-size: 32px;
-
 }
 
+.btn{
+    transition: 0.2s;
+}
+.btn.btn-green:hover {
+    background-color: #00a9ac;
+    color: #fff;
+    font-size: 32px;
+}
 
 .btn.btn-exit {
     background-color: #00000000;
     color: #fff;
     font-weight: 1000;
-
 }
 
 .year {
@@ -265,11 +270,30 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     text-align: center;
     padding: 5px;
-    border: 1px solid #fff;
+    border: 1px solid rgba(45, 48, 48, 0.486);
+    background-color: #fff;
 }
+
+tr {
+    text-align: center;
+    padding: 5px;
+    border: 1px solid rgba(45, 48, 48, 0.486);
+    background-color: #fff;
+}
+
+tr:hover {
+    background-color: rgba(224, 224, 224);
+}
+
+
+/* tr:nth-child(even) { */
+    /* background-color: #f2f2f296; */
+/* } */
+
 
 .reservation {
     background-color: #ff0000;
@@ -296,3 +320,13 @@ th, td {
     cursor: pointer;
     left: 150px;
 }
+
+.solo-prueba.ignorar {
+    color: #97876d;
+    color: #97876d;
+    color: #d0c4ae;
+    color: #00a9ac;
+    color: #015b5b;
+}
+
+.form-control {}
