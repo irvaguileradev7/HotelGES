@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckOperarioUserRole
 {
@@ -16,10 +17,13 @@ class CheckOperarioUserRole
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->role_id == '3') {
+        $user = Auth::user();
+        $roleId = $user->role_id;
+
+        if ($roleId === 1) {
             return $next($request);
-        } else {
-            return redirect('/');
         }
+
+        return redirect('/')->with('error', 'No tienes permiso para acceder a esta página.');
     }
 }
