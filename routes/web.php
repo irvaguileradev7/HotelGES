@@ -14,28 +14,6 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Reservation_viewController;
 
-
-
-// El administrador no tiene restricciones, por lo que todas las rutas generales se moverán aquí
-Route::middleware(['checkAdminUserRole'])->group(function () {
-    // Aquí no hay restricciones para los administradores
-
-});
-
-// Restricciones a los controladores que puede acceder
-Route::middleware(['checkGerenteUserRole'])->group(function () {
-    Route::resource('users', UserController::class);
-});
-
-Route::middleware(['checkOperarioUserRole'])->group(function () {
-
-    Route::resource('rooms', RoomController::class);
-    Route::resource('types', TypeController::class);
-    Route::resource('floors', FloorController::class);
-    Route::resource('services', ServiceController::class);
-});
-
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -61,3 +39,23 @@ Route::middleware([
     Route::resource('payments', PaymentController::class);
     Route::resource('reservationview', Reservation_viewController::class);
 });
+
+Route::middleware(['checkAdminUserRole'])->group(function () {
+// El administrador no cuenta con restricciones, esta seccion permanece
+// Por efectos practicos.
+});
+
+
+Route::middleware(['checkGerenteUserRole'])->group(function () {
+    Route::resource('users', UserController::class);
+});
+
+Route::middleware(['checkOperarioUserRole'])->group(function () {
+
+    Route::resource('rooms', RoomController::class);
+    Route::resource('types', TypeController::class);
+    Route::resource('floors', FloorController::class);
+    Route::resource('services', ServiceController::class);
+});
+
+
