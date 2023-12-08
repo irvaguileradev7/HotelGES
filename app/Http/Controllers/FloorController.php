@@ -41,9 +41,17 @@ class FloorController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'number_floor.integer' => 
+            'La cantidad de pisos debe ser un número entero.',
+
+            'number_floor.min' => 
+            'La cantidad de pisos debe ser mayor o igual a 1.',
+        ];
+        
         $request->validate([
-            'number_floor'=>'required'
-        ]);
+            'number_floor'=>'required|integer|min:1'
+        ], $messages);
 
         Floor::create($request->all());
 
