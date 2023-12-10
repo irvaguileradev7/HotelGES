@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form action="{{ route('guests.store') }}" method="POST" autocomplete="off">
+    <form id="guest-form" action="{{ route('guests.store') }}" method="POST" autocomplete="off">
         @csrf
         <input type="hidden" name="reservation_id" value="{{ session('reservation_id') }}">
         <div class="container">
@@ -182,6 +182,40 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-
+    <script>
+        // Evento que se activa cuando se intenta cerrar la página o actualizarla
+        window.addEventListener("beforeunload", function(event) {
+            // Eliminar la tabla asociada a la sesión
+            var reservationId = "{{ session('reservation_id') }}";
+            if (reservationId) {
+                deleteReservationTable(reservationId);
+            }
+            
+            // Mostrar un mensaje de advertencia
+            event.preventDefault();
+            event.returnValue = "Si cierra esta página, perderá su progreso.";
+        });
+        
+        // Función para eliminar la tabla asociada a la sesión
+        function deleteReservationTable(reservationId) {
+            // Realiza una petición AJAX para eliminar la tabla
+            // Asegúrate de tener jQuery incluido en tu página
+            $.ajax({
+                url: "{{ route('deleteReservationTable') }}",
+                method: "POST",
+                data: {
+                    reservationId: reservationId,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    console.log("Tabla eliminada correctamente");
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error al eliminar la tabla:", error);
+                }
+            });
+        }
+    </script>
+    
 
 @endsection

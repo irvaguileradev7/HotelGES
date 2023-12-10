@@ -4,9 +4,9 @@
 
     <form action="{{ route('asignservices.store') }}" method="POST">
         <div class="container">
-                <h1>Servicios (Cantidad de personas que lo solicitaran):</h1>
+                <h1>Servicios \(Cantidad de personas que lo solicitaran\):</h1>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                
+
             </div>
 
             @if ($errors->any())
