@@ -17,9 +17,9 @@
                     <div class="form-group">
                         <h1 for="time_from">Fecha de entrada</h1>
                         <input type="date" id="time_from" name="time_from" class="form-control">
-                        @error('time_from')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @if($errors->has('time_from'))
+                            <div class="alert alert-danger">Error</div>
+                        @endif
                     </div>
                 </div>
 
@@ -27,11 +27,12 @@
                     <div class="form-group">
                         <h1 for="time_to">Fecha de salida</h1>
                         <input type="date" id="time_to" name="time_to" class="form-control">
-                        @error('time_to')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @if($errors->has('time_to'))
+                            <div class="alert alert-danger">Error</div>
+                        @endif
                     </div>
                 </div>
+
             </div>
 
             <button type="submit" id="submit-btn" class="btn btn-primary">Guardar</button>

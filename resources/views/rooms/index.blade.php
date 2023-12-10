@@ -4,17 +4,17 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 margin-tb">
+            <div class="col-lg-12 margin-tb"></div>
 
                 <div class="container">
-                    <div class="pull-left">
+                    <div class="pull-left"></div>
                         <h1>Habitaciones</h1>
                     </div>
                     <div class="pull-right">
                         <a class="btn btn-success" href="{{ route('rooms.create') }}">Nueva habitación</a>
                     </div>
                 </div>
-                
+
             </div>
         </div>
         <br>
@@ -44,7 +44,7 @@
                         <td>{{ $room->number }}</td>
                         <td>{{ $room->detail }}</td>
                         <td>{{ $room->type->room_type }}</td>
-                        
+
                         @switch( $room->status_id)
                             @case(1)
                                 <td class="table-success">
@@ -57,7 +57,7 @@
                                 </td>
                             @break
                         @endswitch
-                        
+
 
 
                         <td>
