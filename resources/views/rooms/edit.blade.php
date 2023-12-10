@@ -87,7 +87,7 @@
                     <div class="form-group">
                         <strong>Capacidad:</strong>
                         <input type="number" name="capacity" value="{{ $room->capacity }}" class="form-control"
-                            placeholder="Numero...">
+                            placeholder="Numero..." min="0" required>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
                     <div class="form-group">
                         <strong>Precio:</strong>
                         <input type="number" name="price" value="{{ $room->price }}" class="form-control"
-                            placeholder="Numero...">
+                            placeholder="Numero..."  min="0" required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">

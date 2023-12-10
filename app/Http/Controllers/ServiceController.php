@@ -39,11 +39,16 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            'price.decimal' => 
+            'El campo "precio" debe contener numeros decimales'
+        ];
+
         $request ->validate([
             'type'=>'required',
-            'price'=>'required',
+            'price'=>'required|decimal:2',
             'details'=>'required'
-        ]);
+        ], $messages);
 
         Service::create($request->all());
 

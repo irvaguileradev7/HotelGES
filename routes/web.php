@@ -14,18 +14,6 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Reservation_viewController;
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -37,7 +25,6 @@ Route::middleware([
     Route::get('/', function () {
         return view('welcome');
     });
-    
 
     Route::resource('rooms', RoomController::class);
     Route::resource('types', TypeController::class);
@@ -51,40 +38,21 @@ Route::middleware([
     Route::resource('calendar', CalendarController::class);
     Route::resource('payments', PaymentController::class);
     Route::resource('reservationview', Reservation_viewController::class);
+});
 
-
+Route::middleware(['checkAdminUserRole'])->group(function () {
+// El administrador no cuenta con restricciones, esta seccion permanece
+// Por efectos practicos.
 });
 
 
-// VISTA QUE SOLO LOS ADMIN. PUEDEN VER
 
-
-// VISTAS QUE PUEDEN ACCEDER LOS GERENTES
-Route::middleware(['checkGerenteUserRole'])->group(function(){
-    Route::resource('rooms', RoomController::class);
-    Route::resource('types', TypeController::class);
-    Route::resource('floors', FloorController::class);
-    Route::resource('services', ServiceController::class);
-});
-
-
-// DESCOMENTAR ESTAS LINEAS UNA VEZ ACABADAS LAS ULTIMAS VISTAS
-// SOLO LOS OPERARIOS PUEDEN ACCEDER A ESTAS VISTAS
-Route::middleware(['checkOperarioUserRole'])->group(function() {
-    Route::resource('asignrooms', AsignRoomController::class);
-    Route::resource('asignservices', AsignServiceController::class);
-    Route::resource('payments', PaymentController::class);
-    Route::resource('reservations', ReservationController::class);
-    Route::resource('reservationview', Reservation_viewController::class);
-    Route::post('/delete-reservation-table', [GuestController::class, 'deleteReservationTable'])->name('deleteReservationTable');
-});
-
-
-Route::middleware(['checkAdminUserRole'])->group(function(){
+Route::middleware(['checkGerenteUserRole'])->group(function () {
     Route::resource('users', UserController::class);
-    Route::resource('asignrooms', AsignRoomController::class);
-    Route::resource('asignservices', AsignServiceController::class);
-    Route::resource('payments', PaymentController::class);
+});
+
+Route::middleware(['checkOperarioUserRole'])->group(function () {
+
     Route::resource('rooms', RoomController::class);
     Route::resource('types', TypeController::class);
     Route::resource('floors', FloorController::class);
@@ -93,4 +61,5 @@ Route::middleware(['checkAdminUserRole'])->group(function(){
     Route::resource('reservationview', Reservation_viewController::class);
     Route::post('/delete-reservation-table', [GuestController::class, 'deleteReservationTable'])->name('deleteReservationTable');
 });
+
 
