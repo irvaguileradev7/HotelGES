@@ -1,5 +1,5 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Lato:wght@300;400&display=swap"); */
-@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Playfair+Display&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&family=Playfair+Display&display=swap");
 
 body {
     /* background:url(/img/fondo2.jpg); */
@@ -15,8 +15,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Nunito', sans-serif;
-
+    font-family: "Nunito", sans-serif;
 }
 
 .sidebar {
@@ -103,7 +102,6 @@ body {
     display: none;
     z-index: 1;
 }
-
 
 .sidebar.active + .overlay {
     display: block;
@@ -234,15 +232,25 @@ h1 {
 .card {
     /* background-color: dodgerblue; */
     /* color: white; */
-border-color: #00000000;
+    border-color: #22222200;
     border-radius: 30px;
     background: #e0e0e0;
-    box-shadow: 15px 15px 30px #bebebe,
-               -15px -15px 30px #ffffff;
+    box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+}
+
+.screen-center{
+    margin-top: 10%;
+
 }
 
 .card .space-padding {
     padding: 20px;
+}
+
+.only-form{
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 5%;
 }
 
 .cards {
@@ -254,18 +262,17 @@ border-color: #00000000;
 }
 
 .btn.btn-green {
+    border-color: #22222200;
     font-weight: bold;
     font-size: 32px;
     border-radius: 20px;
     background: #e0e0e0;
-    box-shadow:  10px 10px 30px #bebebe,
-                 -10px -10px 30px #ffffff;
+    box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
 }
 
 .btn {
     transition: 0.2s;
 }
-
 
 .btn.btn-exit {
     background-color: #00000000;
@@ -285,30 +292,28 @@ table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 20px; /* Bordes redondeados */
     background: #e0e0e0;
     box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
-  }
+}
 
-  th,
-  td {
+th,
+td {
     text-align: center;
     padding: 10px;
-    border: none;
-    background-color: #e0e0e0;
-    border-radius: 10px; /* Bordes redondeados para celdas */
-  }
+    border-color: #edeef0;
+}
 
-  tr {
-    text-align: center;
-    padding: 10px;
-    border: none;
-    background-color: #e0e0e0;
-    border-radius: 10px; /* Bordes redondeados para filas */
-  }
+tr:nth-child(even) {
+    background-color: #f0f0f0; /* Color claro para filas pares */
+    border-color: #edeef0;
+}
 
-/* tr:nth-child(even) { */
-/* background-color: #f2f2f296; */
+tr:nth-child(odd) {
+    background-color: #e4e4e4; /* Color oscuro para filas impares */
+}
+
+/* tr:hover { */
+/* background-color: rgba(224, 224, 224, 0.5); */
 /* } */
 
 .reservation {

@@ -49,25 +49,26 @@
                     </a>
                     <span class="tooltip">Reservaciones</span>
                 </li>
-                <li>
+                <li @if(Auth::user()->role_id != 1 && Auth::user()->role_id != 2) style="display: none;" @endif>
                     <a href="{{ route('rooms.index') }}"><i class='bx bxs-hotel'></i>
                         <span class="nav-item">Habitaciones</span>
                     </a>
                     <span class="tooltip">Habitaciones</span>
                 </li>
-                <li>
+                <li @if(Auth::user()->role_id != 1 && Auth::user()->role_id != 2) style="display: none;" @endif>
                     <a href="{{ route('services.index') }}"><i class='bx bxs-bowl-hot'></i>
                         <span class="nav-item">Servicios</span>
                     </a>
                     <span class="tooltip">Servicios</span>
                 </li>
 
-                <li>
+                <li @if(Auth::user()->role_id != 1) style="display: none;" @endif>
                     <a href="{{ route('users.index') }}"><i class='bx bxs-user'></i>
                         <span class="nav-item">Usuarios</span>
                     </a>
                     <span class="tooltip">Usuarios</span>
                 </li>
+
 
                 <li>
                     <form method="POST" action="{{ route('logout') }}">

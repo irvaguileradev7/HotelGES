@@ -167,7 +167,7 @@ class ReservationController extends Controller
             return response()->json(['message' => 'Tabla eliminada correctamente'], 200);
         }
     }
-    
+
     return response()->json(['message' => 'No se encontró la tabla asociada a la reserva'], 404);
 }
 }

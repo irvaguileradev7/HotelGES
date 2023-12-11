@@ -16,22 +16,19 @@
         </div>
     @endif
 
+
     <form id="guest-form" action="{{ route('guests.store') }}" method="POST" autocomplete="off">
         @csrf
         <input type="hidden" name="reservation_id" value="{{ session('reservation_id') }}">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="mb-0">Datos del huesped</h5>
-                        </div>
+                <div class="screen-center">
+                    <div class="card" style="margin-bottom: 4%">
                         <div class="card-body">
-
+                            <h5 class="mb-0">Datos del huesped</h5>
                             <div id="carouselExampleControls" class="carousel slide" data-interval="false">
                                 <div class="carousel-inner pb-5">
                                     <div class="container">
-
                                         <div class="carousel-item active position-relative bottom-50">
                                             <div class="container">
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -65,15 +62,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-
-
-
-
                                             </div>
-
                                         </div>
-
                                         <div class="carousel-item position-relative bottom-50">
                                             <div class="container">
                                                 <div class="col-xs-12 col-sm-12 col-md-12 mt-3">
@@ -130,36 +120,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{--
-                                        <div class="carousel-item position-relative bottom-50">
-                                            <div class="container">
-                                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    <div class="form-group">
-                                                        <strong>Adultos:</strong>
-                                                        <input type="number" name="adults" class="form-control" min=1
-                                                            placeholder="Adultos..." value="1">
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    <div class="form-group">
-                                                        <strong>Ninos:</strong>
-                                                        <input type="number" name="kids" class="form-control" min=0
-                                                            placeholder="Niños..." value="0">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        --}}
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
-
-
                     </div>
                     <div class="container">
                         <a href="#carouselExampleControls" role="button" data-slide="prev">
@@ -168,21 +132,19 @@
                         <a href="#carouselExampleControls" role="button" data-slide="next">
                             <span class="btn btn-danger">Siguiente</span>
                         </a>
-
                     </div>
                 </div>
-
             </div>
-
     </form>
-
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <script>
+        // Aun no funciona
         // Evento que se activa cuando se intenta cerrar la página o actualizarla
         window.addEventListener("beforeunload", function(event) {
             // Eliminar la tabla asociada a la sesión
@@ -190,16 +152,16 @@
             if (reservationId) {
                 deleteReservationTable(reservationId);
             }
-            
+
             // Mostrar un mensaje de advertencia
             event.preventDefault();
             event.returnValue = "Si cierra esta página, perderá su progreso.";
         });
-        
+
         // Función para eliminar la tabla asociada a la sesión
         function deleteReservationTable(reservationId) {
             // Realiza una petición AJAX para eliminar la tabla
-            // Asegúrate de tener jQuery incluido en tu página
+            //  jQuery incluido de usarse en la página
             $.ajax({
                 url: "{{ route('deleteReservationTable') }}",
                 method: "POST",
@@ -216,6 +178,6 @@
             });
         }
     </script>
-    
+
 
 @endsection
