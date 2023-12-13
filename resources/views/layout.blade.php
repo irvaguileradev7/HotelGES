@@ -26,6 +26,13 @@
             </div>
             <ul>
                 <li>
+                    <button id="darkModeToggle" class="btn btn-dark-mode nav-item">
+                        <i class='bx bx-moon'></i>
+                        <span class="nav-item">Modo Oscuro</span>
+                    </button>
+                </li>
+
+                <li>
                     <a href="/"><i class='bx bxs-dashboard'></i>
                         <span class="nav-item" id="nav">Inicio</span>
                     </a>
@@ -89,6 +96,13 @@
 
     <script src="/js/scripts.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script>const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+
+        darkModeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+        });</script>
 </body>
 
 </html>
