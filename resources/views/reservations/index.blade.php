@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="/css/style_calendar.css">
     </head>
 
-    <div class="container">
+    <div class="container ">
 
         <form id="reservation-form" action="{{ route('reservations.store') }}" method="POST">
             @csrf

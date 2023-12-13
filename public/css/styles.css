@@ -8,7 +8,7 @@ body {
     background-size: cover;
     margin: 0;
     padding: 0;
-    background-color: #e5e5e5;
+    background-color: #e0e0e0;
 }
 
 * {
@@ -229,6 +229,11 @@ h1 {
     padding: 10px;
 }
 
+.tables{
+    width: 70%;
+}
+
+
 .card {
     /* background-color: dodgerblue; */
     /* color: white; */
@@ -238,19 +243,28 @@ h1 {
     box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
 }
 
-.screen-center{
+.screen-center {
     margin-top: 10%;
-
 }
 
 .card .space-padding {
     padding: 20px;
 }
 
-.only-form{
+.only-form {
     margin-left: 30%;
     margin-right: 30%;
     margin-bottom: 5%;
+}
+
+a {
+    cursor: pointer;
+    color: #535c68;
+}
+
+.crud {
+    font-size: 32px;
+    margin-left: 20px;
 }
 
 .cards {
@@ -262,9 +276,10 @@ h1 {
 }
 
 .btn.btn-green {
+    color: #535c68;
     border-color: #22222200;
     font-weight: bold;
-    font-size: 32px;
+    font-size: 20px;
     border-radius: 20px;
     background: #e0e0e0;
     box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
@@ -289,32 +304,44 @@ h1 {
 }
 
 table {
+
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
     background: #e0e0e0;
     box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
+    border-radius: 20px; /* Ajusta el radio del borde para el estilo de neumorfismo */
+    overflow: hidden;
 }
 
-th,
 td {
-    text-align: center;
+    border: none; /* Eliminar la línea superior de cada celda */
     padding: 10px;
-    border-color: #edeef0;
 }
 
-tr:nth-child(even) {
-    background-color: #f0f0f0; /* Color claro para filas pares */
-    border-color: #edeef0;
+/* Estilo para las líneas horizontales */
+tr {
+    background: #e0e0e0; /* Color de fondo de las filas */
+    border-bottom: 8px solid #535c6849; /* Añadir línea horizontal */
+    padding-left: 20px; /* Agrega un espacio a la izquierda de las celdas de datos */
+    padding-right: 20px;
+
 }
 
-tr:nth-child(odd) {
-    background-color: #e4e4e4; /* Color oscuro para filas impares */
+th {
+    border: none;
+    padding: 10px;
+    background: #e0e0e0;
+
 }
 
-/* tr:hover { */
-/* background-color: rgba(224, 224, 224, 0.5); */
-/* } */
+tr:first-child th {
+    border-top: 8px solid rgba(83, 92, 104, 0); /* Añade línea horizontal solo en el primer encabezado */
+    padding-left: 20px; /* Agrega un espacio a la izquierda de las celdas de datos */
+    padding-right: 20px;
+}
+
+tr:last-child td {
+    border-bottom: 8px solid #00000000; /* Añade línea horizontal solo en la última fila */
+}
 
 .reservation {
     background-color: #ff0000;
@@ -342,13 +369,8 @@ tr:nth-child(odd) {
     left: 150px;
 }
 
-.solo-prueba.ignorar {
-    color: #97876d;
-    color: #97876d;
-    color: #d0c4ae;
-    color: #00a9ac;
-    color: #015b5b;
-}
-
-.form-control {
+.bordered-image {
+    border-radius: 20px;
+    width: 720px;
+    box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
 }

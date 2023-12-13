@@ -3,23 +3,15 @@
 @section('content')
     <div class="container" style= "margin-top:5%">
         <h1 style="margin-bottom: 25px">Sistema de gestion de hoteles</h1>
-        <div class="row">
-            <div class="col-md-8">
+        <div class="row" style="margin-bottom: 30px">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="space-padding">
-                        <div class="">
-
-                        </div>
-                        <div class="">
                             <h3>
                                 Bienvenido, {{ Auth::user()->name }}
                             </h3>
-                            <p>Acceso de: {{ Auth::user()->role->user_role_type }} </p>
-                        </div>
-                        <div class="">
-                            <img class="mod-size" src="{{ asset('/img/LogoHG.png') }}" width="400rem">
-                            </a>
-                        </div>
+                                <p>Acceso como: {{ Auth::user()->role->user_role_type }} </p>
+                            <img class="mod-size" src="{{ asset('/img/LogoHG.png') }}" width="250px">
                     </div>
                 </div>
             </div>
