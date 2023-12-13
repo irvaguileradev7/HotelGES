@@ -46,11 +46,6 @@ body {
     height: 0;
 }
 
-/* .sidebar.active ~ .main-content { */
-/* left: 180px; */
-/* width: calc(100% - 250px); */
-/* } */
-
 .sidebar.active {
     width: 220px;
     z-index: 2;
@@ -233,7 +228,11 @@ h1 {
     width: 70%;
 }
 
-
+button {
+    background-color: #00000000;
+    border-color: #00000000;
+    color: #535c68;
+}
 .card {
     /* background-color: dodgerblue; */
     /* color: white; */
@@ -315,18 +314,20 @@ table {
 td {
     border: none; /* Eliminar la línea superior de cada celda */
     padding: 10px;
+
 }
 
 /* Estilo para las líneas horizontales */
 tr {
     background: #e0e0e0; /* Color de fondo de las filas */
     border-bottom: 8px solid #535c6849; /* Añadir línea horizontal */
-    padding-left: 20px; /* Agrega un espacio a la izquierda de las celdas de datos */
+    padding-left: 20px;
     padding-right: 20px;
 
 }
 
 th {
+
     border: none;
     padding: 10px;
     background: #e0e0e0;
