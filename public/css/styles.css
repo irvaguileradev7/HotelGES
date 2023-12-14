@@ -202,7 +202,13 @@ h1 {
 .main-content {
     padding: 1rem;
     overflow: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
     z-index: 0;
+}
+
+.main-content.mostrar {
+    opacity: 1;
 }
 
 .container {
@@ -224,7 +230,7 @@ h1 {
     padding: 10px;
 }
 
-.tables{
+.tables {
     width: 70%;
 }
 
@@ -303,7 +309,6 @@ a {
 }
 
 table {
-
     width: 100%;
     background: #e0e0e0;
     box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
@@ -314,7 +319,6 @@ table {
 td {
     border: none; /* Eliminar la línea superior de cada celda */
     padding: 10px;
-
 }
 
 /* Estilo para las líneas horizontales */
@@ -323,15 +327,12 @@ tr {
     border-bottom: 8px solid #535c6849; /* Añadir línea horizontal */
     padding-left: 20px;
     padding-right: 20px;
-
 }
 
 th {
-
     border: none;
     padding: 10px;
     background: #e0e0e0;
-
 }
 
 tr:first-child th {
@@ -379,25 +380,20 @@ tr:last-child td {
 .dark-mode {
     background-color: #222; /* Cambiar el color de fondo para el modo oscuro */
     color: #fff; /* Cambiar el color del texto para el modo oscuro */
-
 }
 
 .dark-mode {
-    background-color:#32323f;
+    background-color: #32323f;
 }
 
 .dark-mode .card {
     color: #fff;
     background: #32323f;
-    box-shadow:  20px 20px 60px #24242d,
-                 -20px -20px 60px #414151;
+    box-shadow: 20px 20px 60px #24242d, -20px -20px 60px #414151;
 }
 
 .dark-mode .btn {
     color: #fff;
     background: #32323f;
-    box-shadow:  20px 20px 60px #24242d,
-                 -20px -20px 60px #414151;
+    box-shadow: 20px 20px 60px #24242d, -20px -20px 60px #414151;
 }
-
-
