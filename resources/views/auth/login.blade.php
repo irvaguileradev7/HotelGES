@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        
+
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Inicio de sesion') }}</div>
@@ -53,14 +53,14 @@
 
 
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+
+                            <div class="col-md-10 offset-md-6">
+                                <button type="submit" class="btn btn-green text-end">
                                     {{ __('Iniciar sesion') }}
                                 </button>
 
                             </div>
-                        </div>
+
                     </form>
                 </div>
             </div>

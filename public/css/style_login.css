@@ -5,18 +5,37 @@
 
 
 body{
-    background:url(/img/fondo2.jpg);
     background-size: cover;
+    margin: 0;
+    padding: 0;
+    background-color: #e0e0e0;
 }
 .container{
     position: fixed;
     top: 50%;
-    left: 50%;
+    left: 60%;
     transform: translate(-50%, -50%);
 }
 
-.card-header{
-    background-color: #302247;
-    color: #fff;
+
+.card {
+    width: 60%;
+    /* background-color: dodgerblue; */
+    /* color: white; */
+    border-color: #22222200;
+    border-radius: 30px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+}
+
+.btn.btn-green {
+    margin-top: 12px;
+    color: #535c68;
+    border-color: #22222200;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 20px;
+    background: #e0e0e0;
+    box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
 }
 

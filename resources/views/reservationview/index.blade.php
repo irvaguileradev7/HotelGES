@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container">
+    <div class="container tables">
         <div class="row">
             <div class="col-lg-12 margin-tb">
 
@@ -40,9 +40,10 @@
                     <tr class="white-cell">
                         <td>{{ $reservation->room->floor_id }}</td>
                         <td>{{ $reservation->room->number }}</td>
-                        <td>{{ $reservation->guest->id}}</td>
-                        <td>{{ $reservation->guest->name }}</td>
-                        <td>{{ $reservation->guest->last_name }}</td>
+                        {{-- el ? sirve para que busque en las reservaciones, dentro del guest y si no enceuntra  nada, mostrar un texto que diga error --}}
+                        <td>{{ $reservation->guest ? $reservation->guest->id : 'Error' }}</td>
+                        <td>{{ $reservation->guest ? $reservation->guest->name : 'Error' }}</td>
+                        <td>{{ $reservation->guest ? $reservation->guest->last_name : 'Error' }}</td>
                         <td>{{ $reservation->nights }}</td>
                         <td>{{ $reservation->time_from }}</td>
                         <td>{{ $reservation->time_to }}</td>

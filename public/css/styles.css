@@ -1,20 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Lato:wght@300;400&display=swap');
+/* @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Lato:wght@300;400&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Nunito&family=Playfair+Display&display=swap");
 
 body {
     /* background:url(/img/fondo2.jpg); */
     /* background-size: cover; */
-    background: url(/img/fondo2.jpg);
+    /* background: url(/img/fondo2.jpg); */
     background-size: cover;
     margin: 0;
     padding: 0;
-    background-color: #e6ded1;
+    background-color: #e0e0e0;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Lato", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 
 .sidebar {
@@ -22,13 +23,17 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    /* height: 100vh; */
+    height: 100%;
     width: 70px;
-    background-color: #093633;
+    /* background-color: #093633; */
+    background-color: #535c68;
     padding: 0.4rem 0.8rem;
     transition: all 0.5s ease;
     box-shadow: 1px 0px 5px #000;
     overflow-y: auto;
+    z-index: 2;
+    transition: 0.5s;
     /* Ocultar scrollbar Firefox */
     scrollbar-width: none;
     /* Ocultar scrollbar Edge */
@@ -39,11 +44,6 @@ body {
 .sidebar::-webkit-scrollbar {
     width: 0;
     height: 0;
-}
-
-.sidebar.active ~ .main-content {
-    left: 180px;
-    width: calc(100% - 250px);
 }
 
 .sidebar.active {
@@ -85,6 +85,21 @@ body {
 .top .logo i {
     font-size: 2rem;
     margin-right: 5px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1;
+}
+
+.sidebar.active + .overlay {
+    display: block;
 }
 
 .user {
@@ -185,20 +200,15 @@ h1 {
 }
 
 .main-content {
-    position: relative;
-    min-height: 100hv;
-    top: 0;
-    left: 70px;
-    width: calc(100% - 70px);
-    transition: left 0.5 ease;
     padding: 1rem;
     overflow: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 0;
 }
 
-.sidebar.active ~ .main-content {
-    left: 220px;
-    width: calc(100% - 220px);
-    position: relative;
+.main-content.mostrar {
+    opacity: 1;
 }
 
 .container {
@@ -220,12 +230,46 @@ h1 {
     padding: 10px;
 }
 
+.tables {
+    width: 70%;
+}
+
+button {
+    background-color: #00000000;
+    border-color: #00000000;
+    color: #535c68;
+}
 .card {
     /* background-color: dodgerblue; */
     /* color: white; */
-    padding: 1rem;
-    background-color: #00000000;
-    border-color: #00000000;
+    border-color: #22222200;
+    border-radius: 30px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+}
+
+.screen-center {
+    margin-top: 10%;
+}
+
+.card .space-padding {
+    padding: 20px;
+}
+
+.only-form {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 5%;
+}
+
+a {
+    cursor: pointer;
+    color: #535c68;
+}
+
+.crud {
+    font-size: 32px;
+    margin-left: 20px;
 }
 
 .cards {
@@ -237,18 +281,17 @@ h1 {
 }
 
 .btn.btn-green {
-    background-color: #093633;
-    color: #fff;
-    font-size: 32px;
+    color: #535c68;
+    border-color: #22222200;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 20px;
+    background: #e0e0e0;
+    box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
 }
 
-.btn{
+.btn {
     transition: 0.2s;
-}
-.btn.btn-green:hover {
-    background-color: #00a9ac;
-    color: #fff;
-    font-size: 32px;
 }
 
 .btn.btn-exit {
@@ -267,33 +310,40 @@ h1 {
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    background: #e0e0e0;
+    box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
+    border-radius: 20px; /* Ajusta el radio del borde para el estilo de neumorfismo */
+    overflow: hidden;
 }
 
-th,
 td {
-    text-align: center;
-    padding: 5px;
-    border: 1px solid rgba(45, 48, 48, 0.486);
-    background-color: #fff;
+    border: none; /* Eliminar la línea superior de cada celda */
+    padding: 10px;
 }
 
+/* Estilo para las líneas horizontales */
 tr {
-    text-align: center;
-    padding: 5px;
-    border: 1px solid rgba(45, 48, 48, 0.486);
-    background-color: #fff;
+    background: #e0e0e0; /* Color de fondo de las filas */
+    border-bottom: 8px solid #535c6849; /* Añadir línea horizontal */
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-tr:hover {
-    background-color: rgba(224, 224, 224);
+th {
+    border: none;
+    padding: 10px;
+    background: #e0e0e0;
 }
 
+tr:first-child th {
+    border-top: 8px solid rgba(83, 92, 104, 0); /* Añade línea horizontal solo en el primer encabezado */
+    padding-left: 20px; /* Agrega un espacio a la izquierda de las celdas de datos */
+    padding-right: 20px;
+}
 
-/* tr:nth-child(even) { */
-    /* background-color: #f2f2f296; */
-/* } */
-
+tr:last-child td {
+    border-bottom: 8px solid #00000000; /* Añade línea horizontal solo en la última fila */
+}
 
 .reservation {
     background-color: #ff0000;
@@ -321,12 +371,55 @@ tr:hover {
     left: 150px;
 }
 
-.solo-prueba.ignorar {
-    color: #97876d;
-    color: #97876d;
-    color: #d0c4ae;
-    color: #00a9ac;
-    color: #015b5b;
+.bordered-image {
+    border-radius: 20px;
+    width: 720px;
+    box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
 }
 
-.form-control {}
+.dark-mode {
+    background-color: #222; /* Cambiar el color de fondo para el modo oscuro */
+    color: #fff; /* Cambiar el color del texto para el modo oscuro */
+}
+
+.dark-mode {
+    background-color: #32323f;
+}
+
+.dark-mode .card {
+    color: #fff;
+    background: #32323f;
+    box-shadow: 20px 20px 60px #24242d, -20px -20px 60px #414151;
+}
+
+.dark-mode .btn {
+    color: #fff;
+    background: #32323f;
+    box-shadow: 20px 20px 60px #24242d, -20px -20px 60px #414151;
+}
+
+.dark-mode .sidebar {
+    background-color: #253341;
+}
+
+.dark-mode table {
+    background: #32323f;
+    color: #fff;
+    box-shadow: 20px 20px 60px #24242d, -20px -20px 60px #414151;
+}
+
+.dark-mode .white-cell {
+    background: #32323f;
+}
+
+.dark-mode th {
+    background: #32323f;
+}
+
+.dark-mode .crud {
+    color: #fff;
+}
+
+ul li.active {
+    background-color: #f0f0f0;
+}
