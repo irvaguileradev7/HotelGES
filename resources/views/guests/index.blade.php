@@ -6,11 +6,6 @@
             <h1 class="col">Huespedes</h1>
             <a class=" col crud text-end" href="{{ route('asignrooms.index') }}"><i class='bx bx-plus-circle'></i></a>
         </div>
-    </div>
-
-    </div>
-
-    <div class="container tables">
         <div class="row">
             <div class="col-lg-6">
 
@@ -33,8 +28,7 @@
                 <form action="{{ route('guests.index') }}" method="GET">
                     <div class="row">
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="id"
-                                placeholder="Buscar por ID">
+                            <input type="text" class="form-control" name="id" placeholder="Buscar por ID">
                         </div>
                         <div class="col-md-1">
                             <span class="input-group-btn mt-2">
@@ -43,19 +37,16 @@
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
-    </div>
 
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
+        <br>
 
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-    <br>
-    <div class="container tables">
         <table class="table table-bordered align-middle">
             <tr>
                 <th>ID</th>

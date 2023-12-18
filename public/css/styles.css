@@ -397,3 +397,29 @@ tr:last-child td {
     background: #32323f;
     box-shadow: 20px 20px 60px #24242d, -20px -20px 60px #414151;
 }
+
+.dark-mode .sidebar {
+    background-color: #253341;
+}
+
+.dark-mode table {
+    background: #32323f;
+    color: #fff;
+    box-shadow: 20px 20px 60px #24242d, -20px -20px 60px #414151;
+}
+
+.dark-mode .white-cell {
+    background: #32323f;
+}
+
+.dark-mode th {
+    background: #32323f;
+}
+
+.dark-mode .crud {
+    color: #fff;
+}
+
+ul li.active {
+    background-color: #f0f0f0;
+}

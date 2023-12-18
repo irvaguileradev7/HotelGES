@@ -32,13 +32,13 @@
                 </button>
             </li>
 
-            <li>
+            <li  @if (request()->routeIs('welcome')) class="active" @endif>
                 <a href="/"><i class='bx bxs-dashboard'></i>
                     <span class="nav-item" id="nav">Inicio</span>
                 </a>
                 <span class="tooltip">Inicio</span>
             </li>
-            <li>
+            <li @if (request()->routeIs('payments.index')) class="active" @endif>
                 <a href="{{ route('payments.index') }}"><i class='bx bx-wallet'></i></i>
                     <span class="nav-item">Pagos</span>
                 </a>
@@ -93,25 +93,7 @@
     <div class="main-content">
         @yield('content')
     </div>
-
     <script src="/js/scripts.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script>
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-
-
-        darkModeToggle.addEventListener('click', function() {
-            body.classList.toggle('dark-mode');
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const elementoContenido = document.querySelector('.main-content');
-            elementoContenido.classList.add('mostrar');
-        });
-    </script>
-
-
 </body>
-
 </html>
